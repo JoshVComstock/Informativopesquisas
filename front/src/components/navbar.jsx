@@ -5,28 +5,33 @@ import { Outlet } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div>
+    <Navbarnav>
       <Nav>
         <Navlink>
-          <Linkes to="/portada">Portada</Linkes>
-          <Linkes to="/capsulas">Capsulas</Linkes>
+          <Linkes to="portada">Portada</Linkes>
+          <Linkes to="capsulas">Capsulas</Linkes>
           <Linkes to="centros">Centros</Linkes>
-          <Linkes to="/detallecentro">Detalle centro</Linkes>
-          <Linkes to="/informacion">Informacion</Linkes>
-          <Linkes to="/programa">Programa</Linkes>
-          <Linkes to="/redcentro">Red centros</Linkes>
+          <Linkes to="detallecentro">Detalle centro</Linkes>
+          <Linkes to="informacion">Informacion</Linkes>
+          <Linkes to="programa">Programa</Linkes>
+          <Linkes to="redcentro">Red centros</Linkes>
         </Navlink>
       </Nav>
-      <div>
-        <Outlet/>
-      </div>
-    </div>
+      <Datos>
+        <Outlet />
+      </Datos>
+    </Navbarnav>
   );
 };
 
 export default Navbar;
-const Navbarnav=styled.div`
-  
+const Navbarnav = styled.div`
+  min-width: 100vh;
+  display: flex;
+  flex-direction: row;
+`;
+const Datos = styled.div`
+  width: calc(100% - 200px);
 `;
 const Nav = styled.div`
   width: 200px;
