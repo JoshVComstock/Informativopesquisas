@@ -10,17 +10,14 @@ class CreateCentrosTable extends Migration
     public function up()
     {
         Schema::create('centros', function (Blueprint $table) {
-      
+
             $table->id();
             $table->string('centro_diagnostico');
             $table->string('sede');
             $table->string('centro');
-
             $table->binary('foto')->nullable();
             $table->integer('telefono');
             $table->string('dirreccion');
-
-            
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateCentrosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('centro');
+        Schema::dropIfExists('centros');
     }
 }
