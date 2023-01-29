@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CentrosController;
 use App\Http\Controllers\DetallecentrosController;
-use App\Http\Controllers\InformacionController;
-use App\Http\Controllers\PrincipalController;
-use App\Http\Controllers\ProgramaController;
-use App\Http\Controllers\RedcentroController;
+use App\Http\Controllers\InformacionesController;
+use App\Http\Controllers\PrincipalesController;
+use App\Http\Controllers\ProgramasController;
+use App\Http\Controllers\RedcentrosController;
 use App\Http\Controllers\CapsulasController;
 
 
@@ -19,30 +19,36 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/centros', [CentrosController::class, 'index']);
-Route::post('/Centros', [CentrosController::class, 'store']);
-Route::delete('/Centros/{id}', [CentrosController::class, 'destroy']);
+Route::post('/centros', [CentrosController::class, 'store']);
+Route::delete('/centros/{id}', [CentrosController::class, 'destroy']);
+Route::put('/centros/{id}', [CentrosController::class, 'update']);
 
-Route::get('/Detallecentros', [DetallecentrosController::class, 'index']);
-Route::post('/Detallecentros', [DetallecentrosController::class, 'store']);
-Route::delete('/Detallecentros/{id}', [DetallecentrosController::class, 'destroy']);
+Route::get('/detallecentros', [DetallecentrosController::class, 'index']);
+Route::post('/detallecentros', [DetallecentrosController::class, 'store']);
+Route::delete('/detallecentros/{id}', [DetallecentrosController::class, 'destroy']);
+Route::put('/detallecentros/{id}', [DetallecentrosController::class, 'update']);
 
-Route::get('/informacion', [InformacionController::class, 'index']);
-Route::post('/informacion', [InformacionController::class, 'store']);
-Route::delete('/informacion/{id}', [InformacionController::class, 'destroy']);
+Route::get('/informacion', [InformacionesController::class, 'index']);
+Route::post('/informacion', [InformacionesController::class, 'store']);
+Route::delete('/informacion/{id}', [InformacionesController::class, 'destroy']);
+Route::put('/informacion/{id}', [InformacionesController::class, 'update']);
 
-Route::get('/Principal', [PrincipalController::class, 'index']);
-Route::post('/Principal', [PrincipalController::class, 'store']);
-Route::delete('/Principal/{id}', [PrincipalController::class, 'destroy']);
+Route::get('/principal', [PrincipalesController::class, 'index']);
+Route::post('/principal', [PrincipalesController::class, 'store']);
+Route::delete('principal/{id}', [PrincipalesController::class, 'destroy']);
+Route::put('/principal/{id}', [PrincipalesController::class, 'update']);
 
-Route::get('/Programa', [ProgramaController::class, 'index']);
-Route::post('/Programa', [ProgramaController::class, 'store']);
-Route::delete('/Programa/{id}', [ProgramaController::class, 'destroy']);
+Route::get('/programa', [ProgramasController::class, 'index']);
+Route::post('/programa', [ProgramasController::class, 'store']);
+Route::delete('/programa/{id}', [ProgramasController::class, 'destroy']);
+Route::put('/programa/{id}', [ProgramasController::class, 'update']);
 
-Route::get('/red', [RedcentroController::class, 'index']);
-Route::post('/red', [RedcentroController::class, 'store']);
-Route::delete('/red/{id}', [RedcentroController::class, 'destroy']);
-
+Route::get('/red', [RedcentrosController::class, 'index']);
+Route::post('/red', [RedcentrosController::class, 'store']);
+Route::delete('/red/{id}', [RedcentrosController::class, 'destroy']);
+Route::put('/red/{id}', [RedcentrosController::class, 'update']);
 
 Route::get('/capsula', [CapsulasController::class, 'index']);
 Route::post('/capsula', [CapsulasController::class, 'store']);
 Route::delete('/capsula/{id}', [CapsulasController::class, 'destroy']);
+Route::put('/capsula/{id}', [CapsulasController::class, 'update']);

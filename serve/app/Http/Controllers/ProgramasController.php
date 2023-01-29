@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Programa;
+use App\Models\Programas;
 
-class ProgramaController extends Controller
+class ProgramasController extends Controller
 {
        // funcion retorno todos los valores
        public function index()
        {
-           $programa=Programa::all();
+           $programa=Programas::all();
            foreach($programa as $progra)
            { 
              if($progra->foto!=null)
@@ -25,7 +25,7 @@ class ProgramaController extends Controller
        public function store(Request $request)
        {
       
-           $nuevo = new Programa();
+           $nuevo = new Programas();
            $nuevo->nombre = $request->nombre;
            $nuevo->foto = $request->foto;
            $nuevo->contenido_a = $request->contenido_a;
@@ -41,7 +41,7 @@ class ProgramaController extends Controller
    
        public function update(Request $request, $id)
        {
-           $nuevo = Programa::find($id);
+           $nuevo = Programas::find($id);
            $nuevo->nombre = $request->titulo;
            $nuevo->foto = $request->foto;
            $nuevo->contenido_a = $request->contenido_a;
@@ -54,7 +54,7 @@ class ProgramaController extends Controller
    
        public function destroy($id)
        {
-           return Programa::destroy($id);
+           return Programas::destroy($id);
        }
    
 }
