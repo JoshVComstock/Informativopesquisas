@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Portada = () => {
   return (
     <Conteiner>
-      portada
+      sake 
       <img src="" alt="" />
     </Conteiner>
   );
