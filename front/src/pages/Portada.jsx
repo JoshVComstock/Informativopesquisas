@@ -1,8 +1,30 @@
 import React from "react";
 import styled from "styled-components";
-import { Containerdiv } from "../style/crud";
-import { Container } from "../style/crud";
-import { Divtitulo, Divcrud, Divtabla, Divformulario } from "../style/crud";
+import {
+  Containerdiv,
+  Divinput,
+  Input,
+  Textarea,
+  Inputfile,
+} from "../style/crud";
+import {
+  Container,
+  Form,
+  Botonagregar,
+  Tabla,
+  Label,
+  Divh1,
+  Td,
+  Botonesacciones,
+  Img,
+} from "../style/crud";
+import {
+  Divtitulo,
+  Divcrudf,
+  Divtabla,
+  Divformulario,
+  Tablahead,
+} from "../style/crud";
 
 const Portada = () => {
   return (
@@ -11,47 +33,56 @@ const Portada = () => {
         <Divtitulo>
           <h1>Portada</h1>
         </Divtitulo>
-        <Divcrud>
+        <Divcrudf>
           <Divformulario>
-            <form action="">
-              <div>
-                <label htmlFor="">Titulo</label>
-                <input type="text" />
-              </div>
-              <div>
-                <label htmlFor="">Foto</label>
-                <input type="file" />
-              </div>
-              <div>
-                <label htmlFor="">Descripcion</label>
-                <input type="text" />
-              </div>
-            </form>
+            <Form>
+              <Divh1>
+                <h1>Registro</h1>
+              </Divh1>
+              <Divinput>
+                <Label htmlFor="">Titulo</Label>
+                <Input type="text" />
+              </Divinput>
+              <Divinput>
+                <Label>Foto</Label>
+                <Inputfile type="file" />
+                <img src="" alt="" />
+              </Divinput>
+              <Divinput>
+                <Label htmlFor="">Descripcion</Label>
+                <Textarea type="text" />
+              </Divinput>
+              <Botonagregar>Agregar</Botonagregar>
+            </Form>
           </Divformulario>
           <Divtabla>
-            <table classname="table">
-              <thead>
+            <Tabla class="table">
+              <Tablahead>
                 <tr>
-                  <td>Titulo</td>
-                  <td>Foto</td>
-                  <td>Descripcion</td>
-                  <td>Acciones</td>
+                  <th>Titulo</th>
+                  <th>Foto</th>
+                  <th>Descripcion</th>
+                  <th>Acciones</th>
                 </tr>
-              </thead>
+              </Tablahead>
               <tbody>
                 <tr>
-                  <td>Pesquisas</td>
-                  <td>null</td>
-                  <td>esto nos guiara en la ruta</td>
-                  <td>
-                    <button>Eliminar</button>
-                    <button>Editar</button>{" "}
-                  </td>
+                  <Td>Pesquisas</Td>
+                  <Td>
+                    <Img src=''
+                      alt=""
+                    />
+                  </Td>
+                  <Td>esto nos guiara en la ruta</Td>
+                  <Td>
+                    <Botonesacciones>Eliminar</Botonesacciones>
+                    <Botonesacciones>Editar</Botonesacciones>{" "}
+                  </Td>
                 </tr>
               </tbody>
-            </table>
+            </Tabla>
           </Divtabla>
-        </Divcrud>
+        </Divcrudf>
       </Containerdiv>
     </Container>
   );
