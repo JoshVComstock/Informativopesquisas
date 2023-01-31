@@ -29,6 +29,7 @@ const Navbarnav = styled.div`
   min-width: 100vh;
   display: flex;
   flex-direction: row;
+  
 `;
 const Datos = styled.div`
   width: calc(100% - 200px);
