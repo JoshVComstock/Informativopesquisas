@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Principal;
+use App\Models\Principales;
 
-class PrincipalController extends Controller
+class PrincipalesController extends Controller
 {
     // funcion retorno todos los valores
     public function index()
     {
-        $principal=Principal::all();
+        $principal=Principales::all();
         foreach($principal as $pri)
         { 
           if($pri->foto!=null)
@@ -24,7 +24,7 @@ class PrincipalController extends Controller
     }
     public function store(Request $request)
     {
-        $nuevo = new Portada();
+        $nuevo = new Principales();
         $nuevo->titulo = $request->titulo;
         $nuevo->foto = $request->foto;
         $nuevo->descripcion = $request->descripcion;
@@ -36,7 +36,7 @@ class PrincipalController extends Controller
 
     public function update(Request $request, $id)
     {
-        $nuevo = Principal::find($id);
+        $nuevo = Principales::find($id);
         $nuevo->titulo = $request->titulo;
         $nuevo->descripcion = $request->descripcion;
         $nuevo->foto = $request->foto;

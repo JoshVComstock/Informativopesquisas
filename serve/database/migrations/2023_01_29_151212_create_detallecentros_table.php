@@ -4,12 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetallecentroTable extends Migration
+class CreateDetallecentrosTable extends Migration
 {
     
     public function up()
     {
-        Schema::create('detallecentro', function (Blueprint $table) {
+        Schema::create('detallecentros', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->string('direccion');
@@ -24,6 +24,6 @@ class CreateDetallecentroTable extends Migration
   
     public function down()
     {
-        Schema::dropIfExists('detallecentro');
+        Schema::dropIfExists('detallecentros');
     }
 }

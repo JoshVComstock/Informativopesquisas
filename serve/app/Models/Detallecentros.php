@@ -13,7 +13,7 @@ class Detallecentros extends Model
         'direccion',
         'telefono',
         'horario_atencion',
-        'mapa',
+        'mapa'
     ];
 }
 

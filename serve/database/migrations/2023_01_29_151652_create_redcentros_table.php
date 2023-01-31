@@ -4,17 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRedcentroTable extends Migration
+class CreateRedcentrosTable extends Migration
 {
     // una red puede tener varios centros 
 
     public function up()
     {
-        Schema::create('redcentro', function (Blueprint $table) {
+        Schema::create('redcentros', function (Blueprint $table) {
             $table->id(); 
             $table->string('red',200);
             
-            $table->foreignId('id_detallecentro')->constrained('detallecentro')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('id_detallecentros')->constrained('detallecentros')->cascadeOnUpdate()->cascadeOnDelete();
 
             $table->timestamps();
         });
@@ -23,6 +23,6 @@ class CreateRedcentroTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('redcentro');
+        Schema::dropIfExists('redcentros');
     }
 }

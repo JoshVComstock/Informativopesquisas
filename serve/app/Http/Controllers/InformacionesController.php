@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Informacion;
+use App\Models\Informaciones;
 
-class InformacionController extends Controller
+class InformacionesController extends Controller
 {
     public function index()
     {
-        $informacion=Informacion::all();
+        $informacion = Informaciones::all();
         foreach($informacion as $info)
         { 
           if($info->foto!=null)
@@ -22,9 +22,10 @@ class InformacionController extends Controller
 
     public function store(Request $request)
     {
+ 
          {
            
-           $info = new Informacion();
+           $info = new Informaciones();
            $info->nombre = $request->nombre;
            $info->foto = $request->foto;
            $info->descripcion = $request->descripcion;
@@ -32,7 +33,7 @@ class InformacionController extends Controller
            $info->foto_m = $request->foto_m;
            $info->vision = $request->vision;
            $info->foto_v = $request->foto_v;
-           $info->pagina = $request->pagina;
+
            $info->save();
            
            return response()->json(["mensaje"=>"Creado satisfactoriamente"], 201);
@@ -40,7 +41,7 @@ class InformacionController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $info=Informacion::find($id);
+        $info=Informaciones::find($id);
         $info->nombre = $request->nombre;
         $info->foto = $request->foto;
         $info->descripcion = $request->descripcion;
@@ -48,7 +49,7 @@ class InformacionController extends Controller
         $info->foto_m = $request->foto_m;
         $info->vision = $request->vision;
         $info->foto_v = $request->foto_v;
-        $info->pagina = $request->pagina;
+
         $info->save();
         
         return response()->json(["mensaje"=>"Creado satisfactoriamente"], 201);
@@ -56,6 +57,6 @@ class InformacionController extends Controller
 
     public function destroy($id)
     {
-        return Informacion::destroy($id);
+        return Informaciones::destroy($id);
     }
 }
