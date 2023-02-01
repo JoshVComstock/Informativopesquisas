@@ -12,7 +12,9 @@ export const Containerdiv = styled.div`
 export const Divtitulo = styled.div`
   display: flex;
   justify-content: center;
-  height: 50px;
+  align-content: center;
+  background: #c7c7c7;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 10%);
 `;
 export const Divcrudf = styled.div`
   min-height: calc(100% - 50px);
