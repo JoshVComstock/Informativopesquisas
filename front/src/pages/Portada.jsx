@@ -50,7 +50,7 @@ const Portada = () => {
               </Divinput>
               <Divinput>
                 <Label htmlFor="">Descripcion</Label>
-                <Textarea type="text" />
+                <Textarea type="text"  />
               </Divinput>
               <Botonagregar>Agregar</Botonagregar>
             </Form>
