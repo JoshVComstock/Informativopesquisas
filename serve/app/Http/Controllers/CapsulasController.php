@@ -29,7 +29,7 @@ return $capsula;
         $capsulas->descripcion = $request->descripcion;
         $capsulas->mas_detalles = $request->mas_detalles;
 
-        $centros->save();
+        $capsulas->save();
         
         return response()->json(["mensaje"=>"Creado satisfactoriamente"], 201);
     }
@@ -41,14 +41,14 @@ return $capsula;
         $capsulas->descripcion = $request->descripcion;
         $capsulas->mas_detalles = $request->mas_detalles;
 
-        $centros->save();
+        $capsulas->save();
         
         return response()->json(["mensaje"=>"Modificado satisfactoriamente"], 201);
     }
 
     public function destroy($id)
     {
-        return Centros::destroy($id);
+        return Capsulas::destroy($id);
     }
 
 

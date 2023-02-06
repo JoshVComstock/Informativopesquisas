@@ -19,7 +19,7 @@ class DetallecentrosController extends Controller
         $detallecentro->horario_atencion = $request->horario_atencion;
         $detallecentro->mapa = $request->mapa;
         $detallecentro->save();
-        return response()->json(["mensaje"=>"Modificado satisfactoriamente"], 201);
+        return response()->json(["mensaje"=>"creado satisfactoriamente"], 201);
     }
     public function update(Request $request, $id)
     {

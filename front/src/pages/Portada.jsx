@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import {
   Containerdiv,
   Divinput,
@@ -24,9 +23,20 @@ import {
   Divtabla,
   Divformulario,
   Tablahead,
+  Tr,
+  Th,
+  Trbody,
+  Imgeditar,
+  Imgeliminar,
 } from "../style/crud";
-
+import Editaricons from "../assets/crud/Editar.jpg"
+import Eliminar from "../assets/crud/Eliminar.jpg"
+import Registroportada from "../components/portada/Registroportada";
+import useFech from "../hooks/useFech";
+import { getportada } from "../services/portada";
 const Portada = () => {
+  //const {resJson:portada} = useFech(getportada);
+
   return (
     <Container>
       <Containerdiv>
@@ -34,51 +44,30 @@ const Portada = () => {
           <h1>Portada</h1>
         </Divtitulo>
         <Divcrudf>
-          <Divformulario>
-            <Form>
-              <Divh1>
-                <h1>Registro</h1>
-              </Divh1>
-              <Divinput>
-                <Label htmlFor="">Titulo</Label>
-                <Input type="text" />
-              </Divinput>
-              <Divinput>
-                <Label>Foto</Label>
-                <Inputfile type="file" />
-                <img src="" alt="" />
-              </Divinput>
-              <Divinput>
-                <Label htmlFor="">Descripcion</Label>
-                <Textarea type="text"  />
-              </Divinput>
-              <Botonagregar>Agregar</Botonagregar>
-            </Form>
-          </Divformulario>
+          <Registroportada />
           <Divtabla>
-            <Tabla class="table">
-              <Tablahead>
-                <tr>
-                  <th>Titulo</th>
-                  <th>Foto</th>
-                  <th>Descripcion</th>
-                  <th>Acciones</th>
-                </tr>
-              </Tablahead>
+            <Tabla className="table">
+              <thead>
+                <Tr>
+                  <Th>Titulo</Th>
+                  <Th>Foto</Th>
+                  <Th>Descripcion</Th>
+                  <Th>Acciones</Th>
+                </Tr>
+              </thead>
+
               <tbody>
-                <tr>
-                  <Td>Pesquisas</Td>
+                <Trbody className="row">
+                  <Td>p</Td>
                   <Td>
-                    <Img src=''
-                      alt=""
-                    />
+                    <Img src="" alt="" />
                   </Td>
-                  <Td>esto nos guiara en la ruta</Td>
+                  <Td>g</Td>
                   <Td>
-                    <Botonesacciones>Eliminar</Botonesacciones>
-                    <Botonesacciones>Editar</Botonesacciones>{" "}
+                    <Botonesacciones><Imgeditar src={Editaricons} alt="" /></Botonesacciones>
+                    <Botonesacciones><Imgeliminar src={Eliminar} alt="" /></Botonesacciones>{" "}
                   </Td>
-                </tr>
+                </Trbody>
               </tbody>
             </Tabla>
           </Divtabla>

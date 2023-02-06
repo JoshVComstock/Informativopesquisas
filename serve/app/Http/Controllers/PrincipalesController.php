@@ -10,17 +10,13 @@ class PrincipalesController extends Controller
     // funcion retorno todos los valores
     public function index()
     {
-        $principal=Principales::all();
-        foreach($principal as $pri)
-        { 
-          if($pri->foto!=null)
-          {
-            $pri->foto=stream_get_contents($pri->foto);
-
-          }
-
+        $principales = Principales::all();
+        foreach ($principales as $pri) {
+            if ($pri->foto != null) {
+                $pri->foto = stream_get_contents($pri->foto);
+            }
         }
-        return $principal;
+        return $principales;
     }
     public function store(Request $request)
     {
@@ -29,8 +25,8 @@ class PrincipalesController extends Controller
         $nuevo->foto = $request->foto;
         $nuevo->descripcion = $request->descripcion;
         $nuevo->save();
-        
-        return response()->json(["mensaje"=>"Creado satisfactoriamente"], 201);
+
+        return response()->json(["mensaje" => "Creado satisfactoriamente"], 201);
     }
 
 
@@ -41,14 +37,12 @@ class PrincipalesController extends Controller
         $nuevo->descripcion = $request->descripcion;
         $nuevo->foto = $request->foto;
         $nuevo->save();
-        
-        return response()->json(["mensaje"=>"Modificado satisfactoriamente"], 201);
+
+        return response()->json(["mensaje" => "Modificado satisfactoriamente"], 201);
     }
 
     public function destroy($id)
     {
-        return Principal::destroy($id);
+        return Principales::destroy($id);
     }
-
-
 }

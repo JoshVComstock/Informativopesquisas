@@ -2,8 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-
 use App\Http\Controllers\CentrosController;
 use App\Http\Controllers\DetallecentrosController;
 use App\Http\Controllers\InformacionesController;
@@ -12,19 +10,10 @@ use App\Http\Controllers\ProgramasController;
 use App\Http\Controllers\RedcentrosController;
 use App\Http\Controllers\CapsulasController;
 
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
 Route::get('/centros', [CentrosController::class, 'index']);
 Route::post('/centros', [CentrosController::class, 'store']);
 Route::delete('/centros/{id}', [CentrosController::class, 'destroy']);
-<<<<<<< HEAD
-Route::put('/centros/{id}', [CentrosController::class, 'update']);
-=======
->>>>>>> 2ae8f9dccaeb345bc85e795f1d0feb9e81092868
+Route::put('centros/{id}', [CentrosController::class, 'update']);
 
 Route::get('/detallecentros', [DetallecentrosController::class, 'index']);
 Route::post('/detallecentros', [DetallecentrosController::class, 'store']);
@@ -36,10 +25,10 @@ Route::post('/informacion', [InformacionesController::class, 'store']);
 Route::delete('/informacion/{id}', [InformacionesController::class, 'destroy']);
 Route::put('/informacion/{id}', [InformacionesController::class, 'update']);
 
-Route::get('/principal', [PrincipalesController::class, 'index']);
-Route::post('/principal', [PrincipalesController::class, 'store']);
-Route::delete('principal/{id}', [PrincipalesController::class, 'destroy']);
-Route::put('/principal/{id}', [PrincipalesController::class, 'update']);
+Route::get('/principales', [PrincipalesController::class, 'index']);
+Route::post('/principales', [PrincipalesController::class, 'store']);
+Route::delete('principales/{id}', [PrincipalesController::class, 'destroy']);
+Route::put('/principales/{id}', [PrincipalesController::class, 'update']);
 
 Route::get('/programa', [ProgramasController::class, 'index']);
 Route::post('/programa', [ProgramasController::class, 'store']);

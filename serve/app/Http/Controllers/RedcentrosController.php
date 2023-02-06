@@ -13,24 +13,22 @@ class RedcentrosController extends Controller
     }
     public function store(Request $request)
     {
-        $redcentro= new Redcentros();
-        $redcentro->red=$request->red;
-
+        $redcentro = new Redcentros();
+        $redcentro->red = $request->red;
         $redcentro->id_detallecentros = $request->id_detallecentros;
-
         $redcentro->save();
-        
-        return response()->json(["mensaje"=>"Modificado satisfactoriamente"], 201);
+
+        return response()->json(["mensaje" => "creado satisfactoriamente"], 201);
     }
     public function update(Request $request, $id)
     {
-        $redcentro= Redcentros::find($id);
-        $redcentro->red=$request->red;
+        $redcentro = Redcentros::find($id);
+        $redcentro->red = $request->red;
 
         $redcentro->id_detallecentros = $request->id_detallecentros;
-        
+
         $redcentro->save();
-        return response()->json(["mensaje"=>"Modificado satisfactoriamente"], 201);
+        return response()->json(["mensaje" => "Modificado satisfactoriamente"], 201);
     }
     public function destroy($id)
     {

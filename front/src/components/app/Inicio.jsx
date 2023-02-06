@@ -1,20 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import Secion1 from "./seccions/secion1";
 function Inicio() {
   return (
     <Divpadre>
-      <Titulodiv>
-        <Imginicio
-          src="https://images.pexels.com/photos/3875225/pexels-photo-3875225.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt=""
-        />
-        <Contenidodiv>
-          <H3>Cuida el Futuro de tu BEBE</H3>
-          <p>INFORMATE CON NUESTRAS CAPSULAS INFORMATIVAS</p>
-          <Butontitulo> MÁS INFORMACION</Butontitulo>
-        </Contenidodiv>
-      </Titulodiv>
-
+      <Secion1 />
       <Nosotrosdiv>
         <Supdiv>
           <Titulo>Sobre Nosotros</Titulo>
@@ -45,7 +35,6 @@ function Inicio() {
           </Divimg>
         </Infediv>
       </Nosotrosdiv>
-
       <Divprogra>
         <Supdiv>
           <Titulo>Programa de Tamizaje Bolivia</Titulo>
@@ -71,7 +60,6 @@ function Inicio() {
           </Conteniendocard>
         </Divimg>
       </Divprogra>
-
       <Divcapsulas>
         <Titulo>Informate con nuestras capsulas</Titulo>
         <Divpadrecap>
@@ -114,62 +102,12 @@ function Inicio() {
 }
 
 export default Inicio;
-const Divpadre = styled.div`
+const Divpadre = styled.div``;
 
-`;
-
-const Contenidodiv = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 10px 3rem;
-  text-align: center;
-`;
-const Imginicio = styled.img`
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  clip-path: polygon(100% 0, 100% 100%, 42% 100%, 33% 50%, 42% 0);
-`;
-const Titulodiv = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100vh;
-`;
-
-const Butontitulo = styled.button`
-z-index: 1;
-background-color: #484d7ec8;
-  color: #fff;
-  border: none;
-  margin:3em;
-  padding: 1em;
-  transition: all 1s;
-  cursor: pointer;
-  border-radius: 5px;
-  &:hover {
-    background-color: #fff;
-    color:#484d7ec8
-  }
-`;
-const H3 = styled.h2`
-  color: black;
-  font-size: 2em;
-  display: flex;
-  padding: 10px;
-  border-left: 10px solid #001a49;
-`;
 // seccion nosostros
 const Nosotrosdiv = styled.div`
-margin:0 auto;
-  background-color:#39415c;
-  
+  margin: 0 auto;
+  background-color: #39415c;
 `;
 
 const Supdiv = styled.div`
@@ -177,11 +115,11 @@ const Supdiv = styled.div`
   text-align: justify;
 `;
 const Titulo = styled.h2`
-margin-left:3em;
+  margin-left: 3em;
   border-left: 10px solid #ffffff7f;
   font-size: 3em;
   letter-spacing: 2px;
-  color:#fff;
+  color: #fff;
   transition: all 1s;
   &:hover {
     scale: (0.9);
@@ -189,10 +127,10 @@ margin-left:3em;
   }
 `;
 const Parrafo = styled.p`
-  margin: 0 0 0 2rem ;
+  margin: 0 0 0 2rem;
   text-align: justify;
   line-height: 1.6;
-  color:#fff;
+  color: #fff;
 `;
 
 const Divbiotech = styled.div`
@@ -210,7 +148,7 @@ const Divbiotech = styled.div`
   clip-path: polygon(12% 0, 100% 0, 100% 100%, 14% 100%, 0 50%);
 `;
 const Imginfe = styled.img`
-background-color:#fff;
+  background-color: #fff;
   display: flex;
   flex-direction: row;
   margin: 10px 0px 0 30px;
