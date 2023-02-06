@@ -84,4 +84,5 @@ const Th=styled.th`
 const Tbody = styled.tbody`
   width: 100%;
   height: 30vh;
+  
 `;
