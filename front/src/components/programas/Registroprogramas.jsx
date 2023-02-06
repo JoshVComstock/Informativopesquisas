@@ -38,7 +38,6 @@ const Registroprogramas = () => {
         titulo: titulo,
         titulo_desc: titulo_desc,
         compemento: compemento,
-       
       }),
     });
     if (response.ok) {
@@ -88,29 +87,30 @@ const Registroprogramas = () => {
               </Divinput>
             </Divinput>
             <Divinput>
-              <Label htmlFor="">Complemento</Label>
-              <Input
-                type="text"
-                value={compemento}
-                onChange={(e) => setCompemento(e.target.value)}
-              />
-            </Divinput>
-            <Divinput>
-              <Label htmlFor="">Titulo b</Label>
-              <Input
-                type="text"
-                value={titulo}
-                onChange={(e) => setTitulo(e.target.value)}
-              />
-            </Divinput>
-          </Divtext1>
-          <Divtext2>
-            <Divinput>
               <Label htmlFor="">Titulo complemento</Label>
               <Input
                 type="text"
                 value={titulo_desc}
                 onChange={(e) => setTitulo_desc(e.target.value)}
+              />
+            </Divinput>
+            <Divinput>
+              <Label htmlFor="">Complemento</Label>
+              <Tarearegistro1
+                type="text"
+                value={compemento}
+                onChange={(e) => setCompemento(e.target.value)}
+              />
+            </Divinput>
+            
+          </Divtext1>
+          <Divtext2>
+            <Divinput>
+              <Label htmlFor="">Titulo B</Label>
+              <Input
+                type="text"
+                value={titulo}
+                onChange={(e) => setTitulo(e.target.value)}
               />
             </Divinput>
             <Divinput>
