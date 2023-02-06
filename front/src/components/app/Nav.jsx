@@ -22,8 +22,6 @@ const Nav = () => {
             <li><Links to="/quienlorealiza">¿Quien lo realiza?</Links></li>
             <li><Links to="/colaboraciones">Colaboracion</Links></li>
             <li><Links to="/contactanos">Contactanos</Links></li>
-            <li><Links to="/ingresar">ingresar</Links></li>
-
           </Divnav>
      
         </Nava>
@@ -43,6 +41,7 @@ const Bodydiv = styled.div`
   width:100%;
   display: flex;
   flex-direction: column;
+  z-index:2;
 
 `;
 const Divnav = styled.div`
@@ -50,9 +49,10 @@ const Divnav = styled.div`
   list-style: none;
   margin: 0;
   width: 70%;
-  background: #4b829f99;
+  background: #5e636d9e;
   padding: 15px;
- 
+  justify-content: center;
+    align-items: center;
 `;
 const Divlogo = styled.div`
  width: 100%;
@@ -63,33 +63,39 @@ const Divlogo = styled.div`
   
 `;
 const Divlogos=styled.div`
+margin-top:30px;
 width: 80%;
-background: #ffffff57;
+height: 60px;
+background: #ffffff4b;
 opacity:0.8;
 display: flex;
-justify-content: space-between;
-&:hover{
-  transition: 0.2s;
-scale:(2);
-background: #ffffffc0;
-}
+justify-content: space-around;
+align-items: center;
+
 `;
 const Imglogo = styled.img`
-   height: 70%;
-  width: 60px;
+   height: 55%;
+  background-size: cover;
+  transition: all 2s;
+  &:hover {
+    transform: scale(1.5);
+  }
 `;
 
 
-const Links = styled (Link)`
+export const Links = styled (Link)`
  color:#fff;
 text-decoration: none;
 padding: 20px;
-transition: 0.5s;
-&:hover{
-  transition: 0.5s;
-scale:(0.8);
-background: #0066ff;
-}
+transition: all 0.5s;
+
+font-family: 'Poppins', sans-serif;
+
+  /* border-radius: 5px; */
+  &:hover {
+    background-color: #ffffffea;
+    color:#3c425c
+  }
 `;
 const Nava=styled.div`
 width:100%;
