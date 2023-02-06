@@ -75,14 +75,14 @@ const Registroprogramas = () => {
         <Divtotal>
           <Divtext1>
             <Divinput>
-              <Label htmlFor="">Nombre</Label>
+              <Label htmlFor="">Titulo A</Label>
               <Input
                 type="text"
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
               />
               <Divinput>
-                <Label>Foto</Label>
+                <Label>Fondo</Label>
                 <Inputfile type="file" onChange={llenarimagen} />
                 <Imgfile src={foto} alt="" />
               </Divinput>
@@ -96,7 +96,7 @@ const Registroprogramas = () => {
               />
             </Divinput>
             <Divinput>
-              <Label htmlFor="">Titulo</Label>
+              <Label htmlFor="">Titulo b</Label>
               <Input
                 type="text"
                 value={titulo}
@@ -106,7 +106,7 @@ const Registroprogramas = () => {
           </Divtext1>
           <Divtext2>
             <Divinput>
-              <Label htmlFor="">Titulo descripcion</Label>
+              <Label htmlFor="">Titulo complemento</Label>
               <Input
                 type="text"
                 value={titulo_desc}
