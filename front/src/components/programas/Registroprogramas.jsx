@@ -24,7 +24,7 @@ const Registroprogramas = () => {
 
   const enviar = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/api/portada", {
+    const response = await fetch("http://127.0.0.1:8000/api/programa", {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -38,11 +38,10 @@ const Registroprogramas = () => {
         titulo: titulo,
         titulo_desc: titulo_desc,
         compemento: compemento,
+       
       }),
     });
-
-    const respuesta = await response?.json();
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
+    if (response.ok) {
       setNombre("");
       setFoto("");
       setContenido_a("");
@@ -77,34 +76,62 @@ const Registroprogramas = () => {
           <Divtext1>
             <Divinput>
               <Label htmlFor="">Nombre</Label>
-              <Input type="text"  value={nombre} onChange={(e)=>setNombre(e.target.value)} />
+              <Input
+                type="text"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+              />
               <Divinput>
                 <Label>Foto</Label>
-                <Inputfile type="file" />
-                <Imgfile src="" alt="" />
+                <Inputfile type="file" onChange={llenarimagen} />
+                <Imgfile src={foto} alt="" />
               </Divinput>
             </Divinput>
             <Divinput>
               <Label htmlFor="">Complemento</Label>
-              <Input type="text" value={compemento} onChange={(e)=>setCompemento(e.target.value)} />
+              <Input
+                type="text"
+                value={compemento}
+                onChange={(e) => setCompemento(e.target.value)}
+              />
+            </Divinput>
+            <Divinput>
+              <Label htmlFor="">Titulo</Label>
+              <Input
+                type="text"
+                value={titulo}
+                onChange={(e) => setTitulo(e.target.value)}
+              />
             </Divinput>
           </Divtext1>
           <Divtext2>
             <Divinput>
               <Label htmlFor="">Titulo descripcion</Label>
-              <Input type="text" value={titulo_desc} onChange={(e)=>setTitulo_desc(e.target.value)} />
+              <Input
+                type="text"
+                value={titulo_desc}
+                onChange={(e) => setTitulo_desc(e.target.value)}
+              />
             </Divinput>
             <Divinput>
               <Label htmlFor="">Contenido B</Label>
-              <Tarearegistro1 type="text" value={contenido_b} onChange={(e)=>setContenido_b(e.target.value)} />
+              <Tarearegistro1
+                type="text"
+                value={contenido_b}
+                onChange={(e) => setContenido_b(e.target.value)}
+              />
             </Divinput>
             <Divinput>
               <Label htmlFor="">Contenido A</Label>
-              <Tarearegistro1 type="text" />
+              <Tarearegistro1
+                type="text"
+                value={contenido_a}
+                onChange={(e) => setContenido_a(e.target.value)}
+              />
             </Divinput>
           </Divtext2>
         </Divtotal>
-        <Botonagregar>Agregar</Botonagregar>
+        <Botonagregar onClick={enviar}>Agregar</Botonagregar>
       </Form>
     </Divformulario>
   );
