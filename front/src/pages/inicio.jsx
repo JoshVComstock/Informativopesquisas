@@ -1,20 +1,23 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { useModal } from "../hooks/useModal";
+import React from "react";
+import styled from "styled-components";
+import Secion1 from "./seccions/secion1";
+import Capsulascopm from "./iniciocomponents/Capsulascopm"
+import Nosotroscopm from "./iniciocomponents/Nosotroscopm"
+import Programcopm from "./iniciocomponents/Programcopm"
+import Superior from "./iniciocomponents/Superior"
+import Footer from "../footer";
+const Inicio = ()=>{
+  return (
+    <Divpadre>
+      <Superior></Superior>
+      <Programcopm></Programcopm>
+      <Nosotroscopm></Nosotroscopm>
+     <Capsulascopm></Capsulascopm>
+     <Footer></Footer>
+    </Divpadre>
+  );
+}
 
+export default Inicio;
 
-async function eliminarciudades(id) {
-    const response = await fetch('http://127.0.0.1:8000/api/informacion' + id, {
-      method: 'DELETE',
-      headers: {
-        "Content-Type": "application/json",
-        "accept": "application/json",
-      },
-    })
-    
-    // si encuentra el dato muestra
-    if (response.ok) {
-        mostrarciudades();
-      }
-    }
+const Divpadre = styled.div``;
