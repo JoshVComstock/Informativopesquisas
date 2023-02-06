@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+<<<<<<< HEAD
 import Secion1 from "./seccions/secion1";
 function Inicio() {
   return (
@@ -98,10 +99,28 @@ function Inicio() {
         </Divpadrecap>
       </Divcapsulas>
     </Divpadre>
+=======
+import Superior from "./iniciocomponents/Superior";
+import Programcopm from "./iniciocomponents/Programcopm";
+
+import Nosotroscopm from "./iniciocomponents/Nosotroscopm";
+import Capsulascopm from "./iniciocomponents/Capsulascopm";
+import Footer from "../footer";
+function Inicio() {
+  return (
+    <>
+      <Superior />
+      <Programcopm />
+      <Nosotroscopm />
+      <Capsulascopm />
+     <Footer/>
+    </>
+>>>>>>> 61ac1aeeb3c590e019e372b52080b877e4b3c91e
   );
 }
 
 export default Inicio;
+<<<<<<< HEAD
 const Divpadre = styled.div``;
 
 // seccion nosostros
@@ -311,3 +330,6 @@ const Btncapsula = styled.button`
   border: none;
   border-radius: 5px;
 `;
+=======
+
+>>>>>>> 61ac1aeeb3c590e019e372b52080b877e4b3c91e

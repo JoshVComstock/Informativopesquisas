@@ -17,6 +17,7 @@ import Centross from "./components/app/Centross";
 import Quienlorealiza from "./components/app/Quienlorealiza";
 import Colaboraciones from "./components/app/Colaboraciones";
 import Contactanos from "./components/app/Contactanos";
+
 function App() {
   return (
     <div>
