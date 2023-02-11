@@ -1,48 +1,46 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 const Capsulascopm = () => {
+  const [capsula, setCapsula] = useState([]);
+
+  async function mostrarcapsula() {
+    const response = await fetch("http://127.0.0.1:8000/api/capsula", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    });
+    const respuesta = await response?.json();
+    setCapsula(respuesta);
+  }
+
+  useEffect(() => {
+    mostrarcapsula();
+  }, []);
+
   return (
     <Divcapsulas>
-    <Titulo>Informate con nuestras capsulas</Titulo>
-    <Divpadrecap>
-      <Divcapsula>
-        <Titulocapsula>Informate con nuestras capsulas</Titulocapsula>
-        <Parrafocapsula>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Inventore officiis quidem et minus in laborum illo magnam aliquam
-          porro, culpa animi, consequuntur vero tempore nam id provident,
-          nemo sequi dicta?us in laborum illo magnam aliquam porro, culpa
-          animi, consequuntur vero tempore nam id provident, nemo sequi
-          dicta?
-        </Parrafocapsula>
-        <Btncapsula>Ver mas</Btncapsula>
-      </Divcapsula>
-      <Divcapsula>
-        <Titulocapsula>titulo_tarjeta</Titulocapsula>
-        <Parrafocapsula>contenido</Parrafocapsula>
-        <Btncapsula>Ver mas</Btncapsula>
-      </Divcapsula>{" "}
-      <Divcapsula>
-        <Titulocapsula>titulo_tarjeta</Titulocapsula>
-        <Parrafocapsula>contenido</Parrafocapsula>
-        <Btncapsula>Ver mas</Btncapsula>
-      </Divcapsula>
-      <Divcapsula>
-        <Titulocapsula>titulo_tarjeta</Titulocapsula>
-        <Parrafocapsula>contenido</Parrafocapsula>
-        <Btncapsula>Ver mas</Btncapsula>
-      </Divcapsula>
-      <Divcapsula>
-        <Titulocapsula>titulo_tarjeta</Titulocapsula>
-        <Parrafocapsula>contenido</Parrafocapsula>
-        <Btncapsula>Ver mas</Btncapsula>
-      </Divcapsula>
-    </Divpadrecap>
-  </Divcapsulas>
-  )
-}
+      <Titulo>Informate con nuestras capsulas</Titulo>
+      <>
+     
+        <Divpadrecap >
+        {capsula.slice(0, 3) .map((v,i) => (
+            <Divcapsula key={i} >
+              <Titulocapsula>{v.titulo}</Titulocapsula>
+              <Parrafocapsula>{v.descripcion}</Parrafocapsula>
+              <Btncapsula>Ver mas</Btncapsula>
+            </Divcapsula>
 
-export default Capsulascopm
+            ))}
+        </Divpadrecap>
+      
+      </>
+    </Divcapsulas>
+  );
+};
+
+export default Capsulascopm;
 const Titulo = styled.h2`
   border-top: 7em;
   border-left: 10px solid #222f49;
@@ -60,7 +58,8 @@ const Divcapsulas = styled.div`
   padding: 3rem;
   width: 100%;
   height: 590px;
-  max-height:650px;
+  max-height: 650px;
+  background: rgb(223, 225, 235);
 `;
 const Divpadrecap = styled.div`
   margin-top: 2rem;
@@ -76,13 +75,20 @@ const Divpadrecap = styled.div`
 const Divcapsula = styled.div`
   width: calc(100 / 3);
   height: 420px;
-  background-color: #bfccccca;
+
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   border-radius: 10px;
+  background: rgb(223, 225, 235);
+  border-radius: 40px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.25) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 `;
 
 const Titulocapsula = styled.h2`
@@ -93,7 +99,7 @@ const Titulocapsula = styled.h2`
 `;
 const Parrafocapsula = styled.p`
   width: 300px;
-  height: 200px;
+  height: 160px;
   overflow: hidden;
   padding: 10px 40px;
   text-align: justify;
@@ -101,19 +107,16 @@ const Parrafocapsula = styled.p`
 `;
 const Btncapsula = styled.button`
   padding: 10px 45px;
-  margin: 10px;
+  margin: 20px 0;
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  background-color:#222f49;
-  transition:all 2s;
-  color :#fff;&:hover{
-  background-color:#ffffff;
-  color :#222f49;
-  padding: 8px 60px;
-  border :solid;
-  border-left: 1px;
-  border-right:1px;
+  background-color: #222f4928;
+  transition: all 2s;
+  color: #222f49;
+  &:hover {
+    background-color: #0b0c3a2d;
+    color: #222f49;
+    padding: 10px 60px;
   }
-
 `;

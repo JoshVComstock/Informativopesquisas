@@ -15,7 +15,7 @@ class RedcentrosController extends Controller
     {
         $redcentro = new Redcentros();
         $redcentro->red = $request->red;
-        $redcentro->id_detallecentros = $request->id_detallecentros;
+        // $redcentro->id_detallecentros = $request->id_detallecentros;
         $redcentro->save();
 
         return response()->json(["mensaje" => "creado satisfactoriamente"], 201);

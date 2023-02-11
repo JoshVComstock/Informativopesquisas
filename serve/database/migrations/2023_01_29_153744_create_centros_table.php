@@ -13,11 +13,11 @@ class CreateCentrosTable extends Migration
 
             $table->id();
             $table->string('centro_diagnostico');
-            $table->string('sede');
+            $table->string('sede',100);
             $table->string('centro');
             $table->binary('foto')->nullable();
             $table->integer('telefono');
-            $table->string('dirreccion');
+            $table->string('dirreccion',200);
             $table->timestamps();
         });
     }

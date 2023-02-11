@@ -17,13 +17,14 @@ import Centross from "./components/app/Centross";
 import Quienlorealiza from "./components/app/Quienlorealiza";
 import Colaboraciones from "./components/app/Colaboraciones";
 import Contactanos from "./components/app/Contactanos";
+import { SkeletonTheme } from 'react-loading-skeleton'
 
 function App() {
   return (
     <div>
-
+<SkeletonTheme baseColor="#202020" highlightColor="#444">
       <BrowserRouter>
-        <Routes>
+        <Routes >
           <Route path="/" element={<Nav/>}>
           <Route path="/" element={<Inicio/>}/>
           <Route path="/programas" element={<Programas/>}/>
@@ -48,7 +49,7 @@ function App() {
          
         </Routes>
       </BrowserRouter>
-
+      </SkeletonTheme>
     </div>
   );
 }

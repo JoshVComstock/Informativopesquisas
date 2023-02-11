@@ -9,8 +9,7 @@ class Redcentros extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'red',
-        'id_detallecentros',
+        'red'
 
     ];
 }

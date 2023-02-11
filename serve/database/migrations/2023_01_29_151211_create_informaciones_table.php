@@ -11,12 +11,12 @@ class CreateInformacionesTable extends Migration
     {
         Schema::create('informaciones', function (Blueprint $table) {
             $table->id(); 
-            $table->string('nombre');
+            $table->string('nombre',250);
             $table->binary('foto')->nullable();
-            $table->string('descripcion');
-            $table->string('mision');
+            $table->string('descripcion',800);
+            $table->string('mision',1000);
             $table->binary('foto_m')->nullable();
-            $table->string('vision');
+            $table->string('vision',1000);
             $table->binary('foto_v')->nullable();
 
             $table->timestamps();

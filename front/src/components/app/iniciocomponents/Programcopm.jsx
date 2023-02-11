@@ -1,38 +1,66 @@
-import React from 'react'
+
 import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import Loading from "../../loading";
+
 const Programcopm = () => {
+
+  const [ programainicio, setProgramainicio] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
+  async function mostrarprogramainicio() {
+    const response = await fetch("http://127.0.0.1:8000/api/programa", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    });
+    const respuesta = await response?.json();
+    setProgramainicio(respuesta);
+
+    setLoading(false);
+    console.log(loading);
+  }
+
+  useEffect(() => {
+    mostrarprogramainicio();
+  }, []);
+
   return (
-      <Divprogra>
+    <>
+   {loading && <Loading />}
+      {programainicio.map((v, i) => (
+    <Divprogra key={i}>
+        
         <Supdiv>
-          <Titulo>Programa de Tamizaje Bolivia</Titulo>
+          <Titulo>{v.titulo_desc}</Titulo>
         </Supdiv>
         <Divimg>
           <Divprograma>
             <H2>Programa</H2>
             <Parrafo>
-              Biotech Bolivia fue fundada en 1993 con el objetivo de ofrecer una
-              tecnologí­a confiable y novedosa para la realización de pruebas de
-              diagnóstico clí­nico. Habiendo propuesto mejores rapia intensiva.
-              Contactando proveedores internacionales de renombre mundial, con
-              quienes ha estableciernacionales de renombre mundial, con
-              quienes ha establecido una sólida relación a través de los años.
+             {v.compemento}
             </Parrafo>
           </Divprograma>
           <Conteniendocard>
             <Img
-              src="http://www.inamen.gob.bo/Imagenes/1435597774-79.jpg"
+              src={v.foto}
               alt="Imagen de la tarjeta"
             />
           </Conteniendocard>
         </Divimg>
       </Divprogra>
+      ))}
+    </>
 
   )
 }
 
 export default Programcopm
 const Divprogra = styled.div`
-  background-color: #ffffff;
+  background-color:rgb(223, 225, 235);
   /* ad1a8b61 */
   /* background-color: #babcc7; */
   width: 100%;
@@ -56,7 +84,7 @@ const Img = styled.img`
   min-height:400px;
   max-height:300px;
   background-size: cover;
-
+border-radius:3em;
 `;
 
 const Divimg = styled.div`
@@ -71,8 +99,8 @@ margin:3em 0 3em 3em;
   min-width: 300px;
   flex-direction: column;
   align-items: stretch;
-
-background-color:#222f49;
+border-radius:3em 0 0 3em;
+background-color:#0b3079e6;
 `;
 const Parrafo = styled.p`
   margin: 0 0 0 2rem;
@@ -93,7 +121,7 @@ const Titulo = styled.h2`
   font-size: 40px;
   text-align:left;
   letter-spacing: 2px;
-  color: #211e50;
+  color: #0b3079e6;
   transition: all 1s;
   &:hover {
     scale: (0.9);

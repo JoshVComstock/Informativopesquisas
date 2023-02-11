@@ -1,33 +1,57 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 const Contenido = () => {
+
+  const [informaciones, setInformaciones] = useState([]);
+
+  
+
+  async function mostrarinformaciones() {
+    const response = await fetch("http://127.0.0.1:8000/api/informacion", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    });
+    const respuesta = await response?.json();
+    setInformaciones(respuesta);
+
+
+  }
+
+  useEffect(() => {
+    mostrarinformaciones();
+  }, []);
+
+
   return (
+  <>
+  {informaciones.map((v, i) => (
     <Div>
         <Divuno>
           <Texto>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi,
-            sint amet. Laborum, voluptate, nemo molestias, sed beatae impedit
-            itaque non alias quasi ratione assumenda vitae vero. Nisi rem
-            dolores culpa.
+          {v.mision}
           </Texto>
         </Divuno>
         <Divdos>
-          <Title>Titulo A</Title>
+          <Title>Mision</Title>
+          <img src="" alt="img" />
         </Divdos>
         <Divtres>
-          {" "}
-          <Titleb>Titulo b</Titleb>
+   
+          <Titleb>Vision</Titleb>
+          <img src="" alt="img" />
         </Divtres>
         <Divcuatro>
-          {" "}
+       
           <Textob>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi,
-            sint amet. Laborum, voluptate, nemo molestias, sed beatae impedit
-            itaque non alias quasi ratione assumenda vitae vero. Nisi rem
-            dolores culpa.
+        {v.vision}
           </Textob>
         </Divcuatro>
       </Div>
+       ))}
+  </>
 
   )
 }

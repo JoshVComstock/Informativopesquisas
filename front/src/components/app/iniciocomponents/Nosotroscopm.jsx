@@ -5,10 +5,10 @@ const Nosotroscopm = () => {
       <Nosotrosdiv>
         <Supdiv>
           <Titulo>Sobre Nosotros</Titulo>
-          <Parrafosup>
+          {/* <Parrafosup>
             puente a un mejor nivel de salud para los bolivianos, brindando
             siempre condiciones favorables y productos lí­deres
-          </Parrafosup>
+          </Parrafosup> */}
         </Supdiv>
         <Infediv>
           <Divimg>
@@ -47,11 +47,10 @@ export default Nosotroscopm
 const Nosotrosdiv = styled.div`
   padding: 3rem;
   margin: 0 auto;
-  background-color: #222f49;
-  &::before {
-    clip-path: polygon(100% 0, 0 100%, 100% 100%);
-    z-index: -1;
-  }
+  background: linear-gradient(to bottom left, #203d75e3 50%, #224c9ea0 50%);
+  /* background-color: #203d75e3; */
+  height:80vh;
+  
 `;
 
 const Parrafosup = styled.p`
@@ -62,6 +61,7 @@ width:60%;
   color: #ffffff;
   max-height: 300px;
   overflow: hidden;
+
 `;
 
 
@@ -87,7 +87,7 @@ const Supdiv = styled.div`
 
 const Titulo = styled.h2`
   border-top: 7em;
-  border-left: 10px solid #a6445e;
+  border-left: 10px solid #ffffff;
   font-size: 3em;
   letter-spacing: 2px;
   color: #ffffff;
@@ -108,7 +108,6 @@ const Parrafo = styled.p`
 `;
 
 const Divbiotech = styled.div`
-
   padding: 3rem;
   display: flex;
   width: 600px;
@@ -117,14 +116,17 @@ const Divbiotech = styled.div`
   min-width: 300px;
   flex-direction: column;
   align-items: stretch;
-  background-color: #ffffff;
+  background-color: #ffffffd5;
+  border-radius:0 3em 3em 0;
+
 `;
 const Imginfe = styled.img`
   display: flex;
   flex-direction: row;
-  width: 40%;
-  max-width:450px;
+  width: 50%;
+  max-width:500px;
   height: 70%;
+  border-radius:3em 0 0 3em;
   size: cover;
   /* transition: all 3s;
   &:hover {

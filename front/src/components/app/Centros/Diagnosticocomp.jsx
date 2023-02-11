@@ -1,45 +1,52 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+
 const Diagnosticocomp = () => {
+
+  // traemos datos 
+  const [centrosdiagnostico, setCentrosdiagnostico] = useState([]);
+
+  async function mostrardiagnostico() {
+    const response = await fetch("http://127.0.0.1:8000/api/centros", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    });
+    const respuesta = await response?.json();
+    setCentrosdiagnostico(respuesta);
+  }
+
+  useEffect(() => {
+    mostrardiagnostico();
+  }, []);
+
+
+
+
+
   return (
-    <Diagnostico>
-    <Cars>
+
+   
+    
+    <Diagnostico >
+    {centrosdiagnostico.slice(0, 3).map((v,i) => (
+    <Cars key={i }>
       <Img
-        src="https://images.pexels.com/photos/7088498/pexels-photo-7088498.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        src={v.foto}
         alt="img"
       />
       <Descripcion>
-        <Sede>Sede</Sede>
-        <Telefono>75215686</Telefono>
-        <Direccion>Direccion Cloa/2025</Direccion>
+        <Sede>{v.sede}</Sede>
+        <Telefono>{v.telefono}</Telefono>
+        <Direccion>{v.dirreccion}</Direccion>
         <Buton>Maps</Buton>
       </Descripcion>
     </Cars>
-    <Cars>
-      <Img
-        src="https://images.pexels.com/photos/7088498/pexels-photo-7088498.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        alt="img"
-      />
-      <Descripcion>
-        <Sede>Sede</Sede>
-        <Telefono>75215686</Telefono>
-        <Direccion>Direccion Cloa/2025</Direccion>
-        <Buton>Maps</Buton>
-      </Descripcion>
-    </Cars>
-    <Cars>
-      <Img
-        src="https://images.pexels.com/photos/7088498/pexels-photo-7088498.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        alt="img"
-      />
-      <Descripcion>
-        <Sede>Sede</Sede>
-        <Telefono>75215686</Telefono>
-        <Direccion>Direccion Cloa/2025</Direccion>
-        <Buton>Maps</Buton>
-      </Descripcion>
-    </Cars>
+    ))};
   </Diagnostico>
+
   )
 }
 

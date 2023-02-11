@@ -1,21 +1,21 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 
-const loading = () => {
+const Loading = () => {
   return (
     <Container>
-      <Loading></Loading>
+      <Loadingg></Loadingg>
     </Container>
   );
 };
 
-export default loading;
+export default Loading;
 export const spin = keyframes`
 to{
     transform: rotate(360deg);
 }
 `;
-const Loading = styled.div`
+const Loadingg = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;

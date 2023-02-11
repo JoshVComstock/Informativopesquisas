@@ -21,7 +21,7 @@ const Programas = () => {
 export default Programas;
 const Titulo1 = styled.div`
 text-align:left;
-margin: 1em 3em ;
+margin: 2em 3em ;
 border:none ;
 border-left: solid 10px #222f49;
 font-size:35px;

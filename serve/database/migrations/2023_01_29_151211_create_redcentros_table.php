@@ -14,7 +14,9 @@ class CreateRedcentrosTable extends Migration
             $table->id(); 
             $table->string('red',200);
             
-            $table->foreignId('id_detallecentros')->constrained('detallecentros')->cascadeOnUpdate()->cascadeOnDelete();
+            // debe ser la relacion al contrario
+
+            // $table->foreignId('id_detallecentros')->constrained('detallecentros')->cascadeOnUpdate()->cascadeOnDelete();
 
             $table->timestamps();
         });

@@ -18,6 +18,7 @@ class DetallecentrosController extends Controller
         $detallecentro->telefono = $request->telefono;
         $detallecentro->horario_atencion = $request->horario_atencion;
         $detallecentro->mapa = $request->mapa;
+        $detallecentro->id_redcentros = $request->id_redcentros;
         $detallecentro->save();
         return response()->json(["mensaje"=>"creado satisfactoriamente"], 201);
     }
@@ -29,6 +30,7 @@ class DetallecentrosController extends Controller
         $detallecentro->telefono = $request->telefono;
         $detallecentro->horario_atencion = $request->horario_atencion;
         $detallecentro->mapa = $request->mapa;
+        $detallecentro->id_redcentros = $request->id_redcentros;
         $detallecentro->save();
         return response()->json(["mensaje"=>"Modificado satisfactoriamente"], 201);
     }
