@@ -20,8 +20,8 @@ export default Superiorcomp
 const Superiror = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
-`;
+  height: 80vh;
+`
 const Imginicio = styled.img`
   position: absolute;
   top: 0;

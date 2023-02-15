@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link , Outlet } from "react-router-dom";
 import styled from "styled-components";
 const Capsulascopm = () => {
   const [capsula, setCapsula] = useState([]);
@@ -29,7 +30,8 @@ const Capsulascopm = () => {
             <Divcapsula key={i} >
               <Titulocapsula>{v.titulo}</Titulocapsula>
               <Parrafocapsula>{v.descripcion}</Parrafocapsula>
-              <Btncapsula>Ver mas</Btncapsula>
+              <li><Links to="/informaciones">Ver más</Links></li>
+             
             </Divcapsula>
 
             ))}
@@ -41,6 +43,24 @@ const Capsulascopm = () => {
 };
 
 export default Capsulascopm;
+
+export const Links = styled (Link)`
+ padding: 10px 45px;
+  margin: 20px 0;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  background-color: #222f4928;
+  transition: all 2s;
+  color: #222f49;
+  &:hover {
+    background-color: #0b0c3a2d;
+    color: #222f49;
+    padding: 10px 60px;
+  }
+`
+
 const Titulo = styled.h2`
   border-top: 7em;
   border-left: 10px solid #222f49;
@@ -60,6 +80,7 @@ const Divcapsulas = styled.div`
   height: 590px;
   max-height: 650px;
   background: rgb(223, 225, 235);
+  list-style: none;
 `;
 const Divpadrecap = styled.div`
   margin-top: 2rem;
@@ -98,12 +119,13 @@ const Titulocapsula = styled.h2`
   line-height: 1.2;
 `;
 const Parrafocapsula = styled.p`
-  width: 300px;
+  width: 320px;
   height: 160px;
   overflow: hidden;
-  padding: 10px 40px;
+  padding: 10px 30px;
   text-align: justify;
   line-height: 1.2;
+  
 `;
 const Btncapsula = styled.button`
   padding: 10px 45px;

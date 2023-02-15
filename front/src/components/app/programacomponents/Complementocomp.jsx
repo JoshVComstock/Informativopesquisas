@@ -53,6 +53,7 @@ const Ayuda = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: start;
+  
 `;
 // const animation = keyframes`
 //  0% {left: 16% ;
