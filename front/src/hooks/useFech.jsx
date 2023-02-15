@@ -1,26 +1,21 @@
+import { useState, useEffect } from "react";
 
-import { useState,useEffect } from "react";
+export const UseFech=(ruta) => {
+  const [res, setRes] = useState([]);
 
-const useFech = async (ruta) => {
-  const [resJson, setResJson] = useState({});
-  const [loading, setLoading] = useState(true);
-
-  const callAPI = async () => {
+  const getApi = async () => {
     const response = await ruta();
     const json = await response?.json();
-    setResJson(json);
-    setLoading(false);
+    setRes(json);
+    console.log(json);
   };
-
   useEffect(() => {
-    callAPI();
+    getApi();
   }, []);
-
+ console.log(res);
   return {
-    callAPI,
-    resJson,
-    loading,
+    getApi,
+    res,
   };
 };
 
-export default useFech;

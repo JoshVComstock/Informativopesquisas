@@ -1,34 +1,28 @@
-import { http} from "./http";
-import { useState } from "react";
+const baseUrl =
+  import.meta.env.VITE_BACKEND_URL
 
-export const getportada =async () => {
-    try {
-        const response = await fetch(`${http}principales`, {
-          method: "GET",
-          headers: { "Content-Type": "application/json" }
-        });
-        return response;
-      } catch (error) {
-        console.log(error);
-      }
-};
-export const Postportada= async(datos)=>{
-  const [enviado, setEnviado] = useState(false);
-  const response= await fetch(`${http}principales`,{
-    method: "POST",
+export const getPortada = async () => {
+  try {
+    const response = await fetch(`${baseUrl}principales`, {
+      method: "GET",
       headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-      body:JSON.stringify({
-        titulo:datos.titulo,
-        foto:datos.foto,
-        descripcion:datos.descripcion,
-      }),
+        "Content-Type": "application/json"
+      }
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const deletePortada = async (id) =>{
+  const response = await fetch(`${baseUrl}principales/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
   });
-  const respuesta =await response?.json();
-  if((respuesta.ok))
-  {
-    return enviado;
+  if (response.ok) {
+
   }
 }

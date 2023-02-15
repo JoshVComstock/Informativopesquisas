@@ -65,12 +65,12 @@ export const Botonagregar = styled.button`
   padding: 10px;
   border-radius: 12px;
   border: none;
-  background: #2d6a4f;
+  background: #222f49;
     color: #fff;
     transition: .5s;
   &:hover {
     transition: .5s;
-    background: #40916c;
+    background: #4155ea92;
   }
 `;
 export const Botonfile = styled.button`
@@ -97,17 +97,18 @@ export const Inputfile = styled.input`
 `;
 export const Label = styled.label`
   font-size: 17px;
-  color: #216869;
+  color: #151f6b92;
 `;
 export const Divh1 = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-  border-bottom: 2px solid #216869;
+  border-bottom: 2px solid #4155ea92;
   border-radius: 50%;
 `;
 export const Divtabla = styled.div`
-  width: 50%;
+  width: 60%;
+  margin-right: 20px;
 
 `;
 export const Tabla = styled.table`
@@ -118,19 +119,19 @@ export const Tabla = styled.table`
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 `;
 export const Tr=styled.tr`
-  background-color: #40916c;
+  background-color: #222f49;
   color: #ffff;
   text-align: left;
 `;
 export const Trbody=styled.tr`
   border-bottom: 1px solid #dddddd;
   font-weight: bold;
-  color: #009879;
+  color: #003398;
   &:nth-of-type(even){
     background-color: #f3f3f3;
   }
   &:last-of-type{
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #005998;
   }
 `;
 export const Tablahead = styled.thead`
@@ -141,6 +142,11 @@ padding: 12px 15px;
 `;
 export const Th=styled.th`
   padding: 12px 15px;
+`;
+export const Tddescripcion=styled.td`
+  padding: 12px 15px;
+  max-width: 150px;
+  overflow-y: auto;
 `;
 export const Botonesacciones = styled.button`
   padding: 0px;

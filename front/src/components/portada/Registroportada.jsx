@@ -12,10 +12,13 @@ import {
   Botonagregar,
 } from "../../style/crud";
 import { useState } from "react";
+import { UseFech } from "../../hooks/useFech";
+import { getPortada } from "../../services/portada";
 const Registroportada = () => {
   const [titulo, setTitulo] = useState("");
   const [foto, setFoto] = useState("");
   const [descripcion, setDescripcion] = useState("");
+  const {getApi}=UseFech(getPortada);
 
   const enviar = async (e) => {
     e.preventDefault();
@@ -31,7 +34,7 @@ const Registroportada = () => {
         descripcion: descripcion,
       }),
     });
-    if ((response.ok)) {
+    if (response.ok) {
       setTitulo("");
       setFoto("");
       setDescripcion("");
@@ -52,7 +55,7 @@ const Registroportada = () => {
       setFoto(resultado);
     });
   };
-  
+
   return (
     <Divformulario>
       <Form>
@@ -61,7 +64,12 @@ const Registroportada = () => {
         </Divh1>
         <Divinput>
           <Label htmlFor="">Titulo</Label>
-          <Input type="text" name="Titulo" value={titulo} onChange={(e)=>setTitulo(e.target.value)}/>
+          <Input
+            type="text"
+            name="Titulo"
+            value={titulo}
+            onChange={(e) => setTitulo(e.target.value)}
+          />
         </Divinput>
         <Divinput>
           <Label>Foto</Label>
@@ -70,7 +78,11 @@ const Registroportada = () => {
         </Divinput>
         <Divinput>
           <Label htmlFor="">Descripcion</Label>
-          <Textareaportada type="text" value={descripcion} onChange={(e)=>setDescripcion(e.target.value)} />
+          <Textareaportada
+            type="text"
+            value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
+          />
         </Divinput>
         <Botonagregar onClick={enviar}>Agregar</Botonagregar>
       </Form>
@@ -79,7 +91,7 @@ const Registroportada = () => {
 };
 
 export default Registroportada;
-const Textareaportada=styled.textarea`
+const Textareaportada = styled.textarea`
   width: 300px;
   height: 100px;
   outline: none;
@@ -87,10 +99,10 @@ const Textareaportada=styled.textarea`
   padding: 5px;
   border: 2px solid rgba(0, 0, 0, 0.3);
 `;
-const Imgfile=styled.img`
-border-radius: 10px;
-height: 100px;
-width: 200px;
-  background: rgba(0,0,0,.2);
+const Imgfile = styled.img`
+  border-radius: 10px;
+  height: 100px;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.2);
   margin: 5px;
 `;

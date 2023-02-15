@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Containerdiv,
   Divinput,
@@ -29,11 +29,23 @@ import {
   Imgeditar,
   Imgeliminar,
 } from "../style/crud";
-import Editaricons from "../assets/crud/Editar.jpg"
-import Eliminar from "../assets/crud/Eliminar.jpg"
-import Registrocentros from '../components/centros/Registrocentros';
-
+import Editaricons from "../assets/crud/Editar.jpg";
+import Eliminar from "../assets/crud/Eliminar.jpg";
+import Registrocentros from "../components/centros/Registrocentros";
+import { useState,useEffect } from "react";
 const Centros = () => {
+  const [centros, setCentros] = useState([]);
+  const getcentros = async () => {
+    const response = await fetch(`http://127.0.0.1:8000/api/centros`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const respuesta = await response?.json();
+    setCentros(respuesta);
+  };
+  useEffect(() => {
+    getcentros();
+  }, []);
   return (
     <Container>
       <Containerdiv>
@@ -41,11 +53,12 @@ const Centros = () => {
           <h1>Centros</h1>
         </Divtitulo>
         <Divcrudf>
-          <Registrocentros/>
+          <Registrocentros />
           <Divtabla>
-          <Tabla className="table">
+            <Tabla className="table">
               <thead>
                 <Tr>
+                  <Th>#</Th>
                   <Th>Centro diagnostico </Th>
                   <Th>Sede</Th>
                   <Th>centro</Th>
@@ -56,28 +69,33 @@ const Centros = () => {
                 </Tr>
               </thead>
 
-              <tbody>
-                <Trbody className="row">
-                  <Td>asdasd</Td>
-                  <Td>cocha</Td>
-                  <Td>usapa</Td>
+              {centros.map((v, i) => (
+                <Trbody className="row" key={i}>
+                  <Td>{1+i}</Td>
+                  <Td>{v.centro_diagnostico}</Td>
+                  <Td>{v.sede}</Td>
+                  <Td>{v.centro}</Td>
                   <Td>
-                    <Img src="" alt="" />
+                    <Img src={v.foto} alt="" />
                   </Td>
-                  <Td>7985465</Td>
-                  <Td>petro</Td>
+                  <Td>{v.telefono}</Td>
+                  <Td>{v.dirreccion}</Td>
                   <Td>
-                    <Botonesacciones><Imgeditar src={Editaricons} alt="" /></Botonesacciones>
-                    <Botonesacciones><Imgeliminar src={Eliminar} alt="" /></Botonesacciones>{" "}
+                    <Botonesacciones>
+                      <Imgeditar src={Editaricons} alt="" />
+                    </Botonesacciones>
+                    <Botonesacciones>
+                      <Imgeliminar src={Eliminar} alt="" />
+                    </Botonesacciones>{" "}
                   </Td>
                 </Trbody>
-              </tbody>
+              ))}
             </Tabla>
           </Divtabla>
         </Divcrudf>
       </Containerdiv>
     </Container>
   );
-}
+};
 
-export default Centros
+export default Centros;

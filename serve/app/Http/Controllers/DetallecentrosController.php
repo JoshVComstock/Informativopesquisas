@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 use App\Models\Detallecentros;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DetallecentrosController extends Controller
 {
     public function index()
     {
-        return Detallecentros::all();
+        return DB::select('select red.red,detalle.nombre,detalle.telefono,detalle.direccion,detalle.horario_atencion,detalle.mapa from redcentros as red, detallecentros as detalle');
+    
     }
     public function store(Request $request)
     {

@@ -1,42 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Containerdiv,
-  Divinput,
-  Input,
-  Textarea,
-  Inputfile,
-} from "../style/crud";
-import {
   Container,
-  Form,
-  Botonagregar,
   Tabla,
-  Label,
-  Divh1,
   Td,
   Botonesacciones,
   Img,
-} from "../style/crud";
-import {
   Divtitulo,
   Divcrudf,
   Divtabla,
-  Divformulario,
-  Tablahead,
   Tr,
   Th,
   Trbody,
   Imgeditar,
   Imgeliminar,
+  Tddescripcion,
 } from "../style/crud";
-import Editaricons from "../assets/crud/Editar.jpg"
-import Eliminar from "../assets/crud/Eliminar.jpg"
+import Editaricons from "../assets/crud/Editar.jpg";
+import Eliminar from "../assets/crud/Eliminar.jpg";
 import Registroportada from "../components/portada/Registroportada";
-import useFech from "../hooks/useFech";
-import { getportada } from "../services/portada";
+import { getPortada } from "../services/portada";
+import { UseFech } from "../hooks/useFech";
+import { deletePortada } from "../services/portada";
 const Portada = () => {
-  //const {resJson:portada} = useFech(getportada);
-
+  const { getApi,res: portada } = UseFech(getPortada);
+  useEffect(() => {
+    getApi();
+  }, []);
   return (
     <Container>
       <Containerdiv>
@@ -49,26 +39,31 @@ const Portada = () => {
             <Tabla className="table">
               <thead>
                 <Tr>
+                  <Th>#</Th>
                   <Th>Titulo</Th>
                   <Th>Foto</Th>
                   <Th>Descripcion</Th>
                   <Th>Acciones</Th>
                 </Tr>
               </thead>
-
-              <tbody>
-                <Trbody className="row">
-                  <Td>p</Td>
+              {portada.map((v, i) => (
+                <Trbody className="row" key={i}>
+                  <Td>{1 + i}</Td>
+                  <Tddescripcion>{v.titulo}</Tddescripcion>
                   <Td>
-                    <Img src="" alt="" />
+                    <Img src={v.foto} alt="" />
                   </Td>
-                  <Td>g</Td>
+                  <Tddescripcion>{v.descripcion}</Tddescripcion>
                   <Td>
-                    <Botonesacciones><Imgeditar src={Editaricons} alt="" /></Botonesacciones>
-                    <Botonesacciones><Imgeliminar src={Eliminar} alt="" /></Botonesacciones>{" "}
+                    <Botonesacciones>
+                      <Imgeditar src={Editaricons} alt="" />
+                    </Botonesacciones>
+                    <Botonesacciones onClick={()=>deletePortada(v.id)}>
+                      <Imgeliminar src={Eliminar} alt="" />
+                    </Botonesacciones>
                   </Td>
                 </Trbody>
-              </tbody>
+              ))}
             </Tabla>
           </Divtabla>
         </Divcrudf>

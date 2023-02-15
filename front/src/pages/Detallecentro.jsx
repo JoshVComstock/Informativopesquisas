@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Containerdiv,
   Divinput,
@@ -29,10 +29,13 @@ import {
   Imgeditar,
   Imgeliminar,
 } from "../style/crud";
-import Editaricons from "../assets/crud/Editar.jpg"
-import Eliminar from "../assets/crud/Eliminar.jpg"
-import Registrodetallecentro from '../components/detallecentro/Registrodetallecentro';
+import Editaricons from "../assets/crud/Editar.jpg";
+import Eliminar from "../assets/crud/Eliminar.jpg";
+import { getDetallecentro } from "../services/detallecentro";
+import { UseFech } from "../hooks/useFech";
+import Registrodetallecentro from "../components/detallecentro/Registrodetallecentro";
 const Detallecentro = () => {
+  const { res: detallecentro } = UseFech(getDetallecentro);
   return (
     <Container>
       <Containerdiv>
@@ -40,9 +43,9 @@ const Detallecentro = () => {
           <h1>Detalle centro</h1>
         </Divtitulo>
         <Divcrudf>
-          <Registrodetallecentro/>
+          <Registrodetallecentro />
           <Divtabla>
-          <Tabla className="table">
+            <Tabla className="table">
               <thead>
                 <Tr>
                   <Th>Nombre</Th>
@@ -50,31 +53,35 @@ const Detallecentro = () => {
                   <Th>Telefono</Th>
                   <Th>Horario atencion</Th>
                   <Th>Mapa</Th>
+                  <Td>red centros</Td>
                   <Th>Acciones</Th>
                 </Tr>
               </thead>
 
-              <tbody>
-                <Trbody className="row">
-                  <Td>jesus</Td>
+              {detallecentro.map((v, i) => (
+                <Trbody className="row" key={i}>
+                  <Td>{v.nombre}</Td>
+                  <Td>{v.direccion}</Td>
+                  <Td>{v.telefono}</Td>
+                  <Td>{v.horario_atencion}</Td>
+                  <Td>{v.mapa}</Td>
+                  <Td>{v.red}</Td>
                   <Td>
-                    av.petro
-                  </Td>
-                  <Td>123546</Td>
-                  <Td>5 pm a 6pm </Td>
-                  <Td>httpp</Td>
-                  <Td>
-                    <Botonesacciones><Imgeditar src={Editaricons} alt="" /></Botonesacciones>
-                    <Botonesacciones><Imgeliminar src={Eliminar} alt="" /></Botonesacciones>{" "}
+                    <Botonesacciones>
+                      <Imgeditar src={Editaricons} alt="" />
+                    </Botonesacciones>
+                    <Botonesacciones>
+                      <Imgeliminar src={Eliminar} alt="" />
+                    </Botonesacciones>
                   </Td>
                 </Trbody>
-              </tbody>
+              ))}
             </Tabla>
           </Divtabla>
         </Divcrudf>
       </Containerdiv>
     </Container>
   );
-}
+};
 
-export default Detallecentro
+export default Detallecentro;

@@ -1,39 +1,38 @@
-import React from 'react'
+import React from "react";
 import {
   Containerdiv,
-  Divinput,
-  Input,
-  Textarea,
-  Inputfile,
-} from "../style/crud";
-import {
   Container,
-  Form,
-  Botonagregar,
   Tabla,
-  Label,
-  Divh1,
   Td,
   Botonesacciones,
   Img,
-} from "../style/crud";
-import {
   Divtitulo,
   Divcrudf,
   Divtabla,
-  Divformulario,
-  Tablahead,
   Tr,
   Th,
   Trbody,
   Imgeditar,
   Imgeliminar,
+  Tddescripcion,
 } from "../style/crud";
-import Editaricons from "../assets/crud/Editar.jpg"
-import Eliminar from "../assets/crud/Eliminar.jpg"
-import Registrocapsulas from '../components/capsulas/Registrocapsulas';
-
+import Editaricons from "../assets/crud/Editar.jpg";
+import Eliminar from "../assets/crud/Eliminar.jpg";
+import Registrocapsulas from "../components/capsulas/Registrocapsulas";
+import { useState, useEffect } from "react";
 const Capsulas = () => {
+  const [capsulas, setCapsulas] = useState([]);
+  const getcapsulas = async () => {
+    const response = await fetch(`http://127.0.0.1:8000/api/capsula`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const respuesta = await response?.json();
+    setCapsulas(respuesta);
+  };
+  useEffect(() => {
+    getcapsulas();
+  }, []);
   return (
     <Container>
       <Containerdiv>
@@ -41,39 +40,44 @@ const Capsulas = () => {
           <h1>Capsulas informativas</h1>
         </Divtitulo>
         <Divcrudf>
-          <Registrocapsulas/>
+          <Registrocapsulas />
           <Divtabla>
-          <Tabla className="table">
+            <Tabla className="table">
               <thead>
                 <Tr>
-                  <Th Th>Titulo</Th>
+                  <Th>#</Th>
+                  <Th>Titulo</Th>
                   <Th>Foto</Th>
                   <Th>Descripcion</Th>
                   <Th>Mas detalles</Th>
                   <Th>Acciones</Th>
                 </Tr>
               </thead>
-
-              <tbody>
-                <Trbody className="row">
-                  <Td>pasd</Td>
+              {capsulas.map((v, i) => (
+                <Trbody className="row" key={i}>
+                  <Td>{1 + i}</Td>
+                  <Td>{v.titulo}</Td>
                   <Td>
-                    <Img src="" alt="" />
+                    <Img src={v.foto} alt="" />
                   </Td>
-                  <Td>gas</Td>
-                  <Td>asdasdasd</Td>
+                  <Tddescripcion>{v.descripcion}</Tddescripcion>
+                  <Tddescripcion>{v.mas_detalles}</Tddescripcion>
                   <Td>
-                    <Botonesacciones><Imgeditar src={Editaricons} alt="" /></Botonesacciones>
-                    <Botonesacciones><Imgeliminar src={Eliminar} alt="" /></Botonesacciones>{" "}
+                    <Botonesacciones>
+                      <Imgeditar src={Editaricons} alt="" />
+                    </Botonesacciones>
+                    <Botonesacciones>
+                      <Imgeliminar src={Eliminar} alt="" />
+                    </Botonesacciones>{" "}
                   </Td>
                 </Trbody>
-              </tbody>
+              ))}
             </Tabla>
           </Divtabla>
         </Divcrudf>
       </Containerdiv>
     </Container>
   );
-}
+};
 
-export default Capsulas
+export default Capsulas;

@@ -14,7 +14,9 @@ const Navbar = () => {
     <Navbarnav>
       <Nav>
         <Navlink>
-          <Logo><h1>Admin page</h1></Logo>
+          <Logo>
+            <h1>Admin page</h1>
+          </Logo>
           <Linkes to="portada">
             <Imgicons src={Portadaicons} alt="" /> Portada
           </Linkes>
@@ -56,7 +58,8 @@ const Navbarnav = styled.div`
   min-width: 100vh;
   display: flex;
   flex-direction: row;
-  background: #1f2421;
+  background: #222f49;
+  overflow: hidden;
 `;
 const Datos = styled.div`
   width: calc(100% - 200px);
@@ -66,7 +69,7 @@ const Datos = styled.div`
 const Nav = styled.div`
   width: 200px;
   height: 100vh;
-  background: #1f2421;
+  background: #222f49;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,8 +84,9 @@ const Navlink = styled.div`
 const Imgicons = styled.img`
   width: 30px;
   margin-right: 10px;
-  filter: invert(58%) sepia(3%) saturate(4169%) hue-rotate(101deg)
-    brightness(90%) contrast(122%);
+
+  filter: invert(31%) sepia(57%) saturate(759%) hue-rotate(214deg)
+    brightness(103%) contrast(86%);
 `;
 const Linkes = styled(Link)`
   display: flex;
@@ -91,28 +95,30 @@ const Linkes = styled(Link)`
   padding: 15px;
   text-decoration: none;
   color: #dce1de;
-  transition: .5s;
+  transition: 0.5s;
 
   &:hover {
     border-radius: 15px 15px 15px 15px;
-    background: #216869;
+    background: #4155ea92;
     color: #fff;
-    transition: .5s;
-    margin-left:5px ;
-
+    transition: 0.5s;
+    margin-left: 5px;
   }
   &:hover img {
     filter: invert(100%) sepia(1%) saturate(0%) hue-rotate(131deg)
       brightness(101%) contrast(102%);
   }
 `;
-const Logo=styled.div`
-font-size: 16px;
-color: #fff;
-border-radius: 30%;
-border-bottom: 5px solid #216869;
-margin: 0px 5px 5px 5px;
-cursor:default;
-display: flex;
-justify-content: center
+const Logo = styled.div`
+  font-size: 16px;
+  color: #fff;
+  border-radius: 30%;
+  border-bottom: 5px solid #4155ea92;
+  margin: 0px 5px 5px 5px;
+  cursor: default;
+  display: flex;
+  justify-content: center;
 `;
+//#222f49
+//2e3049
+//3e239e93

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from "react";
+import  useEffect  from "react";
 import {
   Containerdiv,
   Divinput,
@@ -29,10 +30,12 @@ import {
   Imgeditar,
   Imgeliminar,
 } from "../style/crud";
-import Editaricons from "../assets/crud/Editar.jpg"
-import Eliminar from "../assets/crud/Eliminar.jpg"
-import Registroprogramas from '../components/programas/Registroprogramas';
+import Editaricons from "../assets/crud/Editar.jpg";
+import Eliminar from "../assets/crud/Eliminar.jpg";
+import Registroprogramas from "../components/programas/Registroprogramas";
 const Programa = () => {
+  
+  
   return (
     <Container>
       <Containerdiv>
@@ -40,9 +43,9 @@ const Programa = () => {
           <h1>Programa</h1>
         </Divtitulo>
         <Divcrudf>
-          <Registroprogramas/>
+          <Registroprogramas />
           <Divtabla>
-          <Tabla className="table">
+            <Tabla className="table">
               <thead>
                 <Tr>
                   <Th>Nombre</Th>
@@ -66,8 +69,12 @@ const Programa = () => {
                   <Td>dolores as</Td>
                   <Td>asdasdas</Td>
                   <Td>
-                    <Botonesacciones><Imgeditar src={Editaricons} alt="" /></Botonesacciones>
-                    <Botonesacciones><Imgeliminar src={Eliminar} alt="" /></Botonesacciones>{" "}
+                    <Botonesacciones>
+                      <Imgeditar src={Editaricons} alt="" />
+                    </Botonesacciones>
+                    <Botonesacciones>
+                      <Imgeliminar src={Eliminar} alt="" />
+                    </Botonesacciones>{" "}
                   </Td>
                 </Trbody>
               </tbody>
@@ -77,6 +84,6 @@ const Programa = () => {
       </Containerdiv>
     </Container>
   );
-}
+};
 
-export default Programa
+export default Programa;
