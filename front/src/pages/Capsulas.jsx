@@ -15,24 +15,29 @@ import {
   Imgeditar,
   Imgeliminar,
   Tddescripcion,
+  Divloading,
+  Divload,
 } from "../style/crud";
 import Editaricons from "../assets/crud/Editar.jpg";
 import Eliminar from "../assets/crud/Eliminar.jpg";
 import Registrocapsulas from "../components/capsulas/Registrocapsulas";
-import { useState, useEffect } from "react";
+import { UseFech } from "../hooks/useFech";
+import { getCapsulas } from "../services/capsulas";
+import { deleteCapsulas } from "../services/capsulas";
+import { useState } from "react";
+import Noimagen from "../assets/crud/Noimagen1.jpg";
+import { showImagen } from "../services/noimagen";
 const Capsulas = () => {
-  const [capsulas, setCapsulas] = useState([]);
-  const getcapsulas = async () => {
-    const response = await fetch(`http://127.0.0.1:8000/api/capsula`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-    const respuesta = await response?.json();
-    setCapsulas(respuesta);
-  };
-  useEffect(() => {
-    getcapsulas();
-  }, []);
+  const { loading, getApi, res: capsula } = UseFech(getCapsulas);
+  const [actual, setActual] = useState({});
+  if(loading){
+    return(
+      <Divloading>
+        <Divload/>
+      </Divloading>
+    )
+  }
+  
   return (
     <Container>
       <Containerdiv>
@@ -40,7 +45,11 @@ const Capsulas = () => {
           <h1>Capsulas informativas</h1>
         </Divtitulo>
         <Divcrudf>
-          <Registrocapsulas />
+          <Registrocapsulas
+            getApi={getApi}
+            actual={actual}
+            setActual={setActual}
+          />
           <Divtabla>
             <Tabla className="table">
               <thead>
@@ -53,25 +62,33 @@ const Capsulas = () => {
                   <Th>Acciones</Th>
                 </Tr>
               </thead>
-              {capsulas.map((v, i) => (
-                <Trbody className="row" key={i}>
-                  <Td>{1 + i}</Td>
-                  <Td>{v.titulo}</Td>
-                  <Td>
-                    <Img src={v.foto} alt="" />
-                  </Td>
-                  <Tddescripcion>{v.descripcion}</Tddescripcion>
-                  <Tddescripcion>{v.mas_detalles}</Tddescripcion>
-                  <Td>
-                    <Botonesacciones>
-                      <Imgeditar src={Editaricons} alt="" />
-                    </Botonesacciones>
-                    <Botonesacciones>
-                      <Imgeliminar src={Eliminar} alt="" />
-                    </Botonesacciones>{" "}
-                  </Td>
-                </Trbody>
-              ))}
+              <tbody>
+                {capsula.map((v, i) => (
+                  <Trbody className="row" key={i}>
+                    <Td>{1 + i}</Td>
+                    <Td>{v.titulo}</Td>
+                    <Td>{showImagen(v.foto)}</Td>
+                    <Tddescripcion>{v.descripcion}</Tddescripcion>
+                    <Tddescripcion>{v.mas_detalles}</Tddescripcion>
+                    <Td>
+                      <Botonesacciones
+                        onClick={() => {
+                          setActual(v);
+                        }}
+                      >
+                        <Imgeditar src={Editaricons} alt="" />
+                      </Botonesacciones>
+                      <Botonesacciones
+                        onClick={() => {
+                          deleteCapsulas(v.id, getApi);
+                        }}
+                      >
+                        <Imgeliminar src={Eliminar} alt="" />
+                      </Botonesacciones>{" "}
+                    </Td>
+                  </Trbody>
+                ))}
+              </tbody>
             </Tabla>
           </Divtabla>
         </Divcrudf>

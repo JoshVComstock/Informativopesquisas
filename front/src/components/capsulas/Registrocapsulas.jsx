@@ -12,54 +12,29 @@ import {
   Textarea1,
 } from "../../style/crud";
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { postCapsulas, updateCapsulas } from "../../services/capsulas";
+import { getBase64 } from "../../services/converter";
 
-const Registrocapsulas = () => {
+const Registrocapsulas = ({ getApi, actual, setActual }) => {
   const [titulo, setTitulo] = useState("");
   const [foto, setFoto] = useState("");
-  const [descripcionbreve, setDescripcionbreve] = useState("");
-  const [descripciondetallada, setDescripciondetallada] = useState("");
-
-  const enviar = async (e) => {
-    e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/api/capsula", {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        titulo: titulo,
-        foto: foto,
-        descripcion: descripcionbreve,
-        mas_detalles: descripciondetallada,
-      }),
-    });
-
-    const respuesta = await response?.json();
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
-      setTitulo("");
-      setFoto("");
-      setDescripcionbreve("");
-      setDescripciondetallada("");
-    }
-  };
-  const getBase64 = (file, cb) => {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      cb(reader.result);
-    };
-    reader.onerror = function (error) {
-      return console.log("Error: ", error);
-    };
-  };
+  const [descripcion, setDescripcion] = useState("");
+  const [masdetalle, setMasdetalle] = useState("");
 
   const llenarimagen = (e) => {
     getBase64(e.target.files[0], (resultado) => {
       setFoto(resultado);
     });
   };
+  useEffect(() => {
+    if (Object.keys(actual).length > 0) {
+      setTitulo(actual.titulo);
+      setDescripcion(actual.descripcion);
+      setFoto(actual.foto);
+      setMasdetalle(actual.mas_detalles);
+    }
+  }, [actual]);
 
   return (
     <Divformulario>
@@ -71,7 +46,11 @@ const Registrocapsulas = () => {
           <Divinputtextp>
             <Divinput>
               <Label htmlFor="">Titulo</Label>
-              <Input type="text" value={titulo} onChange={(e)=>setTitulo(e.target.value)}/>
+              <Input
+                type="text"
+                value={titulo}
+                onChange={(e) => setTitulo(e.target.value)}
+              />
             </Divinput>
             <Divinput>
               <Label>Foto</Label>
@@ -82,16 +61,56 @@ const Registrocapsulas = () => {
           <Divtextarea>
             <Divinput>
               <Label htmlFor="">Descripcion breve</Label>
-              <Tarearegistro type="text" value={descripcionbreve} onChange={(e)=>setDescripcionbreve(e.target.value)} />
+              <Tarearegistro
+                type="text"
+                value={descripcion}
+                onChange={(e) => setDescripcion(e.target.value)}
+              />
             </Divinput>
             <Divinput>
               <Label>Descripcion detallada</Label>
-              <Tarearegistro1 type="text" value={descripciondetallada} onChange={(e)=>setDescripciondetallada(e.target.value)}></Tarearegistro1>
+              <Tarearegistro1
+                type="text"
+                value={masdetalle}
+                onChange={(e) => setMasdetalle(e.target.value)}
+              ></Tarearegistro1>
             </Divinput>
           </Divtextarea>
         </Divinputotal>
 
-        <Botonagregar onClick={enviar}>Agregar</Botonagregar>
+        <Botonagregar
+          onClick={() => {
+            if (Object.keys(actual).length > 0) {
+              updateCapsulas(
+                {
+                  id: actual.id,
+                  titulo: titulo,
+                  foto: foto,
+                  descripcion: descripcion,
+                  mas_detalles: masdetalle,
+                },
+                () => {
+                  setActual({});
+                  setTitulo("");
+                  setFoto("");
+                  setDescripcion("");
+                  setMasdetalle("");
+                  getApi();
+                }
+              );
+            } else {
+              postCapsulas(titulo, foto, descripcion, masdetalle, () => {
+                setTitulo("");
+                setFoto("");
+                setDescripcion("");
+                setMasdetalle("");
+                getApi();
+              });
+            }
+          }}
+        >
+          {Object.keys(actual).length > 0 ? "Editar" : "Agregar"}
+        </Botonagregar>
       </Form>
     </Divformulario>
   );

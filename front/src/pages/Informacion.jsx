@@ -1,39 +1,38 @@
-import React from 'react'
+import React, { useState } from "react";
 import {
   Containerdiv,
-  Divinput,
-  Input,
-  Textarea,
-  Inputfile,
-} from "../style/crud";
-import {
   Container,
-  Form,
-  Botonagregar,
   Tabla,
-  Label,
-  Divh1,
   Td,
   Botonesacciones,
-  Img,
-} from "../style/crud";
-import {
   Divtitulo,
   Divcrudf,
   Divtabla,
-  Divformulario,
-  Tablahead,
   Tr,
   Th,
   Trbody,
   Imgeditar,
   Imgeliminar,
+  Divloading,
+  Divload,
 } from "../style/crud";
-import Editaricons from "../assets/crud/Editar.jpg"
-import Eliminar from "../assets/crud/Eliminar.jpg"
-import Registroinformacion from '../components/informacion/Registroinformacion';
-
+import Editaricons from "../assets/crud/Editar.jpg";
+import Eliminar from "../assets/crud/Eliminar.jpg";
+import Registroinformacion from "../components/informacion/Registroinformacion";
+import { UseFech } from "../hooks/useFech";
+import { deleteInformacion, getInformacion } from "../services/informacion";
+import Noimagen from "../assets/crud/Noimagen1.jpg";
+import { showImagen } from "../services/noimagen";
 const Informacion = () => {
+  const { loading,getApi, res } = UseFech(getInformacion);
+  const [actual, setActual] = useState({});
+  if (loading) {
+    return (
+      <Divloading>
+        <Divload />
+      </Divloading>
+    );
+  }
   return (
     <Container>
       <Containerdiv>
@@ -41,12 +40,17 @@ const Informacion = () => {
           <h1>Informacion</h1>
         </Divtitulo>
         <Divcrudf>
-          <Registroinformacion/>
+          <Registroinformacion
+            getApi={getApi}
+            actual={actual}
+            setActual={setActual}
+            cant={res.length}
+          />
           <Divtabla>
-          <Tabla className="table">
+            <Tabla className="table">
               <thead>
                 <Tr>
-                  <Th>Nombre</Th>
+                  <Th>Titulo</Th>
                   <Th>Foto</Th>
                   <Th>Descripcion</Th>
                   <Th>Mision</Th>
@@ -56,24 +60,34 @@ const Informacion = () => {
                   <Th>Acciones</Th>
                 </Tr>
               </thead>
-
               <tbody>
-                <Trbody className="row">
-                  <Td>asdasd</Td>
-                  <Td>
-                    <Img src="" alt="" />
-                  </Td>
-                  <Td>asdasda</Td>
-                  <Td>mision</Td>
-                  <Td><Img src="" alt="" /> </Td>
-                  <Td>vision</Td>
-                  <Td> <Img src="" alt="" /></Td>
-    
-                  <Td>
-                    <Botonesacciones><Imgeditar src={Editaricons} alt="" /></Botonesacciones>
-                    <Botonesacciones><Imgeliminar src={Eliminar} alt="" /></Botonesacciones>{" "}
-                  </Td>
-                </Trbody>
+                {res.map((v, i) => (
+                  <Trbody className="row" key={i}>
+                    <Td>{v.nombre}</Td>
+                    <Td>{showImagen(v.foto)}</Td>
+                    <Td>{v.descripcion}</Td>
+                    <Td>{v.mision}</Td>
+                    <Td>{showImagen(v.foto_m)}</Td>
+                    <Td>{v.vision}</Td>
+                    <Td>{showImagen(v.foto_v)}</Td>
+                    <Td>
+                      <Botonesacciones
+                        onClick={() => {
+                          setActual(v);
+                        }}
+                      >
+                        <Imgeditar src={Editaricons} alt="" />
+                      </Botonesacciones>
+                      <Botonesacciones
+                        onClick={() => {
+                          deleteInformacion(v.id, getApi);
+                        }}
+                      >
+                        <Imgeliminar src={Eliminar} alt="" />
+                      </Botonesacciones>{" "}
+                    </Td>
+                  </Trbody>
+                ))}
               </tbody>
             </Tabla>
           </Divtabla>
@@ -81,6 +95,6 @@ const Informacion = () => {
       </Containerdiv>
     </Container>
   );
-}
+};
 
-export default Informacion
+export default Informacion;

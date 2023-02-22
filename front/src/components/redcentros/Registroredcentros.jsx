@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import {
   Divformulario,
   Form,
@@ -7,37 +6,19 @@ import {
   Divinput,
   Label,
   Input,
-  Inputfile,
-  Textarea,
   Botonagregar,
-  Textarea1,
 } from "../../style/crud";
+import { postRed, updateRed } from "../../services/red";
 
-const Registroredcentros = () => {
-  const [detallecentro, setDetallecentro] = useState([]);
-  const [red,setRed]=useState("");
-  const [id_detallecentro,setId_detallecentro]=useState(0);
+const Registroredcentros = ({ getApi, actual, setActual }) => {
+  const [red, setRed] = useState("");
 
-  const enviar = async (e) => {
-    e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/api/red", {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        red: red,
-      }),
-    });
-
-    const respuesta = await response?.json();
-    
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
-      setRed("");
+  useEffect(() => {
+    if (Object.keys(actual).length > 0) {
+      setRed(actual.red);
     }
-  };
-  
+  }, [actual]);
+
   return (
     <Divformulario>
       <Form>
@@ -46,22 +27,39 @@ const Registroredcentros = () => {
         </Divh1>
         <Divinput>
           <Label htmlFor="">Red</Label>
-          <Input type="text" value={red} onChange={(e)=>setRed(e.target.value)} />
+          <Input
+            type="text"
+            value={red}
+            onChange={(e) => setRed(e.target.value)}
+          />
         </Divinput>
-        {/*<Divinput>
-          <Label htmlFor="">Detalle red</Label>
-          <Select name="select" onChange={(e)=>setId_detallecentro(e.target.value)}>
-            {detallecentro.map((v, i) => (
-              <option key={i} value={v.id} >{v.nombre}</option>
-            ))}
-          </Select>
-            </Divinput>*/}
-        <Botonagregar onClick={enviar} >Agregar</Botonagregar>
+        <Botonagregar
+          onClick={() => {
+            if (Object.keys(actual).length > 0) {
+              updateRed(
+                {
+                  id: actual.id,
+                  red: red,
+                },
+                () => {
+                  setActual({});
+                  setRed("");
+                  getApi();
+                }
+              );
+            } else {
+              postRed(red, () => {
+                setRed("");
+                getApi();
+              });
+            }
+          }}
+        >
+          {Object.keys(actual).length > 0 ? "Editar" : "Agregar"}
+        </Botonagregar>
       </Form>
     </Divformulario>
   );
 };
 
 export default Registroredcentros;
-
-

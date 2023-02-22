@@ -11,51 +11,28 @@ import {
   Textarea,
   Botonagregar,
 } from "../../style/crud";
-import { useState } from "react";
-import { UseFech } from "../../hooks/useFech";
-import { getPortada } from "../../services/portada";
-const Registroportada = () => {
+import { useState, useEffect } from "react";
+import { update } from "../../services/portada";
+import { postPortada } from "../../services/portada";
+import { getBase64 } from "../../services/converter";
+const Registroportada = ({ getApi, actual, setActual, can }) => {
   const [titulo, setTitulo] = useState("");
   const [foto, setFoto] = useState("");
   const [descripcion, setDescripcion] = useState("");
-  const {getApi}=UseFech(getPortada);
 
-  const enviar = async (e) => {
-    e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/api/principales", {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        titulo: titulo,
-        foto: foto,
-        descripcion: descripcion,
-      }),
-    });
-    if (response.ok) {
-      setTitulo("");
-      setFoto("");
-      setDescripcion("");
-    }
-  };
-  const getBase64 = (file, cb) => {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      cb(reader.result);
-    };
-    reader.onerror = function (error) {
-      return console.log("Error: ", error);
-    };
-  };
-  const llenarimagen = (e) => {
+  const llenarImagen = (e) => {
     getBase64(e.target.files[0], (resultado) => {
       setFoto(resultado);
     });
   };
 
+  useEffect(() => {
+    if (Object.keys(actual).length > 0) {
+      setTitulo(actual.titulo);
+      setDescripcion(actual.descripcion);
+      setFoto(actual.foto);
+    }
+  }, [actual]);
   return (
     <Divformulario>
       <Form>
@@ -73,7 +50,7 @@ const Registroportada = () => {
         </Divinput>
         <Divinput>
           <Label>Foto</Label>
-          <Inputfile type="file" onChange={llenarimagen} />
+          <Inputfile type="file" onChange={llenarImagen} />
           <Imgfile src={foto} alt="" />
         </Divinput>
         <Divinput>
@@ -84,7 +61,37 @@ const Registroportada = () => {
             onChange={(e) => setDescripcion(e.target.value)}
           />
         </Divinput>
-        <Botonagregar onClick={enviar}>Agregar</Botonagregar>
+        <Botonagregar
+          disabled={can > 0 && Object.keys(actual).length === 0}
+          onClick={() => {
+            if (Object.keys(actual).length > 0) {
+              update(
+                {
+                  id: actual.id,
+                  titulo: titulo,
+                  foto: foto,
+                  descripcion: descripcion,
+                },
+                () => {
+                  setActual({});
+                  setTitulo("");
+                  setFoto("");
+                  setDescripcion("");
+                  getApi();
+                }
+              );
+            } else {
+              postPortada(titulo, foto, descripcion, () => {
+                setTitulo("");
+                setFoto("");
+                setDescripcion("");
+                getApi();
+              });
+            }
+          }}
+        >
+          {Object.keys(actual).length > 0 ? "Editar" : "Agregar"}
+        </Botonagregar>
       </Form>
     </Divformulario>
   );

@@ -42,10 +42,12 @@ class ProgramasController extends Controller
        public function update(Request $request, $id)
        {
            $nuevo = Programas::find($id);
-           $nuevo->nombre = $request->titulo;
+           $nuevo->nombre = $request->nombre;
            $nuevo->foto = $request->foto;
            $nuevo->contenido_a = $request->contenido_a;
            $nuevo->contenido_b = $request->contenido_b;
+           $nuevo->titulo = $request->titulo;
+           $nuevo->titulo_desc = $request->titulo_desc;
            $nuevo->compemento = $request->compemento;
            $nuevo->save();
            

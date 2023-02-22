@@ -24,9 +24,6 @@ class RedcentrosController extends Controller
     {
         $redcentro = Redcentros::find($id);
         $redcentro->red = $request->red;
-
-        $redcentro->id_detallecentros = $request->id_detallecentros;
-
         $redcentro->save();
         return response()->json(["mensaje" => "Modificado satisfactoriamente"], 201);
     }

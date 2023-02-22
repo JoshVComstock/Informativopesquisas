@@ -13,25 +13,26 @@ import {
   Trbody,
   Imgeditar,
   Imgeliminar,
+  Divloading,
+  Divload,
 } from "../style/crud";
 import Editaricons from "../assets/crud/Editar.jpg";
 import Eliminar from "../assets/crud/Eliminar.jpg";
 import Registroredcentros from "../components/redcentros/Registroredcentros";
-import { useState, useEffect } from "react";
-
+import { getRed } from "../services/red";
+import { UseFech } from "../hooks/useFech";
+import { deleteRed } from "../services/red";
+import { useState } from "react";
 const Redcentros = () => {
-  const [red, setRed] = useState([]);
-  const getred = async () => {
-    const response = await fetch(`http://127.0.0.1:8000/api/red`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-    const respuesta = await response?.json();
-    setRed(respuesta);
-  };
-  useEffect(() => {
-    getred();
-  }, []);
+  const { loading, getApi, res: red } = UseFech(getRed);
+  const [actual, setActual] = useState({});
+  if (loading) {
+    return (
+      <Divloading>
+        <Divload />
+      </Divloading>
+    );
+  }
   return (
     <Container>
       <Containerdiv>
@@ -39,7 +40,11 @@ const Redcentros = () => {
           <h1>Red centros</h1>
         </Divtitulo>
         <Divcrudf>
-          <Registroredcentros />
+          <Registroredcentros
+            getApi={getApi}
+            actual={actual}
+            setActual={setActual}
+          />
           <Divtabla>
             <Tabla className="table">
               <thead>
@@ -50,21 +55,30 @@ const Redcentros = () => {
                 </Tr>
               </thead>
 
-              {red.map((v, i) => (
-                <Trbody className="row" key={i}>
-                  <Td>{1+i}</Td>
-                  <Td>{v.red}</Td>
-                  
-                  <Td>
-                    <Botonesacciones>
-                      <Imgeditar src={Editaricons} alt="" />
-                    </Botonesacciones>
-                    <Botonesacciones>
-                      <Imgeliminar src={Eliminar} alt="" />
-                    </Botonesacciones>{" "}
-                  </Td>
-                </Trbody>
-              ))}
+              <tbody>
+                {red.map((v, i) => (
+                  <Trbody className="row" key={i}>
+                    <Td>{1 + i}</Td>
+                    <Td>{v.red}</Td>
+                    <Td>
+                      <Botonesacciones
+                        onClick={() => {
+                          setActual(v);
+                        }}
+                      >
+                        <Imgeditar src={Editaricons} alt="" />
+                      </Botonesacciones>
+                      <Botonesacciones
+                        onClick={() => {
+                          deleteRed(v.id, getApi);
+                        }}
+                      >
+                        <Imgeliminar src={Eliminar} alt="" />
+                      </Botonesacciones>
+                    </Td>
+                  </Trbody>
+                ))}
+              </tbody>
             </Tabla>
           </Divtabla>
         </Divcrudf>

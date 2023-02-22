@@ -11,46 +11,36 @@ import {
   Textarea,
   Botonagregar,
   Textarea1,
+  
 } from "../../style/crud";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getRed } from "../../services/red";
 import { UseFech } from "../../hooks/useFech";
-const Registrodetallecentro = () => {
+import {
+  postDetallecentro,
+  updateDetallecentro,
+} from "../../services/detallecentro";
+const Registrodetallecentro = ({ getApi, actual, setActual }) => {
   const [nombre, setNombre] = useState("");
   const [direccion, setDireccion] = useState("");
   const [telefono, setTelefono] = useState(0);
   const [horario_atencion, setHorario_atencion] = useState(0);
   const [mapa, setMapa] = useState("");
   const [red, setRed] = useState(1);
-  const { res } = UseFech(getRed);
-
-  const enviar = async (e) => {
-    e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/api/detallecentros", {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        nombre: nombre,
-        direccion: direccion,
-        telefono: telefono,
-        horario_atencion: horario_atencion,
-        mapa: mapa,
-        id_redcentros:red,
-      }),
-    });
-
-    const respuesta = await response?.json();
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
-      setNombre("");
-      setDireccion("");
-      setTelefono("");
-      setHorario_atencion("");
-      setMapa("");
+  const { loading, res } = UseFech(getRed);
+  //var loadingredes = res ? false : true;
+  console.log(loading);
+  useEffect(() => {
+    if (Object.keys(actual).length > 0) {
+      setNombre(actual.nombre);
+      setDireccion(actual.direccion);
+      setTelefono(actual.telefono);
+      setHorario_atencion(actual.horario_atencion);
+      setMapa(actual.mapa);
+      setRed(actual.idred);
     }
-  };
+  }, [actual]);
+
   return (
     <Divformulario>
       <Form>
@@ -107,7 +97,53 @@ const Registrodetallecentro = () => {
             ))}
           </Select>
         </Divinput>
-        <Botonagregar onClick={enviar}>Agregar</Botonagregar>
+        <Botonagregar
+          onClick={() => {
+            if (Object.keys(actual).length > 0) {
+              updateDetallecentro(
+                {
+                  id: actual.id,
+                  nombre: nombre,
+                  direccion: direccion,
+                  telefono: telefono,
+                  horario_atencion: horario_atencion,
+                  mapa: mapa,
+                  id_redcentros: red,
+                },
+                () => {
+                  setActual({});
+                  setNombre("");
+                  setDireccion("");
+                  setTelefono("");
+                  setHorario_atencion("");
+                  setMapa("");
+                  getApi();
+                }
+              );
+            } else {
+              postDetallecentro(
+                nombre,
+                direccion,
+                telefono,
+                horario_atencion,
+                mapa,
+                red,
+
+                () => {
+                  setNombre("");
+                  setDireccion("");
+                  setTelefono("");
+                  setHorario_atencion("");
+                  setRed("");
+                  setMapa("");
+                  getApi();
+                }
+              );
+            }
+          }}
+        >
+          {Object.keys(actual).length > 0 ? "Editar" : "Agregar"}
+        </Botonagregar>
       </Form>
     </Divformulario>
   );

@@ -1,19 +1,9 @@
 import React, { useState } from "react";
-import  useEffect  from "react";
+
 import {
   Containerdiv,
-  Divinput,
-  Input,
-  Textarea,
-  Inputfile,
-} from "../style/crud";
-import {
   Container,
-  Form,
-  Botonagregar,
   Tabla,
-  Label,
-  Divh1,
   Td,
   Botonesacciones,
   Img,
@@ -22,20 +12,32 @@ import {
   Divtitulo,
   Divcrudf,
   Divtabla,
-  Divformulario,
-  Tablahead,
   Tr,
   Th,
   Trbody,
   Imgeditar,
   Imgeliminar,
+  Divloading,
+  Divload,
 } from "../style/crud";
 import Editaricons from "../assets/crud/Editar.jpg";
 import Eliminar from "../assets/crud/Eliminar.jpg";
 import Registroprogramas from "../components/programas/Registroprogramas";
+import { UseFech } from "../hooks/useFech";
+import { getPrograma } from "../services/programa";
+import styled from "styled-components";
+import { deletePrograma } from "../services/programa";
+import { showImagen } from "../services/noimagen";
 const Programa = () => {
-  
-  
+  const { loading, getApi, res: programa } = UseFech(getPrograma);
+  const [actual, setActual] = useState({});
+  if (loading) {
+    return (
+      <Divloading>
+        <Divload />
+      </Divloading>
+    );
+  }
   return (
     <Container>
       <Containerdiv>
@@ -43,43 +45,60 @@ const Programa = () => {
           <h1>Programa</h1>
         </Divtitulo>
         <Divcrudf>
-          <Registroprogramas />
-          <Divtabla>
+          <Registroprogramas
+            getApi={getApi}
+            actual={actual}
+            setActual={setActual}
+            can={programa.length}
+          />
+          <Divtabla1>
             <Tabla className="table">
               <thead>
                 <Tr>
-                  <Th>Nombre</Th>
                   <Th>Foto</Th>
+                  <Th>Titulo A</Th>
                   <Th>Contenido A</Th>
+                  <Th>Titulo B</Th>
                   <Th>Contenido B</Th>
-                  <Th>Titulo descripcion</Th>
+                  <Th>Titulo complemento</Th>
                   <Th>Complemento</Th>
                   <Th>Acciones</Th>
                 </Tr>
               </thead>
 
               <tbody>
-                <Trbody className="row">
-                  <Td>Biotech</Td>
-                  <Td>
-                    <Img src="" alt="" />
-                  </Td>
-                  <Td>asdasdasd</Td>
-                  <Td>asdadasd</Td>
-                  <Td>dolores as</Td>
-                  <Td>asdasdas</Td>
-                  <Td>
-                    <Botonesacciones>
-                      <Imgeditar src={Editaricons} alt="" />
-                    </Botonesacciones>
-                    <Botonesacciones>
-                      <Imgeliminar src={Eliminar} alt="" />
-                    </Botonesacciones>{" "}
-                  </Td>
-                </Trbody>
+                {programa.map((v, i) => (
+                  <Trbody className="row" key={i}>
+                    <Td>
+                      {showImagen(v.foto)}
+                    </Td>
+                    <Td>{v.nombre}</Td>
+                    <Td>{v.contenido_a}</Td>
+                    <Td>{v.titulo}</Td>
+                    <Td>{v.contenido_b}</Td>
+                    <Td>{v.titulo_desc}</Td>
+                    <Td>{v.compemento}</Td>
+                    <Td>
+                      <Botonesacciones
+                        onClick={() => {
+                          setActual(v);
+                        }}
+                      >
+                        <Imgeditar src={Editaricons} alt="" />
+                      </Botonesacciones>
+                      <Botonesacciones
+                        onClick={() => {
+                          deletePrograma(v.id, getApi);
+                        }}
+                      >
+                        <Imgeliminar src={Eliminar} alt="" />
+                      </Botonesacciones>
+                    </Td>
+                  </Trbody>
+                ))}
               </tbody>
             </Tabla>
-          </Divtabla>
+          </Divtabla1>
         </Divcrudf>
       </Containerdiv>
     </Container>
@@ -87,3 +106,11 @@ const Programa = () => {
 };
 
 export default Programa;
+
+const Divtabla1 = styled.div`
+  display: flex;
+  width: 50%;
+  margin-right: 20px;
+  overflow-x: scroll;
+  max-height: 40%;
+`;

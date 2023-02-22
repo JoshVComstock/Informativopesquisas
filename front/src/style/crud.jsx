@@ -31,7 +31,7 @@ export const Divformulario = styled.div`
 export const Form = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(0,0,0,.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -66,11 +66,15 @@ export const Botonagregar = styled.button`
   border-radius: 12px;
   border: none;
   background: #222f49;
-    color: #fff;
-    transition: .5s;
+  color: #fff;
+  transition: 0.5s;
   &:hover {
-    transition: .5s;
+    transition: 0.5s;
     background: #4155ea92;
+  }
+  &:disabled {
+    pointer-events: none;
+    filter: grayscale(1);
   }
 `;
 export const Botonfile = styled.button`
@@ -109,7 +113,9 @@ export const Divh1 = styled.div`
 export const Divtabla = styled.div`
   width: 60%;
   margin-right: 20px;
-
+  height: 80vh;
+  overflow-y: auto;
+  
 `;
 export const Tabla = styled.table`
   width: 100%;
@@ -117,33 +123,34 @@ export const Tabla = styled.table`
   margin: 25px 0;
   font-size: 0.9rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  overflow-y: scroll;
+ 
 `;
-export const Tr=styled.tr`
+export const Tr = styled.tr`
   background-color: #222f49;
   color: #ffff;
   text-align: left;
 `;
-export const Trbody=styled.tr`
+export const Trbody = styled.tr`
   border-bottom: 1px solid #dddddd;
   font-weight: bold;
   color: #003398;
-  &:nth-of-type(even){
+  &:nth-of-type(even) {
     background-color: #f3f3f3;
   }
-  &:last-of-type{
+  &:last-of-type {
     border-bottom: 2px solid #005998;
   }
 `;
-export const Tablahead = styled.thead`
-  
-`;
+export const Tablahead = styled.thead``;
 export const Td = styled.td`
-padding: 12px 15px;
-`;
-export const Th=styled.th`
   padding: 12px 15px;
 `;
-export const Tddescripcion=styled.td`
+export const Th = styled.th`
+  padding: 15px 15px;
+  text-align: center;
+`;
+export const Tddescripcion = styled.td`
   padding: 12px 15px;
   max-width: 150px;
   overflow-y: auto;
@@ -156,13 +163,55 @@ export const Botonesacciones = styled.button`
   cursor: pointer;
 `;
 export const Imgeditar = styled.img`
-  filter: invert(22%) sepia(99%) saturate(2159%) hue-rotate(170deg) brightness(96%) contrast(104%);
+  filter: invert(22%) sepia(99%) saturate(2159%) hue-rotate(170deg)
+    brightness(96%) contrast(104%);
 `;
 export const Imgeliminar = styled.img`
-filter: invert(42%) sepia(36%) saturate(1237%) hue-rotate(307deg) brightness(89%) contrast(86%);
+  filter: invert(42%) sepia(36%) saturate(1237%) hue-rotate(307deg)
+    brightness(89%) contrast(86%);
 `;
 export const Img = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
 `;
-
+export const Divloading = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+export const Divload = styled.div`
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+  
+  &::after,
+  &::before {
+    content: "";
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid #005998 ;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: animloader 2s linear infinite;
+  }
+  &::after {
+    animation-delay: 1s;
+  }
+  @keyframes animloader {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+`;

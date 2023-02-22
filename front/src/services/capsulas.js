@@ -1,9 +1,9 @@
 const baseUrl =
   import.meta.env.VITE_BACKEND_URL
 
-export const getRed = async () => {
+export const getCapsulas = async () => {
   try {
-    const response = await fetch(`${baseUrl}red`, {
+    const response = await fetch(`${baseUrl}capsula`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -14,9 +14,8 @@ export const getRed = async () => {
     console.log(error);
   }
 };
-
-export const deleteRed = async (id, callback) => {
-  const response = await fetch(`${baseUrl}red/${id}`, {
+export const deleteCapsulas = async (id, callback) => {
+  const response = await fetch(`${baseUrl}capsula/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -28,31 +27,37 @@ export const deleteRed = async (id, callback) => {
   }
 
 }
-export const updateRed = async (actual, callback) => {
-  const response = await fetch(`${baseUrl}red/${actual.id}`, {
+export const updateCapsulas = async (actual, callback) => {
+  const response = await fetch(`${baseUrl}capsula/${actual.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       accept: "application/json",
     },
     body: JSON.stringify({
-      red: actual.red,
-    })
+      titulo: actual.titulo,
+      foto: actual.foto,
+      descripcion: actual.descripcion,
+      mas_detalles: actual.mas_detalles,
+    }),
   });
   if (response.ok) {
     callback();
   }
 }
-export const postRed = async (red, callback) => {
-  const response = await fetch(`${baseUrl}red`, {
+export const postCapsulas = async (titulo, foto, descripcion, masdetalle, callback) => {
+  const response = await fetch(`${baseUrl}capsula`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       accept: "application/json",
     },
     body: JSON.stringify({
-      red: red,
-    }),
+      titulo: titulo,
+      foto: foto,
+      descripcion: descripcion,
+      mas_detalles: masdetalle,
+    })
   });
   if (response.ok) {
     callback();

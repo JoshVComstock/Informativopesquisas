@@ -12,9 +12,10 @@ import {
   Botonagregar,
   Textarea1,
 } from "../../style/crud";
-import { useState } from "react";
-
-const Registrocentros = () => {
+import { useState, useEffect } from "react";
+import { postCentros, updateCentros } from "../../services/centros";
+import { getBase64 } from "../../services/converter";
+const Registrocentros = ({ getApi, actual, setActual }) => {
   const [centrodi, setCentrodi] = useState("");
   const [sede, setSede] = useState("");
   const [centro, setCentro] = useState("");
@@ -22,50 +23,23 @@ const Registrocentros = () => {
   const [telefono, setTelefono] = useState(0);
   const [dirreccion, setDirreccion] = useState("");
 
-  const enviar = async (e) => {
-    e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/api/centros", {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        centro_diagnostico: centrodi,
-        sede: sede,
-        centro: centro,
-        foto: foto,
-        telefono: telefono,
-        dirreccion: dirreccion,
-      }),
-    });
-
-    const respuesta = await response?.json();
-    if ((respuesta.mensaje = "Creado satisfactoriamente")) {
-      setCentrodi("");
-      setSede("");
-      setCentro("");
-      setFoto("");
-      setTelefono("");
-      setDirreccion("");
-    }
-  };
-  const getBase64 = (file, cb) => {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      cb(reader.result);
-    };
-    reader.onerror = function (error) {
-      return console.log("Error: ", error);
-    };
-  };
-
   const llenarimagen = (e) => {
     getBase64(e.target.files[0], (resultado) => {
       setFoto(resultado);
     });
   };
+  useEffect(() => {
+    if (Object.keys(actual).length > 0) {
+      {
+        setCentrodi(actual.centro_diagnostico);
+        setSede(actual.sede);
+        setCentro(actual.centro);
+        setFoto(actual.foto);
+        setTelefono(actual.telefono);
+        setDirreccion(actual.dirreccion);
+      }
+    }
+  }, [actual]);
   return (
     <Divformulario>
       <Form>
@@ -76,19 +50,35 @@ const Registrocentros = () => {
           <Divinputext>
             <Divinput>
               <Label htmlFor="">Centro diagnostico</Label>
-              <Input type="text"  value={centrodi} onChange={(e)=>setCentrodi(e.target.value)}/>
+              <Input
+                type="text"
+                value={centrodi}
+                onChange={(e) => setCentrodi(e.target.value)}
+              />
             </Divinput>
             <Divinput>
               <Label htmlFor="">Sede</Label>
-              <Input type="text" value={sede} onChange={(e)=>setSede(e.target.value)} />
+              <Input
+                type="text"
+                value={sede}
+                onChange={(e) => setSede(e.target.value)}
+              />
             </Divinput>
             <Divinput>
               <Label htmlFor="">Centro</Label>
-              <Input type="text" value={centro} onChange={(e)=>setCentro(e.target.value)} />
+              <Input
+                type="text"
+                value={centro}
+                onChange={(e) => setCentro(e.target.value)}
+              />
             </Divinput>
             <Divinput>
               <Label htmlFor="">Telefono</Label>
-              <Input type="Number" value={telefono} onChange={(e)=>setTelefono(e.target.value)} />
+              <Input
+                type="Number"
+                value={telefono}
+                onChange={(e) => setTelefono(e.target.value)}
+              />
             </Divinput>
           </Divinputext>
           <Divimg>
@@ -100,12 +90,62 @@ const Registrocentros = () => {
 
             <Divinput>
               <Label htmlFor="">Direccion</Label>
-              <Input type="text" value={dirreccion} onChange={(e)=>setDirreccion(e.target.value)} />
+              <Input
+                type="text"
+                value={dirreccion}
+                onChange={(e) => setDirreccion(e.target.value)}
+              />
             </Divinput>
           </Divimg>
         </Divformall>
 
-        <Botonagregar onClick={enviar}>Agregar</Botonagregar>
+        <Botonagregar
+          onClick={() => {
+            if (Object.keys(actual).length > 0) {
+              updateCentros(
+                {
+                  id: actual.id,
+                  centro_diagnostico: centrodi,
+                  sede: sede,
+                  foto:foto,
+                  centro: centro,
+                  telefono: telefono,
+                  dirreccion: dirreccion,
+                },
+                () => {
+                  setCentrodi("");
+                  setSede("");
+                  setCentro("");
+                  setFoto("");
+                  setTelefono("");
+                  setDirreccion("");
+                  getApi();
+                }
+              );
+            } else {
+              postCentros(
+                centrodi,
+                sede,
+                centro,
+                telefono,
+                foto,
+                dirreccion,
+                () => {
+                  setActual({});
+                  setCentrodi("");
+                  setSede("");
+                  setCentro("");
+                  setFoto("");
+                  setTelefono("");
+                  setDirreccion("");
+                  getApi();
+                }
+              );
+            }
+          }}
+        >
+          {Object.keys(actual).length > 0 ? "Editar" : "Agregar"}
+        </Botonagregar>
       </Form>
     </Divformulario>
   );

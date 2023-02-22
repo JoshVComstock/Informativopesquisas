@@ -8,12 +8,12 @@ import {
   Label,
   Input,
   Inputfile,
-  Textarea,
   Botonagregar,
-  Textarea1,
 } from "../../style/crud";
-import { useState } from "react";
-const Registroprogramas = () => {
+import { useState, useEffect } from "react";
+import { getBase64 } from "../../services/converter";
+import { postPrograma, updatePrograma } from "../../services/programa";
+const Registroprogramas = ({ getApi, actual, setActual, can }) => {
   const [nombre, setNombre] = useState("");
   const [foto, setFoto] = useState("");
   const [contenido_a, setContenido_a] = useState("");
@@ -22,49 +22,22 @@ const Registroprogramas = () => {
   const [titulo_desc, setTitulo_desc] = useState("");
   const [compemento, setCompemento] = useState("");
 
-  const enviar = async (e) => {
-    e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/api/programa", {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        nombre: nombre,
-        foto: foto,
-        contenido_a: contenido_a,
-        contenido_b: contenido_b,
-        titulo: titulo,
-        titulo_desc: titulo_desc,
-        compemento: compemento,
-      }),
-    });
-    if (response.ok) {
-      setNombre("");
-      setFoto("");
-      setContenido_a("");
-      setContenido_b("");
-      setTitulo("");
-      setTitulo_desc("");
-      setCompemento("");
-    }
-  };
-  const getBase64 = (file, cb) => {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-      cb(reader.result);
-    };
-    reader.onerror = function (error) {
-      return console.log("Error: ", error);
-    };
-  };
   const llenarimagen = (e) => {
     getBase64(e.target.files[0], (resultado) => {
       setFoto(resultado);
     });
   };
+  useEffect(() => {
+    if (Object.keys(actual).length > 0) {
+      setNombre(actual.nombre);
+      setFoto(actual.foto);
+      setContenido_a(actual.contenido_a);
+      setContenido_b(actual.contenido_b);
+      setTitulo(actual.titulo);
+      setTitulo_desc(actual.titulo_desc);
+      setCompemento(actual.compemento);
+    }
+  }, [actual]);
   return (
     <Divformulario>
       <Form>
@@ -74,18 +47,28 @@ const Registroprogramas = () => {
         <Divtotal>
           <Divtext1>
             <Divinput>
+              <Label>Foto</Label>
+              <Inputfile type="file" onChange={llenarimagen} />
+              <Imgfile src={foto} alt="" />
+            </Divinput>
+            <Divinput>
               <Label htmlFor="">Titulo A</Label>
               <Input
                 type="text"
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
               />
-              <Divinput>
-                <Label>Fondo</Label>
-                <Inputfile type="file" onChange={llenarimagen} />
-                <Imgfile src={foto} alt="" />
-              </Divinput>
             </Divinput>
+            <Divinput>
+              <Label htmlFor="">Contenido A</Label>
+              <Tarearegistro1
+                type="text"
+                value={contenido_a}
+                onChange={(e) => setContenido_a(e.target.value)}
+              />
+            </Divinput>
+          </Divtext1>
+          <Divtext2>
             <Divinput>
               <Label htmlFor="">Titulo complemento</Label>
               <Input
@@ -102,9 +85,6 @@ const Registroprogramas = () => {
                 onChange={(e) => setCompemento(e.target.value)}
               />
             </Divinput>
-            
-          </Divtext1>
-          <Divtext2>
             <Divinput>
               <Label htmlFor="">Titulo B</Label>
               <Input
@@ -121,17 +101,61 @@ const Registroprogramas = () => {
                 onChange={(e) => setContenido_b(e.target.value)}
               />
             </Divinput>
-            <Divinput>
-              <Label htmlFor="">Contenido A</Label>
-              <Tarearegistro1
-                type="text"
-                value={contenido_a}
-                onChange={(e) => setContenido_a(e.target.value)}
-              />
-            </Divinput>
           </Divtext2>
         </Divtotal>
-        <Botonagregar onClick={enviar}>Agregar</Botonagregar>
+        <Botonagregar
+          disabled={can > 0 && Object.keys(actual).length === 0}
+          onClick={() => {
+            if (Object.keys(actual).length > 0) {
+              updatePrograma(
+                {
+                  id: actual.id,
+                  nombre: nombre,
+                  foto: foto,
+                  contenido_a: contenido_a,
+                  contenido_b: contenido_b,
+                  titulo: titulo,
+                  titulo_desc: titulo_desc,
+                  compemento: compemento,
+                },
+                () => {
+                  setActual({});
+                  setNombre("");
+                  setFoto("");
+                  setContenido_a("");
+                  setContenido_b("");
+                  setTitulo("");
+                  setTitulo_desc("");
+                  setCompemento("");
+                  getApi();
+                }
+              );
+            } else {
+              postPrograma(
+                nombre,
+                foto,
+                contenido_a,
+                contenido_b,
+                titulo,
+                titulo_desc,
+                compemento,
+
+                () => {
+                  setNombre("");
+                  setFoto("");
+                  setContenido_a("");
+                  setContenido_b("");
+                  setTitulo("");
+                  setTitulo_desc("");
+                  setCompemento("");
+                  getApi();
+                }
+              );
+            }
+          }}
+        >
+          {Object.keys(actual).length > 0 ? "Editar" : "Agregar"}
+        </Botonagregar>
       </Form>
     </Divformulario>
   );
@@ -158,7 +182,7 @@ const Tarearegistro1 = styled.textarea`
 `;
 const Imgfile = styled.img`
   border-radius: 10px;
-  height: 100px;
+  height: 104px;
   width: 200px;
   background: rgba(0, 0, 0, 0.2);
   margin: 5px;
