@@ -33,7 +33,6 @@ const Programcopm = () => {
    {loading && <Loading />}
       {programainicio.map((v, i) => (
     <Divprogra key={i}>
-        
         <Supdiv>
           <Titulo>{v.titulo_desc}</Titulo>
         </Supdiv>
@@ -43,6 +42,7 @@ const Programcopm = () => {
             <Parrafo>
              {v.compemento}
             </Parrafo>
+            <Abutton>leer mas</Abutton>
           </Divprograma>
           <Conteniendocard>
             <Img
@@ -60,53 +60,75 @@ const Programcopm = () => {
 
 export default Programcopm
 const Divprogra = styled.div`
-  background-color:rgb(223, 225, 235);
-  /* ad1a8b61 */
-  /* background-color: #babcc7; */
-  width: 100%;
-  padding:2em;
+  width: 95%;
+  margin:1em auto;
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  position:relative;
+  gap:1em;
+  &::after{
+    content:"";
+    position:absolute;
+    width:60%;
+    height:80%;
+    background-color:#B0D3C7;
+    right:-5%;
+    bottom:4%;
+    z-index:-1;
+    border-radius:5em  0 0 5em;
+  }
 `;
 const Conteniendocard = styled.div`
 margin:0;
 padding:0;
-
 `;
-
-
 const H2 = styled.h2`
+color:#405d89;
+`;
+const Abutton = styled.button`
+width:30%;
+margin:0.5em 0; 
+padding:0.5em;
+border:solid 1px #fff;
+background-color:#405d89;
 color:#fff;
-
+transition:all 1.5s ;
+cursor:pointer;
+&:hover{
+  background-color:#fff;
+color:#405d89;
+}
 `;
 const Img = styled.img`
   display: flex;
-  max-width:650px;
-  min-width:500px;
-  min-height:400px;
-  max-height:300px;
+ width:400px;
+ height:400px;
   background-size: cover;
-border-radius:3em;
+border-radius:50%;
 `;
 
 const Divimg = styled.div`
   display: flex;
   flex-direction: row;
+  width:90%;
+  margin:0 auto;
+  gap:2em;
 `;
 const Divprograma = styled.div`
 padding:3em;
 margin:3em 0 3em 3em;
   display: flex;
-  max-width: 600px;
-  min-width: 300px;
+ width: 50%;
   flex-direction: column;
-  align-items: stretch;
-border-radius:3em 0 0 3em;
-background-color:#0b3079e6;
+border-radius:0;
+background-color:#C1D7DB;
 `;
 const Parrafo = styled.p`
-  margin: 0 0 0 2rem;
+  margin: 0.5em 0 0 2rem;
   text-align: justify;
   line-height: 1.6;
-  color: #e7e7e7;
+  color: #7793bd;
   max-height:300px;
   overflow:hidden;
 `;
@@ -116,15 +138,17 @@ const Supdiv = styled.div`
   text-align: justify;
 `;
 const Titulo = styled.h2`
-  border-top: 7em;
-  border-left: 10px solid #19193b;
-  font-size: 40px;
-  text-align:left;
-  letter-spacing: 2px;
-  color: #0b3079e6;
+  border-left: 10px solid #B0D3C7;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  color: #7793bd;
   transition: all 1s;
+  display:flex;
+  align-items:flex-start;
+  width:80%;
+  margin: 0 auto;
   &:hover {
     scale: (0.9);
-    border-left: 20px solid #fff;
+    border-left: 20px solid #39725e;
   }
 `;

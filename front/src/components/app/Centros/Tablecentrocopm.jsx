@@ -39,11 +39,11 @@ const Tablecentrocopm = () => {
     }, []);
 
 
-    
+    console.log(redescetros)
   return (
     <>
       {redescetros.map((v, i) => (
-    <div >
+    <div key={i} >
     <Titulo>{v.red}</Titulo>
       <Tablacentro>
         <Tabla className="table">
@@ -56,15 +56,19 @@ const Tablecentrocopm = () => {
               <Th>mapa</Th>
             </Tr>
           </Thead>
-          {tablacentros.map((v, i) => (
-            <Tbody key={i}>
+          
+          {tablacentros
+          .filter((cetro) =>
+          cetro.red.includes(v.red)
+        ).map((e, a) => (
+            <Tbody key={a}>
               <Tb>
-                <Td>{v.nombre}</Td>
-                <Td>{v.direccion}</Td>
-                <Td>{v.telefono}</Td>
-                <Td>{v.horario_atencion}</Td>
+                <Td>{e.nombre}</Td>
+                <Td>{e.direccion}</Td>
+                <Td>{e.telefono}</Td>
+                <Td>{e.horario_atencion}</Td>
                 <Td>
-                  <A href={v.mapa}>Ver mapa</A>
+                  <A href={e.mapa}>Ver mapa</A>
                 </Td>
               </Tb>
             </Tbody>

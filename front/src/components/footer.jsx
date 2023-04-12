@@ -69,8 +69,8 @@ const animation = keyframes`
  0% {left: -10% ;
  }
   50% {left: 50%;
-    width: 150px;
-    height:150px;
+    width: 100px;
+    height:100px;
     background-color:#97a6c94b;
    }
   100% {left: -10%;
@@ -78,9 +78,8 @@ const animation = keyframes`
 `;
 const Footerr = styled.div`
   margin-top: 0 auto;
-
   width: 100%;
-  height: 300px;
+  height: 250px;
   max-height: 450px;
   background-color: #0b41ace6;
   display: flex;
@@ -90,8 +89,8 @@ const Footerr = styled.div`
     position: absolute;
     content: "";
     background-color: #14154d;
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
     border-radius: 50%;
     z-index: -1;
     left: -10%;

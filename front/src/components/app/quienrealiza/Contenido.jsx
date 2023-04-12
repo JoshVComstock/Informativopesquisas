@@ -1,30 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
+import { getInformacion } from "../../../services/informacion";
+import { UseFech } from "../../../hooks/useFech";
 const Contenido = () => {
-
-  const [informaciones, setInformaciones] = useState([]);
-
+const {res:informaciones}=UseFech(getInformacion)
   
 
-  async function mostrarinformaciones() {
-    const response = await fetch("http://127.0.0.1:8000/api/informacion", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    const respuesta = await response?.json();
-    setInformaciones(respuesta);
-
-
-  }
-
-  useEffect(() => {
-    mostrarinformaciones();
-  }, []);
-
-
+  
   return (
   <>
   {informaciones.map((v, i) => (

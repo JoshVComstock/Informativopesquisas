@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
 import Headercomp from "./informacioncomponents/Headercomp";
 import Footer from "../footer";
 import Navegacioncomp from "./informacioncomponents/Navegacioncomp";
@@ -26,47 +27,32 @@ const Informaciones = () => {
     mostrarcapsula();
   }, []);
 
-
   return (
     <>
       <Headercomp />
-      <Bodyinfo>
-        <Contenidos>
-          <Divuno>
-          <Divcapsulas>
-    
- 
-     
-        <Divpadrecap >
-        {capsula.map((v,i) => (
-            <Divcapsula key={i} >
+      <Divsearchpadre>
+        <Divsearch>
+          <Search type="text" placeholder="Buscar" />
+          <Botonsearch>
+            <img src="" alt="" />{" "}
+          </Botonsearch>
+        </Divsearch>
+      </Divsearchpadre>
+      <Contenidos>
+        <Divpadrecap>
+          {capsula.map((v, i) => (
+            <Divcapsula key={i}>
               <Titulocapsula>{v.titulo}</Titulocapsula>
+              <Img src={v.foto} alt="" />
               <Parrafocapsula>{v.descripcion}</Parrafocapsula>
-              <li><Links to="/informaciones">Ver más</Links></li>
-             
+              <li>
+              <Links to={`/capsula/${v.id}`}>Ver más</Links>
+
+              </li>
             </Divcapsula>
-
-            ))}
+          ))}
         </Divpadrecap>
-      
- 
-    </Divcapsulas>
-
-
-          </Divuno>
-          <Divdos>
-            <h1>capsulas</h1>
-            <Abutton>capsula 1</Abutton>
-            <Abutton>capsula 1</Abutton>
-            <Abutton>capsula 1</Abutton>
-            <Abutton>capsula 1</Abutton>
-            <Abutton>capsula 1</Abutton>
-            <Abutton>capsula 1</Abutton>
-            <Abutton>capsula 1</Abutton>
-            <Abutton>capsula 1</Abutton>
-          </Divdos>
-        </Contenidos>
-      </Bodyinfo>
+      </Contenidos>
       <Footer></Footer>
     </>
   );
@@ -74,144 +60,127 @@ const Informaciones = () => {
 
 export default Informaciones;
 
-const Abutton = styled.button`
-  width: 100%;
-  height: 3.5em;
- margin: 0.2em 0 ;
-`;
-const Contenidos = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  width: 100vw;
-  height: 100vh;
-  background-color: #682f2f;
-`;
-const Divuno = styled.div`
-  grid-area: 1 / 1 / 5 / 4;
-  height: 100%;
-  width: 100%;
-  background-color: #fff;
-`;
-const Divdos = styled.div`
-  grid-area: 1 / 4 / 5 / 5;
-  height: 100%;
-  width: 100%;
-  background-color: #72abad;
-  display: block;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  
-`;
-
-const Bodyinfo = styled.div`
-  background-color: #ffffff;
+const Contenidos = styled.section`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  padding: 4em;
 `;
-// capsulas 
-
-export const Links = styled (Link)`
- padding: 10px 45px;
-  margin: 20px 0;
-  cursor: pointer;
-  text-decoration: none;
-  border: none;
-  border-radius: 5px;
-  background-color: #222f4928;
-  transition: all 2s;
-  color: #222f49;
-  &:hover {
-    background-color: #0b0c3a2d;
-    color: #222f49;
-    padding: 10px 60px;
-  }
-`
-
-const Titulo = styled.h2`
-  border-top: 7em;
-  border-left: 10px solid #222f49;
-  font-size: 3em;
-  letter-spacing: 2px;
-  color: #222f49;
-  transition: all 1s;
-  &:hover {
-    scale: (0.9);
-    border-left: 20px solid #a6445e;
-  }
+// buscador
+export const Divsearchpadre = styled.div`
+  max-width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 3em 2em 0px 0px;
 `;
-const Divcapsulas = styled.div`
-  margin-top: 0 auto;
-  padding: 3rem;
+export const Divsearch = styled.div`
   width: 100%;
-  height: 100%;
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  border-radius: 60px;
+  
+  padding: 10px 20px;
+  height: 40px;
+  margin: 10px;
+`;
+export const Search = styled.input`
  
-  background: rgb(223, 225, 235);
-  list-style: none;
+  background: transparent;
+  flex: 1;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  color: #000;
+  &:focus {
+    border-bottom: 1px solid #0066ff;
+  }
+`;
+export const Botonsearch = styled.button`
+  border: 0;
+  border-radius: 50%;
+  width: 30px;
+  height: 29px;
+  cursor: pointer;
+  background: #0066ff;
+  &:hover {
+    background: #f700ff;
+  }
+  &:hover Img {
+    filter: invert(100%) sepia(31%) saturate(2%) hue-rotate(198deg)
+      brightness(107%) contrast(101%);
+  }
+`;
+
+// capsulas
+
+
+const Img = styled.img`
+width:100%;
+height:60%;
+
+position:relative;
+`;
+const animation = keyframes`
+ /* 0% {left: -10% ;
+ }
+  50% {left: 50%;
+    width: 100px;
+    height:100px;
+    background-color:#97a6c94b;
+   }
+  100% {left: -10%;
+   } */
 `;
 const Divpadrecap = styled.div`
-  margin-top: 2rem;
-  padding: 10px;
+  /* background-color:#501a1a; */
   display: flex;
-  gap: 2em;
-  width: 100%;
-  height: 100%;
   flex-wrap: wrap;
-  justify-content: center;
-  overflow: hidden; //
-`;
-const Divcapsula = styled.div`
-  width: calc(100% / 3);
-  height: 350px;
-
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 10px;
-  background: rgb(223, 225, 235);
-  border-radius: 40px;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
-    rgba(0, 0, 0, 0.25) 0px -36px 30px 0px inset,
-    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
-    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-`;
-
-const Titulocapsula = styled.h2`
-  margin-top: 1em;
-  width: 200px;
-  text-align: start;
-  line-height: 1.2;
-`;
-const Parrafocapsula = styled.p`
-  width: 320px;
-  height: 160px;
-  overflow: hidden;
-  padding: 10px 30px;
-  text-align: justify;
-  line-height: 1.2;
-  
-`;
-const Btncapsula = styled.button`
-  padding: 10px 45px;
-  margin: 20px 0;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  background-color: #222f4928;
-  transition: all 2s;
-  color: #222f49;
-  &:hover {
-    background-color: #0b0c3a2d;
-    color: #222f49;
-    padding: 10px 60px;
+  gap: 3em;
+  justify-content:center;
+  align-items:center;
+ 
+  &::after{
+    position: absolute;
+    content: "";
+    background-color: #2b44d1;
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    z-index: -1;
+    left: -10%;
   }
 `;
+const Divcapsula = styled.div`
+  width: 350px;
+  height: 450px;
+  display: flex;
+  border-radius:1em;
+  overflow:hidden;
+  color:#fff;
+  flex-direction: column;
+  gap: 1em;
+  padding: 2em;
+  text-align: justify;
+  background-color: #105dd1b3;
+  list-style: none;
+  justify-content: space-around;
+`;
+export const Links = styled(Link)`
+  display: flex;
+  justify-content: center;
+  padding: 0.8em;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+  background-color: #333f72;
+  border-radius:0.4em;
+`;
+
+const Titulocapsula = styled.h2``;
+const Parrafocapsula = styled.p``; 
+const Btncapsula = styled.button``;

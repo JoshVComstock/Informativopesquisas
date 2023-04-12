@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Footer from "../footer";
 const Colaboraciones = () => {
   const [superior, setSuperior] = useState([]);
 
@@ -32,9 +33,9 @@ const Colaboraciones = () => {
 
       <Tech>
         <Parrent>
+     
           <Div1>
-            {" "}
-            <h1>titulo</h1>
+          
             <div>
               <h2>nombre</h2>
               <p>
@@ -66,6 +67,7 @@ const Colaboraciones = () => {
           </Div2>
         </Parrent>
       </Tech>
+      <Footer></Footer>
     </>
   );
 };
@@ -144,7 +146,7 @@ export const H3 = styled.h2`
 
 export const Tech = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 60vh;
   background-color: #e7e7e7;
   display: flex;
   justify-content: center;
@@ -161,11 +163,25 @@ export const Parrent = styled.div`
 
   background-color: transparent;
 `;
+
+
 export const Div1 = styled.div`
   grid-area: 1 / 1 / 2 / 3;
   width: 100%;
   height: 100%;
-  background-color: #463939;
+  background-color: #3540a1;
+  display:flex;
+  flex-direction:row;
+  gap:2em;
+  padding:2em;
+  justify-content:center;
+  align-items:center  ;
+  
+`;
+const Ht = styled.h1`
+grid-column: 1 / -1;
+width:100%;
+color:#3a2b2b;
 `;
 export const Div2 = styled.div`
   grid-area: 1 / 3 / 2 / 4;

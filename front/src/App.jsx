@@ -1,5 +1,3 @@
-
-
 import Navbar from "./components/navbar";
 import Portada from "./pages/Portada";
 import Capsulas from "./pages/Capsulas";
@@ -18,11 +16,13 @@ import Quienlorealiza from "./components/app/Quienlorealiza";
 import Colaboraciones from "./components/app/Colaboraciones";
 import Contactanos from "./components/app/Contactanos";
 import { SkeletonTheme } from 'react-loading-skeleton'
+import Loadig2 from "./components/app/Pruevacarga";
 
 function App() {
   return (
     <div>
-<SkeletonTheme baseColor="#202020" highlightColor="#444">
+
+      
       <BrowserRouter>
         <Routes >
           <Route path="/" element={<Nav/>}>
@@ -32,10 +32,7 @@ function App() {
           <Route path="/centross" element={<Centross/>}/>
           <Route path="/quienlorealiza" element={<Quienlorealiza/>}/>
           <Route path="/colaboraciones" element={<Colaboraciones/>}/>
-          <Route path="/contactanos" element={<Contactanos/>}/>
-          {/* <Route path="/ingresar" element={<ingresar/>}/> */}
-
-         
+          <Route path="/contactanos" element={<Contactanos/>}/>    
           </Route>
           <Route path="/ingresar" element={<Navbar/>}>
           <Route path="portada" element={<Portada />} />
@@ -49,7 +46,7 @@ function App() {
          
         </Routes>
       </BrowserRouter>
-      </SkeletonTheme>
+      
     </div>
   );
 }

@@ -13,7 +13,7 @@ const Centross = () => {
       <Centrosnavcopm />
       <Titulo>Centros de diagnostico</Titulo>
       <Diagnosticocomp />
-   <Tablecentrocopm></Tablecentrocopm>
+    <Tablecentrocopm></Tablecentrocopm>
       <Footer></Footer>
     </Content>
   );

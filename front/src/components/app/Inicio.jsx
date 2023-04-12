@@ -19,4 +19,5 @@ const Inicio = ()=>{
 
 export default Inicio;
 
-const Divpadre = styled.div``;
+const Divpadre = styled.div`
+`;

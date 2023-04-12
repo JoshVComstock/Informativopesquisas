@@ -8,7 +8,7 @@ const Quienlorealiza = () => {
   return (
     <Contenedorpadre>
       <Supcopm />
-      <Contenido></Contenido>
+      <Contenido/>
       <Footer></Footer>
     </Contenedorpadre>
   );

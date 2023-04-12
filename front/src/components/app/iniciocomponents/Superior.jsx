@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Typewriter from 'typewriter-effect';
 
 const Superior = () => {
   const [superior, setSuperior] = useState([]);
@@ -29,9 +30,21 @@ const Superior = () => {
         src={v.foto}
         />
       <Contenidodiv>
-        <H3>{v.titulo}</H3>
+        <H3>
+        <Typewriter
+        options={{
+    strings: [
+      v.titulo,
+      "Informate!!!",
+    ],
+    autoStart: true,
+    loop: true,
+  }}
+  className="typewriter"
+/>
+        </H3>
         <Parrafotip>{v.descripcion}</Parrafotip>
-        <Butontitulo> MÁS INFORMACION</Butontitulo>
+        <Butontitulo> Más informacion</Butontitulo>
       </Contenidodiv>
       </Titulodiv>
       ))}
@@ -48,18 +61,17 @@ export const Imginicio = styled.img`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   background-size: cover;
-  box-shadow:  -12px -12px 24px #151616;
   clip-path: polygon(100% 0, 100% 100%, 42% 100%, 33% 50%, 42% 0);
- 
-
+box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+  filter: opacity(80%);
   &::after{
   content:"";
   position:relative;
   width:100%;
   height:80vh;
-  background-color:#2014525f;
+  background-color:#ffffff;
 
 }
 `;
@@ -83,25 +95,26 @@ export const Contenidodiv = styled.div`
 export const Titulodiv = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 79.9vh;
   
 `;
 export const Butontitulo = styled.button`
   z-index: 1;
   background-color: #ffffff;
-  color: #2e3049;
-  border: none;
+  color: #0d0d0d;
+  border:none;
+  border-bottom: solid 1px #ffffff;
   margin: 3em;
-  padding: 1em 5em;
+  padding: 1em 2em;
   transition: all 1s;
   cursor: pointer;
   border-radius: 5px;
   &:hover {
-    background-color: #2bb0b4;
+    background-color: #ffffff;
     color: #000000;
   }
 `;
-export const H3 = styled.h2`
+export const H3 = styled.h1`
   margin-top: 4em;
   max-width: 30%;
   min-width: 20%;
@@ -110,5 +123,5 @@ export const H3 = styled.h2`
   display: flex;
   padding: 10px;
   text-align: left;
-  border-left: 10px solid #ffffff;
+  border-left: 10px solid #f8f8f8;
 `;

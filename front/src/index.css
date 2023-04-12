@@ -4,3 +4,15 @@
   font-family: sans-serif;
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+  width: 9px;
+
+}
+::-webkit-scrollbar-track {
+  background: #0205226b;
+
+}
+::-webkit-scrollbar-thumb {
+  background: #ffffff93;
+  border-radius: 3em;
+}
