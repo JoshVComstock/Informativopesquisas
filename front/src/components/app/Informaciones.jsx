@@ -29,8 +29,10 @@ const Informaciones = () => {
 
   return (
     <>
+        <Pad>
       <Headercomp />
-      <Divsearchpadre>
+
+    <Divsearchpadre>
         <Divsearch>
           <Search type="text" placeholder="Buscar" />
           <Botonsearch>
@@ -42,18 +44,17 @@ const Informaciones = () => {
         <Divpadrecap>
           {capsula.map((v, i) => (
             <Divcapsula key={i}>
-              <Titulocapsula>{v.titulo}</Titulocapsula>
               <Img src={v.foto} alt="" />
-              <Parrafocapsula>{v.descripcion}</Parrafocapsula>
-              <li>
-              <Links to={`/capsula/${v.id}`}>Ver más</Links>
-
-              </li>
+              <Titulocapsula>{v.titulo}</Titulocapsula>
+              <Parrafocapsula >{v.descripcion}</Parrafocapsula>
+              <Abutton>Ver más</Abutton>
             </Divcapsula>
           ))}
         </Divpadrecap>
       </Contenidos>
+  
       <Footer></Footer>
+      </Pad>
     </>
   );
 };
@@ -67,14 +68,18 @@ const Contenidos = styled.section`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 4em;
+  margin:1em 0;
 `;
 // buscador
+export const Pad = styled.div`
+  background-color:#F6F6F6;
+`;
 export const Divsearchpadre = styled.div`
   max-width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin: 3em 2em 0px 0px;
+ 
+
 `;
 export const Divsearch = styled.div`
   width: 100%;
@@ -82,10 +87,10 @@ export const Divsearch = styled.div`
   display: flex;
   align-items: center;
   border-radius: 60px;
-  
   padding: 10px 20px;
   height: 40px;
   margin: 10px;
+  
 `;
 export const Search = styled.input`
  
@@ -95,7 +100,7 @@ export const Search = styled.input`
   outline: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-size: 16px;
-  color: #000;
+  color:#fff;
   &:focus {
     border-bottom: 1px solid #0066ff;
   }
@@ -106,9 +111,9 @@ export const Botonsearch = styled.button`
   width: 30px;
   height: 29px;
   cursor: pointer;
-  background: #0066ff;
+  background: #9d17a19c;
   &:hover {
-    background: #f700ff;
+    background: #fff;
   }
   &:hover Img {
     filter: invert(100%) sepia(31%) saturate(2%) hue-rotate(198deg)
@@ -118,36 +123,24 @@ export const Botonsearch = styled.button`
 
 // capsulas
 
-
 const Img = styled.img`
 width:100%;
-height:60%;
-
+height:100%;
 position:relative;
 `;
-const animation = keyframes`
- /* 0% {left: -10% ;
- }
-  50% {left: 50%;
-    width: 100px;
-    height:100px;
-    background-color:#97a6c94b;
-   }
-  100% {left: -10%;
-   } */
-`;
+
 const Divpadrecap = styled.div`
-  /* background-color:#501a1a; */
   display: flex;
   flex-wrap: wrap;
-  gap: 3em;
+  gap: 0.3em;
   justify-content:center;
   align-items:center;
- 
+  width:100%;
+  height:auto;
   &::after{
     position: absolute;
     content: "";
-    background-color: #2b44d1;
+    background-color: #F7C9B5;
     height: 400px;
     width: 400px;
     border-radius: 50%;
@@ -156,31 +149,54 @@ const Divpadrecap = styled.div`
   }
 `;
 const Divcapsula = styled.div`
-  width: 350px;
-  height: 450px;
+  width: 300px;
+  height: 300px;
   display: flex;
-  border-radius:1em;
   overflow:hidden;
   color:#fff;
   flex-direction: column;
-  gap: 1em;
-  padding: 2em;
   text-align: justify;
-  background-color: #105dd1b3;
+  background-color: #5f71a7;
   list-style: none;
-  justify-content: space-around;
+  align-items :center;
+  position:relative;
+  justify-content: flex-start;
+  box-shadow:0px 2px 5px #0000006a;
+  filter:grayscale(0%) contrast(1.1);
+  transition:all 0.5s ease-out;
+  &:hover{
+    transform:scale(1.02);
+  }
 `;
-export const Links = styled(Link)`
+export const Abutton = styled.button`
   display: flex;
   justify-content: center;
-  padding: 0.8em;
+  align-items:center;
+  padding: 0.5em 1.5em;
   color: #fff;
   text-decoration: none;
-  width: 100%;
-  background-color: #333f72;
-  border-radius:0.4em;
+  width: 40%;
+  border-radius:1em  1em 0 0;
+  background-color: #333f7291;
+border:none;
+box-shadow:0px 1px 5px #0005;
+  cursor: pointer;
+position:absolute;
+bottom:0;
+left:25%;
 `;
 
-const Titulocapsula = styled.h2``;
-const Parrafocapsula = styled.p``; 
-const Btncapsula = styled.button``;
+const Titulocapsula = styled.h3`
+font-size:1.3em;
+font-weight:100;
+text-align: center;
+height:auto;
+width:100%;
+position:absolute;
+bottom:20%;
+background-color:#a6a9b291;
+padding:0.2em 0;
+`;
+const Parrafocapsula = styled.p`
+display:none;`; 
+

@@ -42,7 +42,46 @@ const Bodydiv = styled.div`
   display: flex;
   flex-direction: column;
   z-index:2;
+  @media (max-width: 980px) {
+   & section{
+    margin-top:15px;
+width: 80%;
+height: 40px;
+   }
+& nav div{
+  height: 40px;
+}
+& nav div li link{
+font-size:1em;
 
+}
+   & button{
+    margin: 1em;
+  padding: 0.5em 1em;
+   }
+ 
+   }
+   @media (max-width: 720px) {
+   & section{
+    margin-top:10px;
+width: 90%;
+height: 35px;
+   }
+& nav div{
+  height: 35px;
+  width:85%;
+}
+   & button{
+    margin: 0.5em;
+  padding: 0.4em 0.8em;
+   }
+ 
+   }
+   @media (max-width: 420px) {
+    & nav div{
+  height: 35px;
+}
+  }
 `;
 const Divnav = styled.div`
   display: flex;
@@ -58,11 +97,8 @@ const Divlogo = styled.div`
  width: 100%;
  display: flex;
   justify-content: center;
- 
-  
-  
 `;
-const Divlogos=styled.div`
+const Divlogos=styled.section`
 margin-top:30px;
 width: 80%;
 height: 60px;
@@ -88,16 +124,26 @@ export const Links = styled (Link)`
 text-decoration: none;
 padding: 20px;
 transition: all 0.5s;
+@media (max-width: 980px) {
+    padding: 10px;
+font-size:0.6em;
 
+  }
+  @media (max-width: 720px) {
+    padding: 10px;
+  font-size:0.5em;
+  }
 font-family: 'Poppins', sans-serif;
-
-  /* border-radius: 5px; */
   &:hover {
     background-color: #ffffffea;
-    color:#3c425c
-  }
+    color:#3c425c;
+  };
+
+  
+
+
 `;
-const Nava=styled.div`
+const Nava=styled.nav`
 width:100%;
 height: 90px;
 display: flex;

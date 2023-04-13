@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled ,{ keyframes } from "styled-components";
 import Capsulascopm from "./iniciocomponents/Capsulascopm"
 import Nosotroscopm from "./iniciocomponents/Nosotroscopm"
 import Programcopm from "./iniciocomponents/Programcopm"
@@ -21,4 +21,6 @@ export default Inicio;
 
 const Divpadre = styled.div`
 overflow:hidden;
+position:relative;
+
 `;

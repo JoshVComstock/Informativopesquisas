@@ -1,44 +1,47 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+import styled , { keyframes } from "styled-components";
 const Nosotroscopm = () => {
+  const [Anosotros, setAnosotros] = useState([]);
+
+  async function mostrarnosotros() {
+    const response = await fetch("http://127.0.0.1:8000/api/informacion", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    });
+    const respuesta = await response?.json();
+    setAnosotros(respuesta);
+  }
+
+  useEffect(() => {
+    mostrarnosotros();
+  }, []);
+
+
+
   return (
     <Nosotrosdiv>
       <Supdiv>
         <Titulo>Sobre Nosotros</Titulo>
-        {/* <Parrafosup>
-            puente a un mejor nivel de salud para los bolivianos, brindando
-            siempre condiciones favorables y productos lí­deres
-          </Parrafosup> */}
       </Supdiv>
-      <Infediv>
+      {Anosotros.map((v, i) => (
+      <Infediv key={i}>
         <Divimg>
           <Imginfe
-            src="https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt="titulo_img"
+            src={v.foto_m}
           />
         </Divimg>
         <Divbiotech>
-          <H3>Titulo biotech</H3>
+          <H3>{v.nombre}</H3>
           <Parrafo>
-            Biotech Bolivia fue fundada en 1993 con el objetivo de ofrecer una
-            tecnologí­a confiable y novedosa para la realización de pruebas de
-            diagnóstico clí­nico. Habiendo propuesto mejores rapia intensiva.
-            Contactando proveedores internacionales de renombre mundial, con
-            quienes ha establecido una sólida relaciónBiotech Bolivia fue
-            fundada en 1993 con el objetivo de ofrecer una tecnologí­a confiable
-            y novedosa para la realización de pruebas de diagnóstico clí­nico.
-            Habiendo propuesto mejores rapia intensiva. Contactando proveedores
-            internacionales de renombre mundial, con quienes ha establecido una
-            sólida relaciónBiotech Bolivia fue fundada en 1993 con el objetivo
-            de ofrecer una tecnologí­a confiable y novedosa para la realización
-            de pruebas de diagnóstico clí­nico. Habiendo propuesto mejores rapia
-            intensiva. Contactando proveedores internacionales de renombre
-            mundial, con quienes ha establecido una sólida relación a través de
-            los años.
+           {v.descripcion}
           </Parrafo>
           <Button>ler mas </Button>
         </Divbiotech>
       </Infediv>
+        ))}
     </Nosotrosdiv>
   );
 };
@@ -94,7 +97,7 @@ const Supdiv = styled.div`
 
 const Titulo = styled.h2`
  border-left: 10px solid #46628d;
-  font-size: 1.5em;
+  font-size: 2em;
   letter-spacing: 1px;
   color: #7793bd;
   transition: all 1s;
@@ -127,6 +130,21 @@ const Divbiotech = styled.div`
   background-color: #c1d7db;
   position:relative;
 `;
+
+const animation = keyframes`
+  0% {
+    transform:translateX(-25em);
+    left:0;
+   
+  }
+  50% {
+    transform:rotate(180deg);
+  }
+  100% {
+    transform:translateX(0);
+    transform:rotate(360deg);
+  }
+`
 const Imginfe = styled.img`
   display: flex;
   flex-direction: row;
@@ -135,10 +153,10 @@ const Imginfe = styled.img`
   border-radius: 3em 0 0 3em;
   size: cover;
   border-radius: 50%;
-  /* transition: all 3s;
-  &:hover {
-    transform: scale(1.05);
-  } */
+  animation: ${animation} 2s ease-in-out;
+  position:relative;
+  top:0;
+
 `;
 const Infediv = styled.section`
   display: flex;

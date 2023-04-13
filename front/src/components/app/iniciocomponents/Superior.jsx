@@ -81,6 +81,9 @@ export const Parrafotip = styled.p`
   height: 40px;
   text-align: left;
   margin-left: 2em;
+  @media (max-width: 768px) {
+   width:100%;
+    }
 `;
 export const Contenidodiv = styled.div`
   height: 100%;
@@ -91,12 +94,47 @@ export const Contenidodiv = styled.div`
   padding: 10px 3rem;
   text-align: center;
   background-color: #092255e6;
+ 
+
 `;
 export const Titulodiv = styled.div`
   position: relative;
   width: 100%;
   height: 79.9vh;
-  
+  @media (max-width: 980px) {
+   height:65vh;
+    & img{
+    height:65vh;
+    }
+   & button{
+    margin: 1em;
+  padding: 0.5em 1em;
+   }
+   & h1{
+    width:100%;
+   margin-top: 2em;
+  font-size:1.5em;
+   }
+    }
+
+    @media (max-width: 720px) {
+   height:55vh;
+    & img{
+      display:none;
+    }
+   & button{
+    margin: 1em;
+  padding: 0.5em 1em;
+   }}
+   @media (max-width: 420px) {
+   height:40vh;
+    & img{
+      display:none;
+    }
+   & button{
+    margin: 0.6em;
+  padding: 0.2em 0.5em;
+   }}
 `;
 export const Butontitulo = styled.button`
   z-index: 1;
@@ -116,12 +154,13 @@ export const Butontitulo = styled.button`
 `;
 export const H3 = styled.h1`
   margin-top: 4em;
-  max-width: 30%;
-  min-width: 20%;
+  width: 30%;
+
   color: #e0e0e0;
   font-size: 2.5em;
   display: flex;
   padding: 10px;
   text-align: left;
   border-left: 10px solid #f8f8f8;
+
 `;

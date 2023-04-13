@@ -102,7 +102,7 @@ gap:1em;
   content:"";
   width:100%;
   height:2px;
-  background-color:#fff;
+  background-color:#ffffff87;
   z-index:1;
 }
 & a{
@@ -110,7 +110,7 @@ gap:1em;
   z-index:2;
   color:#39725e;
   text-decoration:none;
-  padding:1em;
+  padding:0.5em 1em;
 }
 `;
 const Diva = styled.div`

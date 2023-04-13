@@ -1,5 +1,6 @@
 
-import styled from "styled-components";
+import styled , { keyframes } from "styled-components";
+
 import React, { useState, useEffect } from "react";
 import Loading from "../../loading";
 
@@ -59,6 +60,20 @@ const Programcopm = () => {
 }
 
 export default Programcopm
+const animation = keyframes`
+  0% {
+    transform:translateX(25em);
+    left:0;
+   
+  }
+  50% {
+    transform:rotate(180deg);
+  }
+  100% {
+    transform:translateX(0);
+    transform:rotate(360deg);
+  }
+`
 const Divprogra = styled.div`
   width: 95%;
   margin:1em auto;
@@ -106,6 +121,9 @@ const Img = styled.img`
  height:400px;
   background-size: cover;
 border-radius:50%;
+animation: ${animation} 2s ease-in-out;
+  position:relative;
+  top:0;
 `;
 
 const Divimg = styled.div`
@@ -139,7 +157,7 @@ const Supdiv = styled.div`
 `;
 const Titulo = styled.h2`
   border-left: 10px solid #B0D3C7;
-  font-size: 1.5em;
+  font-size: 2em;
   letter-spacing: 1px;
   color: #7793bd;
   transition: all 1s;
