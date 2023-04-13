@@ -54,11 +54,11 @@ padding:1em;
   &::after {
     content: "";
     position: absolute;
-    width: 50%;
-    height: 65%;
+    width: 51%;
+    height: 62%;
     background-color: #f7c9b5;
     left: -5%;
-    bottom: 10%;
+    bottom: 11%;
     z-index: -1;
     border-radius: 0 5em 5em 0;
   }
@@ -100,7 +100,7 @@ const Titulo = styled.h2`
   transition: all 1s;
   display:flex;
   align-items:flex-start;
-  width:80%;
+  width:70%;
   margin: 0 auto;
   &:hover {
     scale: (0.9);
@@ -142,7 +142,7 @@ const Imginfe = styled.img`
 `;
 const Infediv = styled.section`
   display: flex;
-  gap: 1em;
+  gap: 2em;
   width: 80%;
   height: 100%;
   margin:0 auto;

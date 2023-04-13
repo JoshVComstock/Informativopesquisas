@@ -20,4 +20,5 @@ const Inicio = ()=>{
 export default Inicio;
 
 const Divpadre = styled.div`
+overflow:hidden;
 `;

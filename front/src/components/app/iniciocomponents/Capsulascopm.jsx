@@ -26,7 +26,7 @@ const Capsulascopm = () => {
       <>
      
         <Divpadrecap >
-        {capsula.slice(0, 3) .map((v,i) => (
+        {capsula.slice(0, 4) .map((v,i) => (
             <Divcapsula key={i} >
               <Titulocapsula>{v.titulo}</Titulocapsula>
               <Parrafocapsula>{v.descripcion}</Parrafocapsula>
@@ -49,67 +49,62 @@ export const Links = styled (Link)`
   margin: 20px 0;
   cursor: pointer;
   text-decoration: none;
-  border: none;
-  border-radius: 5px;
-  background-color: #222f4928;
-  transition: all 2s;
-  color: #222f49;
+  border: solid 1px #fff;
+  border-radius:3px;
+  background-color: #7793bd;
+  transition: all 1.5s;
+  color: #e8ebf2;
   &:hover {
-    background-color: #0b0c3a2d;
+    background-color: #dbdce75e;
     color: #222f49;
     padding: 10px 60px;
   }
 `
 
 const Titulo = styled.h2`
-  border-top: 7em;
-  border-left: 10px solid #222f49;
-  font-size: 3em;
-  letter-spacing: 2px;
-  color: #222f49;
+   border-left: 10px solid #B0D3C7;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  color: #7793bd;
   transition: all 1s;
+  display:flex;
+  align-items:flex-start;
+  width:85%;
+  margin: 2em auto;
   &:hover {
     scale: (0.9);
-    border-left: 20px solid #a6445e;
+    border-left: 20px solid #39725e;
   }
 `;
 const Divcapsulas = styled.div`
-  margin-top: 0 auto;
-  padding: 3rem;
+ margin:0 auto ;
   width: 100%;
-  height: 590px;
+  height: 650px;
   max-height: 650px;
-  background: rgb(223, 225, 235);
   list-style: none;
+  overflow: hidden; 
 `;
 const Divpadrecap = styled.div`
-  margin-top: 2rem;
-  padding: 10px;
   display: flex;
-  gap: 2em;
+  gap: 0 1em ;
   width: 100%;
-  height: 450px;
+  height: auto;
   flex-wrap: wrap;
   justify-content: center;
-  overflow: hidden; //
+  overflow: hidden; 
+  padding:1.5em 0;
+  background-color:#C1D7DB;
 `;
 const Divcapsula = styled.div`
-  width: calc(100 / 3);
-  height: 420px;
-
+  width: calc(80 / 4);
+  height: 400px;
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border-radius: 10px;
-  background: rgb(223, 225, 235);
-  border-radius: 40px;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
-    rgba(0, 0, 0, 0.25) 0px -36px 30px 0px inset,
-    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
-    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  background: #B0D3C7;
+  box-shadow:0px 1px 10px rgba(0, 0, 0, 0.252);
 `;
 
 const Titulocapsula = styled.h2`

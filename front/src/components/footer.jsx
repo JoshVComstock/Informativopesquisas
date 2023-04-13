@@ -24,7 +24,16 @@ const Footer = () => {
   return (
     <>
       <Footerr>
-        {centrosdiagnostico.slice(0, 3).map((v, i) => (
+
+       <Divredes>
+        <a href="#">Facebock</a>
+        <a href="#">intagram</a>
+        <a href="#">Twiter</a>
+        <a href="#">linkedink</a>
+       </Divredes>
+       <Diva>
+
+       {centrosdiagnostico.slice(0, 3).map((v, i) => (
           <Info key={i}>
             <Titulo> {v.sede}</Titulo>
             <Direcciones>{v.dirreccion}</Direcciones>
@@ -59,6 +68,7 @@ const Footer = () => {
           <Direcciones> info@biotech.com.bo</Direcciones>
           <Ingreso></Ingreso>
         </Formulario>
+       </Diva>
       </Footerr>
     </>
   );
@@ -76,15 +86,50 @@ const animation = keyframes`
   100% {left: -10%;
    }
 `;
+
+
+const Divredes= styled.div`
+width:100%;
+height:10vh;
+background-color:transparent;
+display:flex;
+justify-content:center;
+align-items:center;
+position: relative;
+gap:1em;
+&::before{
+  position:absolute;
+  content:"";
+  width:100%;
+  height:2px;
+  background-color:#fff;
+  z-index:1;
+}
+& a{
+  background-color:#fff;
+  z-index:2;
+  color:#39725e;
+  text-decoration:none;
+  padding:1em;
+}
+`;
+const Diva = styled.div`
+display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:row;
+  width:100%;
+`;
 const Footerr = styled.div`
   margin-top: 0 auto;
   width: 100%;
-  height: 250px;
+  height: 400px;
   max-height: 450px;
-  background-color: #0b41ace6;
+  background-color: #0b2559f1;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction:column;
   &::after {
     position: absolute;
     content: "";
@@ -112,12 +157,13 @@ const Navegacion = styled.div`
 `;
 const Formulario = styled.div`
   width: calc(100% / 3);
-  background-color: #ffffff;
+  height:100%;
+  background-color: #B0D3C7;
   display: flex;
   flex-direction: column;
   justify-items: center;
   justify-content: center;
-  border-radius: 2em 0 0 2em;
+  border-radius: 0;
   margin-left: 2em;
 `;
 const Links = styled(Link)`
@@ -143,23 +189,29 @@ const Info = styled.div`
   height: 80%;
 `;
 const Titulo = styled.h2`
-  font-size: 27px;
-  border-left: solid 2px #ffffff;
-  margin: 1em 0;
-  padding-left: 1em;
+  font-size: 0.9em;
+  border-bottom: solid 2px #ffffff33;
+  margin: 0.5em 0;
+  padding-left: 25%;
+  font-weight:100;
+width:100%;
+&::first-line{
+  font-size: 1.5em;
+  font-weight:100;
+}
 `;
 
 const Direcciones = styled.h2`
-  font-size: 16px;
+  font-size: 0.9em;
   margin: 0 0 1em 1em;
+  font-weight:100;
   text-align: justify;
-  width: 60%;
+  width: 100%;
   overflow: hidden;
-
   max-width: 80%;
 `;
 const Cel = styled.h2`
-  font-size: 17px;
+  font-size:0.9em;
 
   margin: 1em;
 `;
@@ -172,10 +224,10 @@ const Ingreso = styled.input`
   padding: 0.5em;
   place-content: "escribenos";
   transition: all 1.5s;
-
+color:#fff;
   &:focus {
-    background-color: #a6445e;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
     font-size: 15px;
   }
 `;
