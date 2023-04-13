@@ -64,8 +64,8 @@ font-size:1em;
    @media (max-width: 720px) {
    & section{
     margin-top:10px;
-width: 90%;
-height: 35px;
+    width: 90%;
+    height: 35px;
    }
 & nav div{
   height: 35px;
@@ -77,9 +77,10 @@ height: 35px;
    }
  
    }
-   @media (max-width: 420px) {
+   @media (max-width:520px) {
+    display:none;
     & nav div{
-  height: 35px;
+ 
 }
   }
 `;

@@ -93,9 +93,7 @@ const Divprogra = styled.div`
     z-index:-1;
     border-radius:5em  0 0 5em;
   }
-  @media (max-width: 720px) {
-    
-  }
+
 
 `;
 const Conteniendocard = styled.div`
@@ -118,6 +116,49 @@ cursor:pointer;
   background-color:#fff;
 color:#405d89;
 }
+
+`;
+
+
+const Divimg = styled.div`
+  display: flex;
+  flex-direction: row;
+  width:90%;
+  margin:0 auto;
+  gap:2em;
+
+  @media (max-width: 980px) {
+    position:relative;
+& img{
+  position:absolute;
+  left:0;
+  width:150px;
+ height:150px;
+
+}
+& section {
+  display:flex;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+}
+}
+@media (max-width: 420px) {
+    position:relative;
+& img{
+  position:absolute;
+  left:0;
+  width:100px;
+ height:100px;
+
+}
+& section {
+  display:flex;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+}
+}
 `;
 const Img = styled.img`
   display: flex;
@@ -130,14 +171,8 @@ animation: ${animation} 2s ease-in-out;
   top:0;
 `;
 
-const Divimg = styled.div`
-  display: flex;
-  flex-direction: row;
-  width:90%;
-  margin:0 auto;
-  gap:2em;
-`;
-const Divprograma = styled.div`
+
+const Divprograma = styled.section`
 padding:3em;
 margin:3em 0 3em 3em;
   display: flex;
@@ -158,6 +193,13 @@ const Parrafo = styled.p`
 const Supdiv = styled.div`
   width: 45%;
   text-align: justify;
+  @media (max-width: 980px) {
+    width: 100%;
+}
+@media (min-width: 420px) {
+    width: 100%;
+    text-align:start;
+}
 `;
 const Titulo = styled.h2`
   border-left: 10px solid #B0D3C7;

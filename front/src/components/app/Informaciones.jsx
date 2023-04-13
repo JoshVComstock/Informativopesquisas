@@ -3,13 +3,12 @@ import styled, { keyframes } from "styled-components";
 
 import Headercomp from "./informacioncomponents/Headercomp";
 import Footer from "../footer";
-import Navegacioncomp from "./informacioncomponents/Navegacioncomp";
-import Contenidocomp from "./informacioncomponents/Contenidocomp";
-import { Link, Outlet } from "react-router-dom";
 
+import MostrarInfo from "../MostrarInfo";
 const Informaciones = () => {
   // traemos datos
   const [capsula, setCapsula] = useState([]);
+  const [enviar, setEnviar]=useState({});
 
   async function mostrarcapsula() {
     const response = await fetch("http://127.0.0.1:8000/api/capsula", {
@@ -25,32 +24,27 @@ const Informaciones = () => {
 
   useEffect(() => {
     mostrarcapsula();
+
   }, []);
 
   return (
     <>
         <Pad>
       <Headercomp />
-
-    <Divsearchpadre>
-        <Divsearch>
-          <Search type="text" placeholder="Buscar" />
-          <Botonsearch>
-            <img src="" alt="" />{" "}
-          </Botonsearch>
-        </Divsearch>
-      </Divsearchpadre>
       <Contenidos>
         <Divpadrecap>
           {capsula.map((v, i) => (
             <Divcapsula key={i}>
               <Img src={v.foto} alt="" />
               <Titulocapsula>{v.titulo}</Titulocapsula>
-              <Parrafocapsula >{v.descripcion}</Parrafocapsula>
-              <Abutton>Ver más</Abutton>
+              <Abutton  onClick ={() => {
+                setEnviar(v) ;
+              }}>Ver más</Abutton>
             </Divcapsula>
           ))}
+        
         </Divpadrecap>
+        <MostrarInfo enviard={enviar}/>
       </Contenidos>
   
       <Footer></Footer>
@@ -64,11 +58,11 @@ export default Informaciones;
 const Contenidos = styled.section`
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   margin:1em 0;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
 `;
 // buscador
 export const Pad = styled.div`
@@ -78,8 +72,6 @@ export const Divsearchpadre = styled.div`
   max-width: 100%;
   display: flex;
   justify-content: flex-end;
- 
-
 `;
 export const Divsearch = styled.div`
   width: 100%;
@@ -93,7 +85,6 @@ export const Divsearch = styled.div`
   
 `;
 export const Search = styled.input`
- 
   background: transparent;
   flex: 1;
   border: none;
@@ -102,7 +93,7 @@ export const Search = styled.input`
   font-size: 16px;
   color:#fff;
   &:focus {
-    border-bottom: 1px solid #0066ff;
+ border-bottom: 1px solid #0066ff;
   }
 `;
 export const Botonsearch = styled.button`
@@ -120,23 +111,20 @@ export const Botonsearch = styled.button`
       brightness(107%) contrast(101%);
   }
 `;
-
-// capsulas
-
 const Img = styled.img`
 width:100%;
 height:100%;
 position:relative;
 `;
-
 const Divpadrecap = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.3em;
   justify-content:center;
   align-items:center;
-  width:100%;
-  height:auto;
+  width:50%;
+  height:100vh;
+  overflow-y:scroll;
   &::after{
     position: absolute;
     content: "";
@@ -197,6 +185,3 @@ bottom:20%;
 background-color:#a6a9b291;
 padding:0.2em 0;
 `;
-const Parrafocapsula = styled.p`
-display:none;`; 
-

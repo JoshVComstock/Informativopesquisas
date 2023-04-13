@@ -22,9 +22,8 @@ const Capsulascopm = () => {
 
   return (
     <Divcapsulas>
-      <Titulo>Informate con nuestras capsulas</Titulo>
+      <Titulo>Capsulas informativas</Titulo>
       <>
-    
         <Divpadrecap >
         {capsula.slice(0, 4) .map((v,i) => (
             <Divcapsula key={i} >
@@ -80,12 +79,24 @@ const Divcapsulas = styled.div`
  margin:0 auto ;
   width: 100%;
   height: 100vh;
-  max-height: 100vh;
   list-style: none;
   overflow: hidden; 
-  
+  @media (max-width: 980px) {
+
+& section{
+width:100%;
+} 
+}
+  @media (max-width: 520px) {
+    height:100%;
+   display:flex;
+   flex-direction:column;
+    & section{
+    width:80%;
+  } 
+  }
 `;
-const Divpadrecap = styled.div`
+const Divpadrecap = styled.article`
   display: flex;
   gap: 0 1em ;
   width: 100%;
@@ -95,9 +106,12 @@ const Divpadrecap = styled.div`
   overflow: hidden; 
   padding:1.5em 0;
   background-color:#284c5c;
+  @media (max-width: 520px) {
+    gap: 1em ;
+  }
 
 `;
-const Divcapsula = styled.div`
+const Divcapsula = styled.section`
   width: calc(80% / 4);
   height: 400px;
   display: flex;
