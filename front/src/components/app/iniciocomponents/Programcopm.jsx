@@ -93,6 +93,10 @@ const Divprogra = styled.div`
     z-index:-1;
     border-radius:5em  0 0 5em;
   }
+  @media (max-width: 720px) {
+    
+  }
+
 `;
 const Conteniendocard = styled.div`
 margin:0;
