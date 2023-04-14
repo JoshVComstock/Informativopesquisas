@@ -171,6 +171,7 @@ const Navegacion = styled.div`
   }
   @media (max-width: 980px) {
       display :none;
+      overflow:hidden;
   }
 `;
 const Formulario = styled.section`
@@ -182,6 +183,7 @@ const Formulario = styled.section`
   justify-items: center;
   justify-content: center;
   border-radius: 0;
+  overflow:hidden;
   margin-left: 2em;
 `;
 const Links = styled(Link)`

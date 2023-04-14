@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from "styled-components";
 import {
     H3,
@@ -7,14 +7,42 @@ import {
     Contenidodiv,
   } from "../iniciocomponents/Superior";
 const Supcopm = () => {
+
+  const [ realiza, setRealiza] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
+  async function mostrarrealiza() {
+    const response = await fetch("http://127.0.0.1:8000/api/informacion", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    });
+    const respuesta = await response?.json();
+    setRealiza(respuesta);
+
+    setLoading(false);
+    console.log(loading);
+  }
+
+  useEffect(() => {
+    mostrarrealiza();
+  }, []);
+
   return (
-    <Contenedor>
-    <Imgreal src="http://127.0.0.1:8000/img/empresa/somos_.png" alt="" />
+   <>
+    {realiza.map((v, i) => ( 
+    <Contenedor key={i}>
+    <Imgreal src={v.foto} alt="" />
     <Contenidodiv>
-      <H3>Biotech </H3>
-      <Parrafotip> Preservando la vida desde su nacimiento</Parrafotip>
+      <H3>{v.nombre} </H3>
     </Contenidodiv>
+ 
   </Contenedor>
+    ))}
+   </>
   )
 }
 
@@ -31,5 +59,5 @@ const Imgreal = styled.img`
 `;
 const Contenedor = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 80vh;  overflow:hidden;
 `;

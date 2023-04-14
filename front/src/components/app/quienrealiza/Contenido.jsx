@@ -5,25 +5,26 @@ import { UseFech } from "../../../hooks/useFech";
 const Contenido = () => {
 const {res:informaciones}=UseFech(getInformacion)
   
-
-  
   return (
   <>
   {informaciones.map((v, i) => (
     <Div>
-        <Divuno>
+    
+       <Divuno>
           <Texto>
           {v.mision}
           </Texto>
         </Divuno>
         <Divdos>
           <Title>Mision</Title>
-          <img src="" alt="img" />
+          <Img src={v.foto_m} alt="img" />
         </Divdos>
+       
+          <Divpa>
         <Divtres>
    
           <Titleb>Vision</Titleb>
-          <img src="" alt="img" />
+          <Imgb src={v.foto_v} alt="img" />
         </Divtres>
         <Divcuatro>
        
@@ -31,7 +32,9 @@ const {res:informaciones}=UseFech(getInformacion)
         {v.vision}
           </Textob>
         </Divcuatro>
+        </Divpa>
       </Div>
+
        ))}
   </>
 
@@ -40,7 +43,7 @@ const {res:informaciones}=UseFech(getInformacion)
 
 export default Contenido
 
-const Div = styled.div`
+const Div = styled.section`
   width: 100%;
   height: 130vh;
   display: flex;
@@ -49,9 +52,36 @@ const Div = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2em;
+  overflow:hidden;
+  @media (max-width: 520px) {
+    flex-direction: column-reverse;
+    height:100%;
+    & > div{
+   display:block;
+   & > h2{
+    height:auto;
+    border-left:0;
+   }
+& > img{
+  width:100px;
+  height:100px;
+  display:none;
+  border-radius:50%;
+
+}
+  }
+    
+  }
+`;
+
+const Divpa = styled.div`
+display:flex;
+ @media (max-width: 520px) {
+    height: auto;
+    }
+
 `;
 const Divuno = styled.div`
-  /* background-color: #a84141; */
   width: 50%;
   height: 55vh;
   display: flex;
@@ -59,13 +89,78 @@ const Divuno = styled.div`
   align-items: center;
   position: relative;
   z-index: -2;
+  @media (max-width: 520px) {
+   display:block;
+   width:90%;
+  }
+`;
+const animation = keyframes`
+ 0% {
+    transform:translateX(30%);
+  }
+  50% {
+    transform:translateX(-30%);
+    border-radius:1em;
+  }
+  100% {
+    transform:translateX(0%);
+    border-radius:1.5em;
+
+  }
+`
+const animationb = keyframes`
+ 0% {
+    transform:translateX(-30%);
+  }
+  50% {
+    transform:translateX(30%);
+    border-radius:1em;
+  }
+  100% {
+    transform:translateX(0%);
+    border-radius:1.5em;
+
+  }
+`
+const Img = styled.img`
+width:100%;
+height:100%;
+position:absolute;
+display:none;
+animation: ${animation} 2s ease-in;
+border-radius:1.5em;
+top:0;
+`;
+const Imgb = styled.img`
+width:100%;
+height:100%;
+position:absolute;
+display:none;
+animation: ${animationb} 2s ease-in;
+border-radius:1.5em;
+top:0;
 `;
 const Divdos = styled.div`
   width: 50%;
   height: 55vh;
   display: flex;
-
+  position:relative;
   align-items: center;
+  @media (max-width: 520px) {
+    height: 15vh;
+  }
+  &:hover {
+    & h2{
+      border-left: none;
+    color: transparent;
+    background-size: cover;
+    }
+    & img{
+      display:flex;
+      z-index:-1;
+   
+    }
+    }
 `;
 
 const Title = styled.h2`
@@ -77,15 +172,6 @@ const Title = styled.h2`
   color: #000000;
   border-left: solid 10px;
   transition: all 2s linear;
-  &:hover {
-    border-left: none;
-    background-image: url(http://127.0.0.1:8000/img/empresa/vision_.jpg);
-    /* box-shadow: 5px 5px 6px 8px rgba(0, 0, 0, 0.3); */
-    width: 80vh;
-    height: 80%;
-    color: transparent;
-    background-size: cover;
-  }
 `;
 const Titleb = styled.h2`
   background-color: transparent;
@@ -94,18 +180,8 @@ const Titleb = styled.h2`
   text-align: center;
   padding: 2vh 0;
   color: #000000;
-  border-right: solid 10px;
-  transition: all 3s linear;
-  &:hover {
-    border-right: none;
-    background-image: url(http://127.0.0.1:8000/img/empresa/vision_.jpg);
-    width: 100%;
-    height: 100%;
-    color: transparent;
-    background-size: cover;
-    width: 80vh;
-    height: 80%;
-  }
+  border-left: solid 10px;
+  transition: all 2s linear;
 `;
 
 const Texto = styled.div`
@@ -141,6 +217,28 @@ const Divtres = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
+  position:relative;
+  @media (max-width: 520px) {
+    height: 15vh;
+    & h2{
+      text-align:center;
+    }
+    }
+  
+  &:hover {
+    & h2{
+      border-left: none;
+    color: transparent;
+    background-size: cover;
+    }
+    & img{
+      @media (max-width: 520px) {
+        display:none;
+      }
+      display:flex;
+      z-index:-1;
+    }
+    }
 `;
 const Divcuatro = styled.div`
   width: 50%;
@@ -148,6 +246,13 @@ const Divcuatro = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
+  @media (max-width: 520px) {
+    height: 110%;
+    margin:1em 0;
+    width:80%;
+   
+    }
+
 `;
 const Textob = styled.div`
   background-color: #222f49;
@@ -168,8 +273,6 @@ const Textob = styled.div`
     width: 48vh;
     height: 48vh;
     content: "";
-    /* top:10vh;
-    left:30vh; */
     z-index: -1;
     border-radius: 2em;
     transform: rotate(7deg);

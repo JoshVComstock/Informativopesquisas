@@ -78,7 +78,7 @@ const Nav = () => {
 export default Nav;
 
 const Abot = styled.div`
-background-color:#B0D3C7;
+background-color:#4870a4;
 padding: 0 1em;
   display: none;
 height:30px;
@@ -86,6 +86,7 @@ position: relative;
 box-shadow:0px 2px 5px #0005;
 justify-content:center;
 align-items:center;
+cursor: pointer;
 & h2{
   font-weight:100;
   color:#fff;
@@ -166,23 +167,22 @@ const Res = styled.article`
   display: none;
   flex-direction: column;
   width: 100%;
-  background-color: #000;
+  background-color: #ffffff;
   list-style: none;
   z-index: 100;
 `;
 
 export const Linkss = styled(Link)`
   display: block;
-  color: #ffffffb8;
+  color: #222020eb;
   text-decoration: none;
   text-align:center;
   padding: 0.5em 0em 0 0.5em;
-  background-color: #405d89ce;
-  border-bottom:solid 1px #ffffff6b;
+  border-bottom:solid 1px #1413136b;
   height: 2.2em;
   &:hover {
-    background-color: #ffffff;
-    color: #000;
+    background-color: #4870a4dc;
+    color: #ffffff;
   }
 `;
 
