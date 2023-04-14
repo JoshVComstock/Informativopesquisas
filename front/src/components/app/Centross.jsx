@@ -24,11 +24,16 @@ export default Centross;
 const Content = styled.div`
   width: 100%;
   height: 100%;
+  overflow:hidden;
 `;
 const Titulo = styled.h2`
   margin: 1em 2em 1em 3em;
   font-size: 2em;
-  border-left: 1em solid rgb(152, 33, 39);
+  border-left: 1em solid #B0D3C7;
+  @media (max-width: 520px) {
+    width:100%;
+    font-size:1.4em;
+  }
 `;
 
 

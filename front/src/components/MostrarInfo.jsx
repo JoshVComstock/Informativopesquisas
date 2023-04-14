@@ -39,7 +39,11 @@ const Sectionp = styled.div`
   position: relative;
   margin:0 auto;
   box-shadow:0px 3px 5px #0005;
-  justify-content: flex-start
+  justify-content: flex-start;
+  @media (max-width: 520px) {
+    width: 90%;
+  
+}
 `;
 
 const Cuerpo = styled.article`

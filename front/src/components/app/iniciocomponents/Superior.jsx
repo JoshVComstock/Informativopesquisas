@@ -169,5 +169,8 @@ export const H3 = styled.h1`
   padding: 10px;
   text-align: left;
   border-left: 10px solid #f8f8f8;
-
+  @media (max-width: 520px) {
+    width:100%;
+    font-size:1.4em;
+  }
 `;

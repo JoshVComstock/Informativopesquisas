@@ -32,6 +32,7 @@ const Informaciones = () => {
         <Pad>
       <Headercomp />
       <Contenidos>
+        <Encerar>
         <Divpadrecap>
           {capsula.map((v, i) => (
             <Divcapsula key={i}>
@@ -39,11 +40,12 @@ const Informaciones = () => {
               <Titulocapsula>{v.titulo}</Titulocapsula>
               <Abutton  onClick ={() => {
                 setEnviar(v) ;
-              }}>Ver más</Abutton>
+              }}>Leer</Abutton>
             </Divcapsula>
           ))}
         
         </Divpadrecap>
+        </Encerar>
         <MostrarInfo enviard={enviar}/>
       </Contenidos>
   
@@ -63,6 +65,12 @@ const Contenidos = styled.section`
   flex-direction:row;
   justify-content:center;
   align-items:center;
+  overflow:hidden;
+
+  @media (max-width: 520px) {
+    flex-direction:column;
+  
+}
 `;
 // buscador
 export const Pad = styled.div`
@@ -122,20 +130,27 @@ const Divpadrecap = styled.div`
   gap: 0.3em;
   justify-content:center;
   align-items:center;
-  width:55%;
+  width:100%;
   height:120vh;
   overflow-y:scroll;
-  &::after{
-    position: absolute;
-    content: "";
-    background-color: #F7C9B5;
-    height: 400px;
-    width: 400px;
-    border-radius: 50%;
-    z-index: -1;
-    left: -10%;
-  }
+  @media (max-width: 520px) {
+  display: flex;
+  flex-direction:row;
+  flex-wrap: nowrap;
+height:100%;
+}
+  
 `;
+
+const Encerar = styled.section`
+width:100%;
+@media (max-width: 520px) {
+width:auto;
+
+  overflow-x:scroll;
+}
+`;
+
 const Divcapsula = styled.div`
   width: 300px;
   height: 300px;
@@ -144,37 +159,80 @@ const Divcapsula = styled.div`
   color:#fff;
   flex-direction: column;
   text-align: justify;
-  background-color: #5f71a7;
   list-style: none;
   align-items :center;
   position:relative;
   justify-content: flex-start;
   box-shadow:0px 2px 5px #0000006a;
-  filter:grayscale(0%) contrast(1.1);
+  &::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+  &::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #003cff9b;
+    border-radius:50%;
+    top:-50%;
+    left:-50%;
+    display:none;
+  }
   transition:all 0.5s ease-out;
   &:hover{
+    &::after{
+      display:flex;
+  transition:all 0.5s ease-out;
+      
+    }
+    &::before{
+      opacity: 0.5;
+      z-index:2;
+  }
     transform:scale(1.02);
+   & button{
+    z-index:3;
+    background-color:#003cff9b;
+    color:#ffffff;
+    font-size:1.2em;
+    bottom:-10%;
+right:-10%;
+   }
     & h3 {
-      display:block;
+    z-index:3;
+      display:flex;
     }
   }
+  @media (max-width: 520px) {
+    width: 300px;
+  height: 300px;
+  margin:0 0 0 2em ;
+}
+
+
+
 `;
 export const Abutton = styled.button`
   display: flex;
   justify-content: center;
   align-items:center;
-  padding: 0.5em 1.5em;
+  padding: 4em 2em;
   color: #fff;
   text-decoration: none;
-  width: 40%;
-  border-radius:1em  1em 0 0;
+  width: 60%;
+  border-radius:90%  0em 0 0;
   background-color: #333f7291;
 border:none;
 box-shadow:0px 1px 5px #0005;
   cursor: pointer;
 position:absolute;
-bottom:0;
-left:25%;
+bottom:-10%;
+right:-10%;
+
 `;
 
 const Titulocapsula = styled.h3`
@@ -184,8 +242,9 @@ font-weight:100;
 text-align: center;
 height:auto;
 width:100%;
+height:100%;
 position:absolute;
-bottom:20%;
-background-color:#a6a9b291;
+justify-content:center;
+align-items:center;
 padding:0.2em 0;
 `;
