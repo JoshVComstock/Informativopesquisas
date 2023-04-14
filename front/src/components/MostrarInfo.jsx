@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const MostrarInfo = ({ enviard }) => {
-  const [titulo, setTitulo] = useState();
+  const [titulo, setTitulo] = useState("Escoge una capsula");
   const [image, setImage] = useState();
-  const [descripcion, setDescripcion] = useState();
+  const [descripcion, setDescripcion] = useState("La vida es mejor si estas informado/a");
 
   useEffect(() => {
     if (Object.keys(enviard).length > 0) {
@@ -31,12 +31,15 @@ const MostrarInfo = ({ enviard }) => {
 };
 export default MostrarInfo;
 const Sectionp = styled.div`
-  width: 45%;
-  height: 100%;
+  width: 40%;
+  height: 110vh;
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  background-color:#F6F6F6;
   position: relative;
+  margin:0 auto;
+  box-shadow:0px 3px 5px #0005;
+  justify-content: flex-start
 `;
 
 const Cuerpo = styled.article`
@@ -45,8 +48,9 @@ const Cuerpo = styled.article`
   width: 90%;
   margin: 0 auto;
   height: 80%;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  gap: 3em;
 `;
 const Img = styled.img`
   width: 250px;

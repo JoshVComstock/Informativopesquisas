@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { Link, Outlet } from "react-router-dom";
+import face from "../assets/redes/facebook.png";
+import twi from "../assets/redes/gorjeo.png";
+import insta from "../assets/redes/instagram.png";
+
 const Footer = () => {
   // traemos datos
   const [centrosdiagnostico, setCentrosdiagnostico] = useState([]);
@@ -16,20 +20,16 @@ const Footer = () => {
     const respuesta = await response?.json();
     setCentrosdiagnostico(respuesta);
   }
-
   useEffect(() => {
     mostrardiagnostico();
   }, []);
-
   return (
     <>
       <Footerr>
-
        <Divredes>
-        <a href="#">Facebock</a>
-        <a href="#">intagram</a>
-        <a href="#">Twiter</a>
-        <a href="#">linkedink</a>
+       <img src={face}  />
+       <img src={twi} />
+       <img src={insta} />
        </Divredes>
        <Diva>
 
@@ -105,12 +105,11 @@ gap:1em;
   background-color:#ffffff87;
   z-index:1;
 }
-& a{
-  background-color:#fff;
+& img{
   z-index:2;
-  color:#39725e;
-  text-decoration:none;
-  padding:0.5em 1em;
+  width:35px;
+  height:35px;
+  background-color:#0b2559;
 }
 `;
 const Diva = styled.div`
@@ -125,7 +124,7 @@ const Footerr = styled.div`
   width: 100%;
   height: 400px;
   max-height: 450px;
-  background-color: #0b2559f1;
+  background-color: #0b2559;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -141,6 +140,19 @@ const Footerr = styled.div`
     left: -10%;
     animation: ${animation} 10s linear infinite;
   }
+
+  @media (max-width: 520px) {
+    & section{
+      display :none;
+    }
+    & article{
+      width:100%;
+    }
+  }
+
+
+
+
 `;
 
 const Navegacion = styled.div`
@@ -154,8 +166,14 @@ const Navegacion = styled.div`
   list-style: none;
   overflow: hidden;
   justify-content: center;
+  @media (max-width: 520px) {
+      display :none;
+  }
+  @media (max-width: 980px) {
+      display :none;
+  }
 `;
-const Formulario = styled.div`
+const Formulario = styled.section`
   width: calc(100% / 3);
   height:100%;
   background-color: #B0D3C7;
@@ -177,8 +195,14 @@ const Links = styled(Link)`
     background-color: #ffffffea;
     color: #3c425c;
   }
+  @media (max-width: 520px) {
+      display :none;
+  }
+  @media (max-width: 980px) {
+      display :none;
+  }
 `;
-const Info = styled.div`
+const Info = styled.article`
   width: calc(100% / 3);
   display: flex;
   flex-direction: column;
@@ -187,6 +211,11 @@ const Info = styled.div`
   color: #ffffff;
   padding: 0 0 0 3em;
   height: 80%;
+  @media (max-width: 520px) {
+      width:100%;
+      padding: 0;
+      height:auto;
+  }
 `;
 const Titulo = styled.h2`
   font-size: 0.9em;
@@ -229,5 +258,8 @@ color:#fff;
     background-color: #ffffff;
     color: #000000;
     font-size: 15px;
+  }
+  @media (max-width: 520px) {
+      display :none;
   }
 `;

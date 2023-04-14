@@ -30,8 +30,7 @@ const Capsulascopm = () => {
               <Titulocapsula>{v.titulo}</Titulocapsula>
               <Parrafocapsula src={v.foto}></Parrafocapsula>
               <li><Links to="/informaciones">Ver más</Links></li>
-             
-            </Divcapsula>
+             </Divcapsula>
 
             ))}
         </Divpadrecap>
@@ -82,9 +81,20 @@ const Divcapsulas = styled.div`
   list-style: none;
   overflow: hidden; 
   @media (max-width: 980px) {
+    height:100%;
+  
+& section{
+  width:calc(100% / 4);
+ 
+} 
+}
+@media (max-width: 720px) {
+  height:100%;
 
 & section{
-width:100%;
+  width:calc(120% / 3);
+display:flex;
+   flex-direction:column;
 } 
 }
   @media (max-width: 520px) {
@@ -106,10 +116,15 @@ const Divpadrecap = styled.article`
   overflow: hidden; 
   padding:1.5em 0;
   background-color:#284c5c;
-  @media (max-width: 520px) {
+  @media (max-width: 980px) {
     gap: 1em ;
   }
-
+  @media (max-width: 720px) {
+    gap: 1em ;
+  } 
+   @media (max-width: 520px) {
+    gap: 1em ;
+  }
 `;
 const Divcapsula = styled.section`
   width: calc(80% / 4);

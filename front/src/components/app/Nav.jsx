@@ -1,89 +1,191 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Link , Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 const Nav = () => {
+  const [mostrarDiv, setMostrarDiv] = useState(false);
+  function handleClick() {
+    setMostrarDiv(!mostrarDiv);
+  }
   return (
     <>
-    <Bodydiv>
+      <Abot onClick={handleClick}> <h2>Tamizaje neonatal</h2></Abot>
+      <Res style={{ display: mostrarDiv ? 'flex' : 'none'}} >
+        <li>
+          <Linkss to="/">Inicio</Linkss>
+        </li>
+        <li>
+          <Linkss to="/programas">Programas</Linkss>
+        </li>
+        <li>
+          <Linkss to="/informaciones">Informaciones</Linkss>
+        </li>
+        <li>
+          <Linkss to="/centross">Centros</Linkss>
+        </li>
+        <li>
+          <Linkss to="/quienlorealiza">¿Quien lo realiza?</Linkss>
+        </li>
+
+        <li>
+          <Linkss to="/contactanos">Contactanos</Linkss>
+        </li>
+      </Res>
+      <Bodydiv>
         <Divlogo>
           <Divlogos>
-            <Imglogo src="https://unifranz.edu.bo/wp-content/themes/unifranz/dist/images/logo_583717f4.png" alt="Logo 1" />
-            <Imglogo src="https://www.biotech.com.bo/Administrador/images/logo.png" alt="Logo 2" />
-            <Imglogo src="https://www.minsalud.gob.bo/images/web/SedesSanta.jpg" alt="Logo 3" />
-            
+            <Imglogo
+              src="https://unifranz.edu.bo/wp-content/themes/unifranz/dist/images/logo_583717f4.png"
+              alt="Logo 1"
+            />
+            <Imglogo
+              src="https://www.biotech.com.bo/Administrador/images/logo.png"
+              alt="Logo 2"
+            />
+            <Imglogo
+              src="https://www.minsalud.gob.bo/images/web/SedesSanta.jpg"
+              alt="Logo 3"
+            />
           </Divlogos>
-          </Divlogo>
+        </Divlogo>
         <Nava>
           <Divnav>
-            <li><Links to="/">Inicio</Links></li>
-            <li><Links to="/programas">Programas</Links></li>
-            <li><Links to="/informaciones">Informaciones</Links></li>
-            <li><Links to="/centross">Centros</Links></li>
-            <li><Links to="/quienlorealiza">¿Quien lo realiza?</Links></li>
-            <li><Links to="/colaboraciones">Colaboracion</Links></li>
-            <li><Links to="/contactanos">Contactanos</Links></li>
+            <li>
+              <Links to="/">Inicio</Links>
+            </li>
+            <li>
+              <Links to="/programas">Programas</Links>
+            </li>
+            <li>
+              <Links to="/informaciones">Informaciones</Links>
+            </li>
+            <li>
+              <Links to="/centross">Centros</Links>
+            </li>
+            <li>
+              <Links to="/quienlorealiza">¿Quien lo realiza?</Links>
+            </li>
+            <li>
+              <Links to="/contactanos">Contactanos</Links>
+            </li>
           </Divnav>
-     
         </Nava>
- 
-    </Bodydiv>
-    <Outlet/>
-</>
-
-
+      </Bodydiv>
+      <Outlet />
+    </>
   );
 };
 
 export default Nav;
 
-const Bodydiv = styled.div`
-  position:absolute;
-  width:100%;
-  display: flex;
-  flex-direction: column;
-  z-index:2;
-  @media (max-width: 980px) {
-   & section{
-    margin-top:15px;
-width: 80%;
-height: 40px;
-   }
-& nav div{
-  height: 40px;
+const Abot = styled.div`
+background-color:#B0D3C7;
+padding: 0 1em;
+  display: none;
+height:30px;
+position: relative;
+box-shadow:0px 2px 5px #0005;
+justify-content:center;
+align-items:center;
+& h2{
+  font-weight:100;
+  color:#fff;
+  font-size:1.1em;
 }
-& nav div li link{
-font-size:1em;
+&::before{
+position:absolute;
+width:15px;
+height:1.2px;
+background-color:#ffffff;
+content:"";
+top:25%;
+right:5%;
+};
+&::after{
+position:absolute;
+width:15px;
+height:1.2px;
+background-color:#ffffff;
+content:"";
+top:50%;
+right:5%;
+}
 
-}
-   & button{
-    margin: 1em;
-  padding: 0.5em 1em;
-   }
- 
-   }
-   @media (max-width: 720px) {
-   & section{
-    margin-top:10px;
-    width: 90%;
-    height: 35px;
-   }
-& nav div{
-  height: 35px;
-  width:85%;
-}
-   & button{
-    margin: 0.5em;
-  padding: 0.4em 0.8em;
-   }
- 
-   }
-   @media (max-width:520px) {
-    display:none;
-    & nav div{
- 
-}
+  @media (max-width: 520px) {
+    display: flex;
+    z-index: 100;
   }
 `;
+const Bodydiv = styled.div`
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  @media (max-width: 980px) {
+    & section {
+      margin-top: 15px;
+      width: 80%;
+      height: 40px;
+    }
+    & nav div {
+      height: 40px;
+    }
+    & nav div li link {
+      font-size: 1em;
+    }
+    & button {
+      margin: 1em;
+      padding: 0.5em 1em;
+    }
+  }
+  @media (max-width: 720px) {
+    & section {
+      margin-top: 10px;
+      width: 90%;
+      height: 35px;
+    }
+    & nav div {
+      height: 35px;
+      width: 90%;
+    }
+    & button {
+      margin: 0.5em;
+      padding: 0.4em 0.8em;
+    }
+  }
+  @media (max-width: 520px) {
+    display: none;
+    & nav div {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+`;
+const Res = styled.article`
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  background-color: #000;
+  list-style: none;
+  z-index: 100;
+`;
+
+export const Linkss = styled(Link)`
+  display: block;
+  color: #ffffffb8;
+  text-decoration: none;
+  text-align:center;
+  padding: 0.5em 0em 0 0.5em;
+  background-color: #405d89ce;
+  border-bottom:solid 1px #ffffff6b;
+  height: 2.2em;
+  &:hover {
+    background-color: #ffffff;
+    color: #000;
+  }
+`;
+
 const Divnav = styled.div`
   display: flex;
   list-style: none;
@@ -92,26 +194,25 @@ const Divnav = styled.div`
   background: #5e636d9e;
   padding: 15px;
   justify-content: center;
-    align-items: center;
+  align-items: center;
 `;
 const Divlogo = styled.div`
- width: 100%;
- display: flex;
+  width: 100%;
+  display: flex;
   justify-content: center;
 `;
-const Divlogos=styled.section`
-margin-top:30px;
-width: 80%;
-height: 60px;
-background: #ffffff4b;
-opacity:0.8;
-display: flex;
-justify-content: space-around;
-align-items: center;
-
+const Divlogos = styled.section`
+  margin-top: 30px;
+  width: 80%;
+  height: 60px;
+  background: #ffffff4b;
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 `;
 const Imglogo = styled.img`
-   height: 55%;
+  height: 55%;
   background-size: cover;
   transition: all 2s;
   &:hover {
@@ -119,8 +220,7 @@ const Imglogo = styled.img`
   }
 `;
 
-
-export const Links = styled (Link)`
+export const Links = styled(Link)`
  color:#fff;
 text-decoration: none;
 padding: 20px;
@@ -132,9 +232,12 @@ font-size:0.6em;
   }
   @media (max-width: 720px) {
     padding: 10px;
+  font-size:0.7em;
+  }
+  @media (max-width: 520px) {
+    padding: 10px;
   font-size:0.5em;
   }
-font-family: 'Poppins', sans-serif;
   &:hover {
     background-color: #ffffffea;
     color:#3c425c;
@@ -144,10 +247,10 @@ font-family: 'Poppins', sans-serif;
 
 
 `;
-const Nava=styled.nav`
-width:100%;
-height: 90px;
-display: flex;
-justify-content: center;
-align-items: center;
+const Nava = styled.nav`
+  width: 100%;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

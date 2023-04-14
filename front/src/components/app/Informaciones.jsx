@@ -66,7 +66,7 @@ const Contenidos = styled.section`
 `;
 // buscador
 export const Pad = styled.div`
-  background-color:#F6F6F6;
+  background-color:#fff;
 `;
 export const Divsearchpadre = styled.div`
   max-width: 100%;
@@ -122,8 +122,8 @@ const Divpadrecap = styled.div`
   gap: 0.3em;
   justify-content:center;
   align-items:center;
-  width:50%;
-  height:100vh;
+  width:55%;
+  height:120vh;
   overflow-y:scroll;
   &::after{
     position: absolute;
@@ -154,6 +154,9 @@ const Divcapsula = styled.div`
   transition:all 0.5s ease-out;
   &:hover{
     transform:scale(1.02);
+    & h3 {
+      display:block;
+    }
   }
 `;
 export const Abutton = styled.button`
@@ -175,6 +178,7 @@ left:25%;
 `;
 
 const Titulocapsula = styled.h3`
+display:none;
 font-size:1.3em;
 font-weight:100;
 text-align: center;
