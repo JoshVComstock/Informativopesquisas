@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import {
   Containerdiv,
   Container,
@@ -23,9 +23,9 @@ import Registrocentros from "../components/centros/Registrocentros";
 import { getCentros } from "../services/centros";
 import { UseFech } from "../hooks/useFech";
 import { deleteCentros } from "../services/centros";
-import {showImagen} from "../services/noimagen"
+import { showImagen } from "../services/noimagen";
 const Centros = () => {
-  const { loading,getApi, res: centro } = UseFech(getCentros);
+  const { loading, getApi, res: centro } = UseFech(getCentros);
   const [actual, setActual] = useState({});
   if (loading) {
     return (
@@ -67,9 +67,7 @@ const Centros = () => {
                   <Td>{v.centro_diagnostico}</Td>
                   <Td>{v.sede}</Td>
                   <Td>{v.centro}</Td>
-                  <Td>
-                    {showImagen(v.foto)}
-                  </Td>
+                  <Td>{showImagen(v.foto)}</Td>
                   <Td>{v.telefono}</Td>
                   <Td>{v.dirreccion}</Td>
                   <Td>
