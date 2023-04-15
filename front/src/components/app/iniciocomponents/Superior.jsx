@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Typewriter from 'typewriter-effect';
+import { Link, Outlet } from "react-router-dom";
 
 const Superior = () => {
   const [superior, setSuperior] = useState([]);
@@ -44,7 +45,7 @@ const Superior = () => {
 />
         </H3>
         <Parrafotip>{v.descripcion}</Parrafotip>
-        <Butontitulo> Más informacion</Butontitulo>
+        <Butontitulo>  <Links to="/informaciones">Informaciones</Links></Butontitulo>
       </Contenidodiv>
       </Titulodiv>
       ))}
@@ -56,6 +57,10 @@ const Superior = () => {
 
 export default Superior;
 
+export const Links = styled(Link)`
+text-decoration:none;width:100%;
+height:100%;
+`;
 export const Imginicio = styled.img`
   position: absolute;
   top: 0;

@@ -58,16 +58,16 @@ const Navbarnav = styled.div`
   min-width: 100vh;
   display: flex;
   flex-direction: row;
-  background: #222f49;
+  background: #fafafa;
   overflow: hidden;
 `;
 const Datos = styled.div`
-  width: calc(100% - 200px);
+  width: calc(100% - 250px);
   background: #fff;
   border-radius: 50px;
 `;
 const Nav = styled.div`
-  width: 200px;
+  width: 250px;
   height: 100vh;
   background: #222f49;
   display: flex;
@@ -96,7 +96,7 @@ const Linkes = styled(Link)`
   text-decoration: none;
   color: #dce1de;
   transition: 0.5s;
-
+border-bottom:solid 1px #fff5;
   &:hover {
     border-radius: 15px 15px 15px 15px;
     background: #4155ea92;
@@ -112,13 +112,11 @@ const Linkes = styled(Link)`
 const Logo = styled.div`
   font-size: 16px;
   color: #fff;
-  border-radius: 30%;
-  border-bottom: 5px solid #4155ea92;
+
+  border-bottom: 2px solid #fafafa69;
   margin: 0px 5px 5px 5px;
   cursor: default;
   display: flex;
   justify-content: center;
 `;
-//#222f49
-//2e3049
-//3e239e93
+
