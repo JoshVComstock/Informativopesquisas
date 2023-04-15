@@ -43,7 +43,7 @@ const Tablecentrocopm = () => {
   return (
     <>
       {redescetros.map((v, i) => (
-    <div key={i} >
+    <Div key={i} >
     <Titulo>{v.red}</Titulo>
       <Tablacentro>
         <Tabla className="table">
@@ -68,24 +68,14 @@ const Tablecentrocopm = () => {
                 <Td>{e.telefono}</Td>
                 <Td>{e.horario_atencion}</Td>
                 <Td>
-                  <A href={e.mapa}>Ver mapa</A>
+                  <A href={e.mapa}>Mapa</A>
                 </Td>
               </Tb>
             </Tbody>
           ))}
-
-          <Tfoot>
-            <tr>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
-              <Th></Th>
-            </tr>
-          </Tfoot>
         </Tabla>
       </Tablacentro>
-      </div>
+      </Div>
        ))}
     </>
   );
@@ -95,32 +85,43 @@ export default Tablecentrocopm;
 
 const Titulo = styled.h2`
 font-size:20px;
-border-left:1em solid;
-margin-left:2em;
+border-left:0.5em solid #0000006a;
+margin:2em 0 0 2em;
 `;
 const Tb = styled.tr`
  background-color:#d7d8df;
   &:hover{
-    background-color:#2327367f;
+    background-color:#00000057;
     color:#fff;
     }
 `;
+const Div = styled.section`
+width:100%;
+
+`;
 const A = styled.a`
-color:#968989;
+color:#0037ff66;
+text-decoration:none;
+padding:0 10%;
+background-color:#fff;
+font-weight:bold;
+border-radius:0.5em ;
+@media (max-width: 520px) {
+   
+  }
 &:hover{
   color:#ffff;
+background-color:#0037ff66;
+font-weight:100;
+
 }
-`;
-const Tfoot = styled.tfoot`
-  background-color: #1e3c4d;
-  height:2em;
 `;
 const Tablacentro = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 1em;
   justify-content: center;
   align-items: center;
 `;
@@ -129,13 +130,21 @@ const Tabla = styled.table`
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.9rem;
+  @media (max-width: 520px) {
+    width:100%;
+    font-size:0.8em;
+    font-weight:100;
+  }
 `;
-const Thead = styled.thead``;
+const Thead = styled.thead`
+ font-weight:100;
+`;
 const Tr = styled.tr`
-  background-color: #1e3c4d;
-  color: #ffff;
+  background-color: #ffffff;
+  color: #211e1e;
   text-align: left;
-
+  font-weight:100;
+  box-shadow:0px 2px 5px #0005;
  
 `; 
 const Th = styled.th`
@@ -146,7 +155,9 @@ const Tbody = styled.tbody`
   height: 3em;
 `;
 const Td = styled.td`
-border:1px solid;
+border:0.5px solid #ffffff54;
 height:0em;
 padding:0 1em ;
+background-color:#0037ff66;
+color:#fff;
 `

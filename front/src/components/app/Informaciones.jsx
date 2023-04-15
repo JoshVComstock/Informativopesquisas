@@ -3,13 +3,12 @@ import styled, { keyframes } from "styled-components";
 
 import Headercomp from "./informacioncomponents/Headercomp";
 import Footer from "../footer";
-import Navegacioncomp from "./informacioncomponents/Navegacioncomp";
-import Contenidocomp from "./informacioncomponents/Contenidocomp";
-import { Link, Outlet } from "react-router-dom";
 
+import MostrarInfo from "../MostrarInfo";
 const Informaciones = () => {
   // traemos datos
   const [capsula, setCapsula] = useState([]);
+  const [enviar, setEnviar]=useState({});
 
   async function mostrarcapsula() {
     const response = await fetch("http://127.0.0.1:8000/api/capsula", {
@@ -25,32 +24,29 @@ const Informaciones = () => {
 
   useEffect(() => {
     mostrarcapsula();
+
   }, []);
 
   return (
     <>
         <Pad>
       <Headercomp />
-
-    <Divsearchpadre>
-        <Divsearch>
-          <Search type="text" placeholder="Buscar" />
-          <Botonsearch>
-            <img src="" alt="" />{" "}
-          </Botonsearch>
-        </Divsearch>
-      </Divsearchpadre>
       <Contenidos>
+        <Encerar>
         <Divpadrecap>
           {capsula.map((v, i) => (
             <Divcapsula key={i}>
               <Img src={v.foto} alt="" />
               <Titulocapsula>{v.titulo}</Titulocapsula>
-              <Parrafocapsula >{v.descripcion}</Parrafocapsula>
-              <Abutton>Ver más</Abutton>
+              <Abutton  onClick ={() => {
+                setEnviar(v) ;
+              }}>Leer</Abutton>
             </Divcapsula>
           ))}
+        
         </Divpadrecap>
+        </Encerar>
+        <MostrarInfo enviard={enviar}/>
       </Contenidos>
   
       <Footer></Footer>
@@ -64,22 +60,26 @@ export default Informaciones;
 const Contenidos = styled.section`
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   margin:1em 0;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+
+  @media (max-width: 520px) {
+    flex-direction:column;
+  
+}
 `;
 // buscador
 export const Pad = styled.div`
-  background-color:#F6F6F6;
+  background-color:#fff;
 `;
 export const Divsearchpadre = styled.div`
   max-width: 100%;
   display: flex;
   justify-content: flex-end;
- 
-
 `;
 export const Divsearch = styled.div`
   width: 100%;
@@ -93,7 +93,6 @@ export const Divsearch = styled.div`
   
 `;
 export const Search = styled.input`
- 
   background: transparent;
   flex: 1;
   border: none;
@@ -102,7 +101,7 @@ export const Search = styled.input`
   font-size: 16px;
   color:#fff;
   &:focus {
-    border-bottom: 1px solid #0066ff;
+ border-bottom: 1px solid #0066ff;
   }
 `;
 export const Botonsearch = styled.button`
@@ -120,15 +119,11 @@ export const Botonsearch = styled.button`
       brightness(107%) contrast(101%);
   }
 `;
-
-// capsulas
-
 const Img = styled.img`
 width:100%;
 height:100%;
 position:relative;
 `;
-
 const Divpadrecap = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -136,18 +131,26 @@ const Divpadrecap = styled.div`
   justify-content:center;
   align-items:center;
   width:100%;
-  height:auto;
-  &::after{
-    position: absolute;
-    content: "";
-    background-color: #F7C9B5;
-    height: 400px;
-    width: 400px;
-    border-radius: 50%;
-    z-index: -1;
-    left: -10%;
-  }
+  height:120vh;
+  overflow-y:scroll;
+  @media (max-width: 520px) {
+  display: flex;
+  flex-direction:row;
+  flex-wrap: nowrap;
+height:100%;
+}
+  
 `;
+
+const Encerar = styled.section`
+width:100%;
+@media (max-width: 520px) {
+width:auto;
+
+  overflow-x:scroll;
+}
+`;
+
 const Divcapsula = styled.div`
   width: 300px;
   height: 300px;
@@ -156,47 +159,92 @@ const Divcapsula = styled.div`
   color:#fff;
   flex-direction: column;
   text-align: justify;
-  background-color: #5f71a7;
   list-style: none;
   align-items :center;
   position:relative;
   justify-content: flex-start;
   box-shadow:0px 2px 5px #0000006a;
-  filter:grayscale(0%) contrast(1.1);
+  &::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+  &::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #003cff9b;
+    border-radius:50%;
+    top:-50%;
+    left:-50%;
+    display:none;
+  }
   transition:all 0.5s ease-out;
   &:hover{
-    transform:scale(1.02);
+    &::after{
+      display:flex;
+  transition:all 0.5s ease-out;
+      
+    }
+    &::before{
+      opacity: 0.5;
+      z-index:2;
   }
+    transform:scale(1.02);
+   & button{
+    z-index:3;
+    background-color:#003cff9b;
+    color:#ffffff;
+    font-size:1.2em;
+    bottom:-10%;
+right:-10%;
+   }
+    & h3 {
+    z-index:3;
+      display:flex;
+    }
+  }
+  @media (max-width: 520px) {
+    width: 300px;
+  height: 300px;
+  margin:0 0 0 2em ;
+}
+
+
+
 `;
 export const Abutton = styled.button`
   display: flex;
   justify-content: center;
   align-items:center;
-  padding: 0.5em 1.5em;
+  padding: 4em 2em;
   color: #fff;
   text-decoration: none;
-  width: 40%;
-  border-radius:1em  1em 0 0;
+  width: 60%;
+  border-radius:90%  0em 0 0;
   background-color: #333f7291;
 border:none;
 box-shadow:0px 1px 5px #0005;
   cursor: pointer;
 position:absolute;
-bottom:0;
-left:25%;
+bottom:-10%;
+right:-10%;
+
 `;
 
 const Titulocapsula = styled.h3`
+display:none;
 font-size:1.3em;
 font-weight:100;
 text-align: center;
 height:auto;
 width:100%;
+height:100%;
 position:absolute;
-bottom:20%;
-background-color:#a6a9b291;
+justify-content:center;
+align-items:center;
 padding:0.2em 0;
 `;
-const Parrafocapsula = styled.p`
-display:none;`; 
-

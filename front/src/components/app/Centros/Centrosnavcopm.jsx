@@ -30,11 +30,22 @@ export const Imginicio= styled.img`
   background-size: cover;
   box-shadow:  -12px -12px 24px #151616;
   clip-path: polygon(100% 0, 100% 100%, 42% 100%, 33% 50%, 42% 0);
+ 
+
 
 `;
 export const Titulodiv = styled.div`
-  
   position: relative;
   width: 100%;
   height: 80vh;
+  @media (max-width: 520px) {
+  height: 50vh;
+  & img{
+    display:none;
+  }
+   
+  & h2{
+    width:100%;
+  }
+}
 `;

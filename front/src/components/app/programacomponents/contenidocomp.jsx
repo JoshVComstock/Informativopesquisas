@@ -19,7 +19,7 @@ const Contenidocomp = () => {
 
   useEffect(() => {
     mostrarcontenidos();
-  }, []);
+  }, [])
 
   return (
     <Divprogra>
@@ -38,33 +38,49 @@ const Contenidocomp = () => {
           </Parrafocn>
         </Contendidodos>
       </Content>
-        ))};
+        ))}
     </Divprogra>
-  );
-};
+  )
+}
 
 export default Contenidocomp;
 
-const Divprogra = styled.div`
+const Divprogra = styled.section`
   width: 100%;
-  height: 47vh;
+  height: 55vh;
   display: flex;
   justify-content: center;
+  flex-direction:row;
+  @media (max-width: 720px) {
+    height: 120vh;
+  }
+  @media (max-width: 520px) {
+    height: 100vh;
+  }
 `;
 
 const Content = styled.div`
-  width: 80%;
-  max-width: 1350px;
+  width: 90vw;
   height: 45vh;
-  max-height: 400px;
   z-index: 2;
   display: flex;
   margin-top:3em;
   gap:3em; 
+    @media (max-width: 720px) {
+    flex-direction:column;
+  width:100%;
+  height:100%;
+  justify-content:center;
+  align-items:center;
+  margin:0 auto;
+  position:relative;
+  gap:4em; 
+    }
+   
 `;
 const Contendidouno = styled.div`
-  width: calc(100% / 2);
-  height: 100%;
+  width: 50%;
+  height: 50vh;
   background-color: #f779d9;
   display: flex;
   text-align: center;
@@ -72,19 +88,29 @@ const Contendidouno = styled.div`
   justify-content: center;
   justify-content: space-evenly;
   transition: all 2s;
+  @media (max-width: 520px) {
+    width: 90%;
+  };
   &::before{
     content:"";
     position:absolute;
-    width: 38%;
-    height: 45%;
+    width: 42%;
+    height: 50vh;
     transform:rotate(-8deg);
     z-index:-1;
 transition:all 3s;
     background-color:#22728b6c;
+    @media (max-width: 520px) {
+    width: 90%;
+    height:45vh;
+    transform:rotate(-3deg);
+
+  };
   }
   &:hover{
     width: calc(102% / 2);
-  height: 102%;&::before{
+    height:50vh;
+&::before{
     transform:rotate(0deg);
   }
   }
@@ -92,24 +118,33 @@ transition:all 3s;
 const Contendidodos = styled.div`
   width: calc(100% / 2);
   background-color: #74bacf;
-  height: 100%;
+  height: 50vh;
   display: flex;
   text-align: center;
   flex-direction: column;
   justify-content: space-evenly;
+  @media (max-width: 520px) {
+    width: 90%;
+  };
   &::before{
     content:"";
     position:absolute;
-    width: 38%;
-    height: 45%;
+    width: 42%;
+    height:50vh;
     transform:rotate(8deg);
     z-index:-1;
     background-color:#8b22226c;
     transition:all 3s;
+    @media (max-width: 520px) {
+    width: 90%;
+    height:45vh;
+    transform:rotate(-3deg);
+
+  };
   }
   &:hover{
     width: calc(102% / 2);
-  height: 102%;&::before{
+  height: 50vh;&::before{
     transform:rotate(0deg);
   }
 }
@@ -118,6 +153,9 @@ const Contendidodos = styled.div`
 const Parrafocn = styled.p`
   text-align: justify;
   padding: 0 3em;
+  width:100%; 
+  height:30vh;
+  overflow:hidden;
 `;
 const Titulocn = styled.h2`
   color: #fff;

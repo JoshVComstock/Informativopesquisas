@@ -18,5 +18,6 @@ export default Quienlorealiza;
 const Contenedorpadre = styled.div`
   width: 100%;
   height: 100%;
+
 `;
 

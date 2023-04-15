@@ -1,17 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
 const Superiorcomp = () => {
+
+  const [contenidos, setContenidos] = useState([]);
+
+  async function mostrarcontenidos() {
+    const response = await fetch("http://127.0.0.1:8000/api/programa", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    });
+    const respuesta = await response?.json();
+    setContenidos(respuesta);
+  }
+
+  useEffect(() => {
+    mostrarcontenidos();
+  }, []);
+
   return (
-    <Superiror>
+    <>
+    {contenidos.map((v,i) => (
+    <Superiror key={i}>
+      
     <Imginicio
-      src="https://images.pexels.com/photos/119604/baby-foot-blanket-newborn-119604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-      alt=""
+      src={v.foto}
     />
     <Contenidodiv>
-      <H3>Programa de Tamizaje NEONATAL</H3>
-
+      <H3>{v.nombre}</H3>
     </Contenidodiv>
+   
   </Superiror>
+     ))};
+    </>
   )
 }
 
@@ -21,6 +44,16 @@ const Superiror = styled.div`
   position: relative;
   width: 100%;
   height: 80vh;
+position:relative;
+  @media (max-width: 720px) {
+  height:100%;
+  & img{
+    display:none;
+  }
+& h1 {
+  width:100%;
+}
+ }
 `
 const Imginicio = styled.img`
   position: absolute;
@@ -42,30 +75,10 @@ const Contenidodiv = styled.div`
   text-align: center;
   background-color: #222f49;
 `;
-const Titulodiv = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100vh;
-`;
-const Butontitulo = styled.button`
-  z-index: 1;
-  background-color: #ffffff;
-  color: #2e3049;
-  border: none;
-  margin: 3em;
-  padding: 1em 5em;
-  transition: all 1s;
-  cursor: pointer;
-  border-radius: 5px;
-  &:hover {
-    background-color: #a6445e;
-    color: #fff;
-  }
-`;
-const H3 = styled.h2`
+
+const H3 = styled.h1`
   margin-top: 4em;
-  max-width: 30%;
-  min-width: 20%;
+  width: 30%;
   font-family: "Poppins", sans-serif;
   color: #e0e0e0;
   font-size: 2em;

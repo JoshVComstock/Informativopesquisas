@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { Link, Outlet } from "react-router-dom";
+import face from "../assets/redes/facebook.png";
+import twi from "../assets/redes/gorjeo.png";
+import insta from "../assets/redes/instagram.png";
+
 const Footer = () => {
   const [centrosdiagnostico, setCentrosdiagnostico] = useState([]);
 
@@ -15,11 +19,9 @@ const Footer = () => {
     const respuesta = await response?.json();
     setCentrosdiagnostico(respuesta);
   }
-
   useEffect(() => {
     mostrardiagnostico();
   }, []);
-
   return (
     <>
       <Footerr>
@@ -128,7 +130,7 @@ const Footerr = styled.div`
   width: 100%;
   height: 400px;
   max-height: 450px;
-  background-color: #0b2559f1;
+  background-color: #0b2559;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,6 +146,19 @@ const Footerr = styled.div`
     left: -10%;
     animation: ${animation} 10s linear infinite;
   }
+
+  @media (max-width: 520px) {
+    & section{
+      display :none;
+    }
+    & article{
+      width:100%;
+    }
+  }
+
+
+
+
 `;
 
 const Navegacion = styled.div`
@@ -156,8 +171,15 @@ const Navegacion = styled.div`
   list-style: none;
   overflow: hidden;
   justify-content: center;
+  @media (max-width: 520px) {
+      display :none;
+  }
+  @media (max-width: 980px) {
+      display :none;
+      overflow:hidden;
+  }
 `;
-const Formulario = styled.div`
+const Formulario = styled.section`
   width: calc(100% / 3);
   height: 100%;
   background-color: #b0d3c785;
@@ -179,8 +201,14 @@ const Links = styled(Link)`
     border-bottom: 0.5px solid #fff;
     transition: 0.5s;
   }
+  @media (max-width: 520px) {
+      display :none;
+  }
+  @media (max-width: 980px) {
+      display :none;
+  }
 `;
-const Info = styled.div`
+const Info = styled.article`
   width: calc(100% / 3);
   display: flex;
   flex-direction: column;
@@ -189,6 +217,11 @@ const Info = styled.div`
   color: #ffffff;
   padding: 0 0 0 3em;
   height: 80%;
+  @media (max-width: 520px) {
+      width:100%;
+      padding: 0;
+      height:auto;
+  }
 `;
 const Titulo = styled.h2`
   font-size: 0.9em;
@@ -231,6 +264,9 @@ const Ingreso = styled.input`
     background-color: #ffffff;
     color: #000000;
     outline: none;
+  }
+  @media (max-width: 520px) {
+      display :none;
   }
 `;
 const Buton = styled.input`

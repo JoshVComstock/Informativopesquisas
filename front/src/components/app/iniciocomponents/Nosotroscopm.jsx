@@ -65,17 +65,42 @@ padding:1em;
     z-index: -1;
     border-radius: 0 5em 5em 0;
   }
+
+  @media (max-width: 768px) {
+& h2{
+  width:100%;
+  font-size:1.5em;
+}
+& img{
+  display:none;
+}
+  }
+  @media (max-width: 420px) {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    & section{
+      display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    overflow:hidden;
+    width:80%;
+    height:450px;
+    }
+& h2{
+  width:100%;
+  font-size:1em;
+}
+& img{
+  width:150px;
+  height:150px;
+}
+  }
+
 `;
 
-const Parrafosup = styled.p`
-  margin: 1rem 0;
-  width: 60%;
-  text-align: justify;
-  line-height: 1.6;
-  color: #ffffff;
-  max-height: 300px;
-  overflow: hidden;
-`;
 
 const H3 = styled.h3`
   text-align: center;
@@ -120,7 +145,7 @@ const Parrafo = styled.p`
   overflow: hidden;
 `;
 
-const Divbiotech = styled.div`
+const Divbiotech = styled.section`
   padding: 2.2rem;
   display: flex;
  width:600px;

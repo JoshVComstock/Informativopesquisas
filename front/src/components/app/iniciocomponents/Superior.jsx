@@ -82,7 +82,12 @@ export const Parrafotip = styled.p`
   text-align: left;
   margin-left: 2em;
   @media (max-width: 768px) {
+   width:20%;
+   font-size:1em;
+    }
+    @media (max-width: 420px) {
    width:100%;
+   margin:5em 0 0 0;
     }
 `;
 export const Contenidodiv = styled.div`
@@ -111,29 +116,32 @@ export const Titulodiv = styled.div`
   padding: 0.5em 1em;
    }
    & h1{
-    width:100%;
-   margin-top: 2em;
   font-size:1.5em;
    }
     }
 
-    @media (max-width: 720px) {
-   height:55vh;
+  @media (max-width: 720px) {
+   height:50vh;
     & img{
-      display:none;
+      height:50vh;
     }
+    & h1{
+    width:100%;
+margin-top:4em;
+  font-size:1em;
+   }
    & button{
-    margin: 1em;
+    margin: 0em 1em;
   padding: 0.5em 1em;
    }}
-   @media (max-width: 420px) {
-   height:40vh;
+   @media (max-width: 520px) {
+   height:50vh;
     & img{
       display:none;
     }
    & button{
     margin: 0.6em;
-  padding: 0.2em 0.5em;
+    padding: 0.3em 0.8em;
    }}
 `;
 export const Butontitulo = styled.button`
@@ -155,12 +163,14 @@ export const Butontitulo = styled.button`
 export const H3 = styled.h1`
   margin-top: 4em;
   width: 30%;
-
   color: #e0e0e0;
   font-size: 2.5em;
   display: flex;
   padding: 10px;
   text-align: left;
   border-left: 10px solid #f8f8f8;
-
+  @media (max-width: 520px) {
+    width:100%;
+    font-size:1.4em;
+  }
 `;

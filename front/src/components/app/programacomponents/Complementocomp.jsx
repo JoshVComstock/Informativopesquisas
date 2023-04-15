@@ -38,7 +38,6 @@ const Complementocomp = () => {
         </Cteneniendo>
          
       ))}
-      ;
     </Ayuda>
   );
 };
@@ -55,19 +54,7 @@ const Ayuda = styled.div`
   text-align: start;
   
 `;
-// const animation = keyframes`
-//  0% {left: 16% ;
-//  }
-//   50% {left: 17%;
-//    }
-//   100% {left: 16%;
-//    }
-// `;
 
-const Img = styled.img`
-width:300px;
-height:300px;
-`;
 
 const Cteneniendo = styled.div`
   width: 50%;
@@ -78,7 +65,23 @@ const Cteneniendo = styled.div`
   align-items: center;
   background-color: #222f49;
   color: #fff;
-
+overflow:hidden;
+@media (max-width: 520px) {
+    width:70%;
+    &::before{
+      top:0;
+    }
+   &::after{
+    display:none;
+   } 
+  }
+   @media (max-width: 720px) {
+    width:70%;
+    &::after{
+      display:none;
+    }
+  
+  } 
   &::before {
     content: "";
     width: 450px;
@@ -90,8 +93,18 @@ const Cteneniendo = styled.div`
     border-radius: 50% 0;
     transform: translatey(-3em);
     transition:all 2s;
+    @media (max-width: 720px) {
+      width: 330px;
+    height: 330px;
+    left: 2em;
     
-           
+  }
+  @media (max-width: 520px) {
+      width: 230px;
+    height: 230px;
+    left: 2em;
+    
+  }      
   }
 &:hover{
 &::before{
@@ -116,10 +129,6 @@ const Cteneniendo = styled.div`
    
     transition:all 1s;
 
-/*  
-    box-shadow:  -12px -12px 24px #3a5e67,
-             12px 12px 24px #2d4850; */
-
     left:25%;
     border-radius: 0 50%  50% 0;
     
@@ -127,13 +136,21 @@ const Cteneniendo = styled.div`
   }
   border-radius:2em;
 `;
-
 const Title = styled.h2`
-  font-size: 35px;
+  font-size: 30px;
 `;
 const Contenidoa = styled.h4`
-
   font-size: 15px;
   text-align: justify;
   padding: 1em 5rem 1em 10em ; 
+  height:70%;
+  overflow:hidden;
+  @media (max-width: 520px) {
+      width: 100%;
+      padding:1em ; 
+  } 
+  @media (max-width: 720px) {
+      width: 100%;
+      padding:2em ; 
+  } 
 `;

@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400&display=swap');
-
 *{
   padding: 0;
   margin: 0;
@@ -7,14 +6,14 @@
   font-family: 'Mukta', sans-serif;
 }
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 12px;
 
 }
 ::-webkit-scrollbar-track {
-  background: #0205226b;
+  background: #e3e4e96b;
 
 }
 ::-webkit-scrollbar-thumb {
-  background: #ffffff93;
+  background: #002fff63;
   border-radius: 3em;
 }
