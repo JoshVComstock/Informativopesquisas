@@ -15,7 +15,7 @@ const Navbar = () => {
       <Nav>
         <Navlink>
           <Logo>
-            <h1>Admin page</h1>
+            <h1>Panel Administrativo</h1>
           </Logo>
           <Linkes to="portada">
             <Imgicons src={Portadaicons} alt="" /> Portada
@@ -57,29 +57,34 @@ export default Navbar;
 const Navbarnav = styled.div`
   min-width: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background: #fafafa;
   overflow: hidden;
 `;
 const Datos = styled.div`
-  width: calc(100% - 250px);
-  background: #fff;
+  width: 100%;
+  background: transparent;
   border-radius: 50px;
 `;
 const Nav = styled.div`
-  width: 250px;
-  height: 100vh;
-  background: #222f49;
+  width: 100%;
+  height: 10vh;
+  background: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
+  box-shadow:0px 2px 8px #0005;
+  position:fixed;
+
 `;
 const Navlink = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 90%;
   width: 100%;
   font-size: 17px;
+  gap:0.5em;
 `;
 const Imgicons = styled.img`
   width: 30px;
@@ -94,15 +99,17 @@ const Linkes = styled(Link)`
   margin: 10px 7px 0px 7px;
   padding: 15px;
   text-decoration: none;
-  color: #dce1de;
+  color: #232423;
   transition: 0.5s;
-border-bottom:solid 1px #fff5;
+  border-bottom: solid 1px #fff5;
+  gap:1em;
+ 
   &:hover {
-    border-radius: 15px 15px 15px 15px;
+transform:translateY(1em);
+    border-radius: 15px;
     background: #4155ea92;
     color: #fff;
     transition: 0.5s;
-    margin-left: 5px;
   }
   &:hover img {
     filter: invert(100%) sepia(1%) saturate(0%) hue-rotate(131deg)
@@ -110,13 +117,22 @@ border-bottom:solid 1px #fff5;
   }
 `;
 const Logo = styled.div`
-  font-size: 16px;
-  color: #fff;
-
-  border-bottom: 2px solid #fafafa69;
-  margin: 0px 5px 5px 5px;
   cursor: default;
   display: flex;
-  justify-content: center;
+  background-color:#4a0c71;
+  height:100%;
+  width:100%;
+  & h1 {
+    margin-left:0.2em;
+    color: #fff;
+    font-size: 1em;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 100;
+    &::first-letter {
+      font-size: 2em;
+    }
+  }
 `;
-

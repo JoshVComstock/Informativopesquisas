@@ -4,7 +4,18 @@ import styled from "styled-components";
 import Superiorcomp from "./programacomponents/superiorcomp";
 import Contenidocomp from "./programacomponents/contenidocomp";
 import Complementocomp from "./programacomponents/Complementocomp";
+import Loading from "../loading";
+import { Divloading } from "../../style/crud";
 const Programas = () => {
+  const { loading } = UseFech(getCapsulas);
+
+  if(loading){
+    return(
+      <Divloading>
+        <Divload/>
+      </Divloading>
+    )
+  }
   return (
     <Pad>
       <Superiorcomp />

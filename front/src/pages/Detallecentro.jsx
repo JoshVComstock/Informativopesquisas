@@ -39,7 +39,7 @@ const Detallecentro = () => {
     <Container>
       <Containerdiv>
         <Divtitulo>
-          <h1>Detalle centro</h1>
+          <h2>Detalle centro</h2>
         </Divtitulo>
         <Divcrudf>
           <Registrodetallecentro

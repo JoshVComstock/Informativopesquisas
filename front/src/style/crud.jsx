@@ -1,8 +1,10 @@
-import styled from "styled-components";
+import styled, { keyframes } from 'styled-components';
+
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height:calc(100% - 10vh);
+  margin-top:8vh;
 `;
 export const Containerdiv = styled.div`
   display: flex;
@@ -11,18 +13,17 @@ export const Containerdiv = styled.div`
 `;
 export const Divtitulo = styled.div`
   display: flex;
-  margin-top: 35px;
-  margin-left: 70px;
+  margin:2em;
   align-content: center;
-  font-size: 22px;
+  font-size: 1.2em;
 `;
 export const Divcrudf = styled.div`
-  min-height: calc(100% - 50px);
+  min-height: 100%;
   display: flex;
-  justify-content: space-around;
 `;
 export const Divformulario = styled.div`
-  width: 50%;
+  width: auto;
+  margin:1em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,10 +109,10 @@ export const Divh1 = styled.div`
   justify-content: center;
   margin-bottom: 20px;
   border-bottom: 2px solid #4155ea92;
-  border-radius: 50%;
+
 `;
 export const Divtabla = styled.div`
-  width: 60%;
+  width:auto;
   margin-right: 20px;
   height: 80vh;
   overflow-y: auto;
@@ -176,42 +177,38 @@ export const Img = styled.img`
   border-radius: 5px;
 `;
 export const Divloading = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 export const Divload = styled.div`
-  width: 48px;
-  height: 48px;
-  display: inline-block;
-  position: relative;
-  
-  &::after,
-  &::before {
+ width: 30px;
+  height: calc(30px*1.732);
+  display: grid;
+  background:
+    linear-gradient(#766DF4 0 0) top   /100% 1px,
+    linear-gradient(#766DF4 0 0) bottom/100% 1px,
+    linear-gradient(to bottom right, #0000 calc(50% - 2px),#766DF4 calc(50% - 1px),#0000 50%) top/100% calc(100% + 2px),
+    linear-gradient(to bottom left , #0000 calc(50% - 2px),#766DF4 calc(50% - 1px),#0000 50%) top/100% calc(100% + 2px); 
+  background-repeat: no-repeat;
+  animation: h7 4s infinite linear;
+
+  &:before,
+  &:after {
     content: "";
-    box-sizing: border-box;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 2px solid #005998 ;
-    position: absolute;
-    left: 0;
-    top: 0;
-    animation: animloader 2s linear infinite;
+    grid-area: 1/1;
+    background: inherit;
+    border:inherit;
+    animation: inherit;
   }
-  &::after {
-    animation-delay: 1s;
+
+  &:after {
+    animation-duration: 2s;
   }
-  @keyframes animloader {
-    0% {
-      transform: scale(0);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 0;
-    }
+
+  @keyframes h7 {
+    100% {transform: rotate(1turn)}
   }
 `;
