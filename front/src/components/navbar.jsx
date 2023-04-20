@@ -105,8 +105,8 @@ const Linkes = styled(Link)`
   gap:1em;
  
   &:hover {
-transform:translateY(1em);
-    border-radius: 15px;
+transform:translateY(0.5em);
+
     background: #4155ea92;
     color: #fff;
     transition: 0.5s;

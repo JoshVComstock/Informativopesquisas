@@ -5,7 +5,10 @@ import Superiorcomp from "./programacomponents/superiorcomp";
 import Contenidocomp from "./programacomponents/contenidocomp";
 import Complementocomp from "./programacomponents/Complementocomp";
 import Loading from "../loading";
-import { Divloading } from "../../style/crud";
+import { Divloading ,Divload} from "../../style/crud";
+import { UseFech } from "../../hooks/useFech";
+import { getCapsulas } from "../../services/capsulas";
+
 const Programas = () => {
   const { loading } = UseFech(getCapsulas);
 

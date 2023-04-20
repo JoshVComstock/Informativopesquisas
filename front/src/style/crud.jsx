@@ -3,8 +3,8 @@ import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height:calc(100% - 10vh);
-  margin-top:8vh;
+  height:calc(100% - 8vh);
+  margin-top:4vh;
 `;
 export const Containerdiv = styled.div`
   display: flex;
@@ -13,17 +13,27 @@ export const Containerdiv = styled.div`
 `;
 export const Divtitulo = styled.div`
   display: flex;
-  margin:2em;
+  margin:3em 0 0 2em;
   align-content: center;
-  font-size: 1.2em;
+  font-size: 1em; 
+  & h1{
+    font-weight:500;
+    &::first-letter{
+      color:#4a0c71;
+      font-size: 1.5em;
+      font-weight:600; 
+    }
+  }
 `;
 export const Divcrudf = styled.div`
   min-height: 100%;
   display: flex;
+  justify-content:center;
+  align-items:center;
 `;
 export const Divformulario = styled.div`
   width: auto;
-  margin:1em;
+  margin:0 1em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +43,7 @@ export const Form = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 30px;
+  padding: 1em;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 `;
@@ -113,10 +123,10 @@ export const Divh1 = styled.div`
 `;
 export const Divtabla = styled.div`
   width:auto;
-  margin-right: 20px;
-  height: 80vh;
-  overflow-y: auto;
-  
+  height: 70vh;
+  margin:0 1em;
+  overflow-x: scroll;
+  box-shadow:0 5px 5px #0005;
 `;
 export const Tabla = styled.table`
   width: 100%;
@@ -124,37 +134,44 @@ export const Tabla = styled.table`
   margin: 25px 0;
   font-size: 0.9rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  overflow-y: scroll;
+  
  
 `;
 export const Tr = styled.tr`
   background-color: #222f49;
   color: #ffff;
   text-align: left;
+  
 `;
 export const Trbody = styled.tr`
   border-bottom: 1px solid #dddddd;
   font-weight: bold;
   color: #003398;
+  
   &:nth-of-type(even) {
-    background-color: #f3f3f3;
+    background-color: #cdcde0;
   }
   &:last-of-type {
     border-bottom: 2px solid #005998;
   }
 `;
-export const Tablahead = styled.thead``;
+export const Tablahead = styled.thead`
+
+`;
 export const Td = styled.td`
-  padding: 12px 15px;
+
+  text-align: center;
+
 `;
 export const Th = styled.th`
-  padding: 15px 15px;
   text-align: center;
+  padding:0.5em 0px;
+  font-weight:400;
 `;
 export const Tddescripcion = styled.td`
-  padding: 12px 15px;
-  max-width: 150px;
-  overflow-y: auto;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 export const Botonesacciones = styled.button`
   padding: 0px;
