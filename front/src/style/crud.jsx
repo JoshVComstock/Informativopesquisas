@@ -173,8 +173,6 @@ export const Trbody = styled.tr`
 export const Tablahead = styled.thead``;
 export const Td = styled.td`
   text-align: center;
-<<<<<<< HEAD
-=======
   
   &p{
     display: -webkit-box;
@@ -183,7 +181,6 @@ export const Td = styled.td`
 overflow: hidden;
   }
 
->>>>>>> d86de22357367aee5d564af1f3f736e2839349bd
 `;
 export const Th = styled.th`
   text-align: center;
@@ -240,37 +237,6 @@ export const Divload = styled.div`
   background-repeat: no-repeat;
   animation: d3 1.5s infinite linear;
 
-<<<<<<< HEAD
-  @keyframes d3 {
-    0% {
-      background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
-        calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
-    }
-    16.67% {
-      background-position: calc(0 * 100% / 3) 0, calc(1 * 100% / 3) 50%,
-        calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
-    }
-    33.33% {
-      background-position: calc(0 * 100% / 3) 100%, calc(1 * 100% / 3) 0,
-        calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
-    }
-    50% {
-      background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 100%,
-        calc(2 * 100% / 3) 0, calc(3 * 100% / 3) 50%;
-    }
-    66.67% {
-      background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
-        calc(2 * 100% / 3) 100%, calc(3 * 100% / 3) 0;
-    }
-    83.33% {
-      background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
-        calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 100%;
-    }
-    100% {
-      background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
-        calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
-    }
-=======
   &:before,
   &:after {
     content: "";
@@ -285,6 +251,5 @@ export const Divload = styled.div`
   }
   @keyframes h7 {
     100% {transform: rotate(1turn)}
->>>>>>> d86de22357367aee5d564af1f3f736e2839349bd
   }
 `;

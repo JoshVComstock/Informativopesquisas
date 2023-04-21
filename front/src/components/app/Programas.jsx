@@ -24,7 +24,7 @@ const Programas = () => {
       <Superiorcomp />
       <Contenidocomp/>
       <Titulo1>
-          titulo
+      Obgetivo Programa Tamizaje
         </Titulo1>
      <Complementocomp></Complementocomp>
       <Footer></Footer>
