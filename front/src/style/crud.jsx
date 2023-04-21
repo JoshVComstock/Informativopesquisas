@@ -1,10 +1,9 @@
-import styled, { keyframes } from 'styled-components';
-
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height:calc(100% - 8vh);
-  margin-top:4vh;
+  height: calc(100% - 8vh);
+  margin-top: 4vh;
 `;
 export const Containerdiv = styled.div`
   display: flex;
@@ -13,31 +12,30 @@ export const Containerdiv = styled.div`
 `;
 export const Divtitulo = styled.div`
   display: flex;
-  margin:3em 0 0 2em;
+  margin: 3em 0 0 2em;
   align-content: center;
-  font-size: 1em; 
-  & h1{
-    font-weight:500;
-    &::first-letter{
-      color:#4a0c71;
+  font-size: 1em;
+  & h1 {
+    font-weight: 500;
+    &::first-letter {
+      color: #4a0c71;
       font-size: 1.5em;
-      font-weight:600; 
+      font-weight: 600;
     }
   }
 `;
 export const Divcrudf = styled.div`
   min-height: 100%;
   display: flex;
-  justify-content:center;
-  align-items:center;
+  justify-content: center;
+  align-items: center;
   @media (max-width: 980px) {
-    flex-direction:column;
-}
-
+    flex-direction: column;
+  }
 `;
 export const Divformulario = styled.div`
   width: auto;
-  margin:0 1em;
+  margin: 0 1em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -123,29 +121,28 @@ export const Divh1 = styled.div`
   justify-content: center;
   margin-bottom: 20px;
   border-bottom: 2px solid #4155ea92;
-  & h1{
-    font-size:1em;
-    font-weight:400; 
+  & h1 {
+    font-size: 1em;
+    font-weight: 400;
 
-    &::first-letter{
-      color:#4a0c71;
+    &::first-letter {
+      color: #4a0c71;
       font-size: 1.5em;
-      font-weight:400; 
+      font-weight: 400;
     }
   }
-
 `;
 export const Divtabla = styled.div`
-  width:auto;
+  width: auto;
   height: 70vh;
-  margin:0 1em;
+  margin: 0 1em;
   overflow-x: scroll;
-  box-shadow:0 5px 5px #0005;
-  padding:0.5em;
+  box-shadow: 0 5px 5px #0005;
+  padding: 0.5em;
   @media (max-width: 500px) {
-    width:100%;
-    overflow-x:scroll;
-}
+    width: 100%;
+    overflow-x: scroll;
+  }
 `;
 export const Tabla = styled.table`
   width: 100%;
@@ -153,20 +150,19 @@ export const Tabla = styled.table`
   margin: 25px 0;
   font-size: 0.9rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  
- text-align:left;
+
+  text-align: left;
 `;
 export const Tr = styled.tr`
   background-color: #222f49;
   color: #ffff;
   text-align: left;
-  
 `;
 export const Trbody = styled.tr`
   border-bottom: 1px solid #dddddd;
   font-weight: bold;
   color: #003398;
-  
+
   &:nth-of-type(even) {
     background-color: #cdcde0;
   }
@@ -174,26 +170,28 @@ export const Trbody = styled.tr`
     border-bottom: 2px solid #005998;
   }
 `;
-export const Tablahead = styled.thead`
-
-`;
+export const Tablahead = styled.thead``;
 export const Td = styled.td`
-
   text-align: center;
-
 `;
 export const Th = styled.th`
   text-align: center;
-  padding:0.5em 0px;
-  font-weight:400;
-  &:last-child{
-  padding:1em;
+  padding: 0.5em 0px;
+  font-weight: 400;
+  &:last-child {
+    padding: 1em;
   }
 `;
 export const Tddescripcion = styled.td`
-
+  padding: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+export const Pcon = styled.p`
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 export const Botonesacciones = styled.button`
   padding: 0px;
@@ -223,31 +221,42 @@ export const Divloading = styled.div`
   justify-content: center;
 `;
 export const Divload = styled.div`
- width: 30px;
-  height: calc(30px*1.732);
-  display: grid;
-  background:
-    linear-gradient(#766DF4 0 0) top   /100% 1px,
-    linear-gradient(#766DF4 0 0) bottom/100% 1px,
-    linear-gradient(to bottom right, #0000 calc(50% - 2px),#766DF4 calc(50% - 1px),#0000 50%) top/100% calc(100% + 2px),
-    linear-gradient(to bottom left , #0000 calc(50% - 2px),#766DF4 calc(50% - 1px),#0000 50%) top/100% calc(100% + 2px); 
+  width: 69px;
+  height: 36px;
+  --c: radial-gradient(farthest-side, #19459be6 90%, #0000);
+  background: var(--c), var(--c), var(--c), var(--c);
+  background-size: 12px 12px;
   background-repeat: no-repeat;
-  animation: h7 4s infinite linear;
+  animation: d3 1.5s infinite linear;
 
-  &:before,
-  &:after {
-    content: "";
-    grid-area: 1/1;
-    background: inherit;
-    border:inherit;
-    animation: inherit;
-  }
-
-  &:after {
-    animation-duration: 2s;
-  }
-
-  @keyframes h7 {
-    100% {transform: rotate(1turn)}
+  @keyframes d3 {
+    0% {
+      background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
+        calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
+    }
+    16.67% {
+      background-position: calc(0 * 100% / 3) 0, calc(1 * 100% / 3) 50%,
+        calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
+    }
+    33.33% {
+      background-position: calc(0 * 100% / 3) 100%, calc(1 * 100% / 3) 0,
+        calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
+    }
+    50% {
+      background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 100%,
+        calc(2 * 100% / 3) 0, calc(3 * 100% / 3) 50%;
+    }
+    66.67% {
+      background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
+        calc(2 * 100% / 3) 100%, calc(3 * 100% / 3) 0;
+    }
+    83.33% {
+      background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
+        calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 100%;
+    }
+    100% {
+      background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
+        calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
+    }
   }
 `;

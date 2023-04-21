@@ -4,42 +4,42 @@ import Footer from "../footer";
 const Contactanos = () => {
   return (
     <>
-  
-     <Titulodiv>
+      <Titulodiv>
         <Imginicio />
         <Contenidodiv>
-          <H3> Conntactate con nosostros</H3>
+          <H3> Contactate con nosotros</H3>
           <Parrafotip></Parrafotip>
         </Contenidodiv>
       </Titulodiv>
       <Divtodo>
-      <H1>Contactanos</H1>
-      <Formulario>
-        <Parrent>
-          <Div1>
-            <H2>informacion de contacto</H2>{" "}
-            <Parrafo>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-              praesentium dicta perferendis adipisci impedit laboriosam?
-            </Parrafo>
-            <h4>cel:75215686</h4>
-            <h4>email:biotechadmsadsl</h4>
-            <h3>ubicacion</h3>
-          </Div1>
-          <Div2>
-            <Label>nombre</Label>
-            <Input type="text" />
-            <Label>Email</Label>
-            <Input type="email" />
-            <Label>Mensaje</Label>
-            <Input type="text" />
-            <Label>Celular</Label>
-            <Input type="number" />
-            <Obutton>enviar</Obutton>
-          </Div2>
-        </Parrent>
-      </Formulario>
-     </Divtodo>
+        <H1>Contactanos</H1>
+        <Formulario>
+          <Parrent>
+            <Div1>
+              <H2>Informacion de contacto</H2>{" "}
+              <Parrafo>
+                Biotech Bolivia es una empresa boliviana que se constituye en un
+                puente a un mejor nivel de salud para los bolivianos, brindando
+                siempre condiciones favorables y productos lí­deres
+              </Parrafo>
+              <h4>Cel: 75215686</h4>
+              <h4>Email: <a href="">info@biotech.com.bo</a></h4>
+              <h3>Ubicacion: </h3>
+            </Div1>
+            <Div2>
+              <Label>nombre</Label>
+              <Input type="text" />
+              <Label>Email</Label>
+              <Input type="email" />
+              <Label>Mensaje</Label>
+              <Input type="text" />
+              <Label>Celular</Label>
+              <Input type="number" />
+              <Obutton>enviar</Obutton>
+            </Div2>
+          </Parrent>
+        </Formulario>
+      </Divtodo>
 
       <Footer />
     </>
@@ -48,11 +48,10 @@ const Contactanos = () => {
 
 export default Contactanos;
 const Divtodo = styled.div`
-height:120vh;
-overflow:hidden;
-@media (max-width: 520px) {
-  height:90vh;
- 
+  height: 120vh;
+  overflow: hidden;
+  @media (max-width: 520px) {
+    height: 90vh;
   }
 `;
 
@@ -67,12 +66,12 @@ const Parrent = styled.section`
 
   @media (max-width: 920px) {
     width: 90%;
-  height:auto;
-  overflow:hidden;
+    height: auto;
+    overflow: hidden;
   }
   @media (max-width: 720px) {
- width:95%;
- margin:0 auto;
+    width: 95%;
+    margin: 0 auto;
   }
 `;
 const Div1 = styled.div`
@@ -85,20 +84,19 @@ const Div1 = styled.div`
   padding: 3em;
   color: #fff;
   position: relative;
-  overflow:hidden;
+  overflow: hidden;
   @media (max-width: 920px) {
-  height:100%;
-  width:100%;
-  overflow:hidden;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
   }
   @media (max-width: 720px) {
-  width:100%;
-  padding:1.2em;
+    width: 100%;
+    padding: 1.2em;
   }
   @media (max-width: 520px) {
-  width:100%;
-  padding:0.5em 0.5em;
-
+    width: 100%;
+    padding: 0.5em 0.5em;
   }
   &::before {
     content: "";
@@ -113,7 +111,7 @@ const Div1 = styled.div`
     @media (max-width: 520px) {
       width: 100px;
       height: 100px;
-  }
+    }
   }
   &::after {
     content: "";
@@ -126,8 +124,8 @@ const Div1 = styled.div`
     right: 60px;
     border-radius: 50%;
     @media (max-width: 520px) {
- display:none;
-  }
+      display: none;
+    }
   }
   gap: 1em;
 `;
@@ -141,20 +139,19 @@ const Div2 = styled.div`
   flex-wrap: wrap;
   align-content: center;
   padding: 5em;
-  box-shadow:  1px 2px 5px  rgba(0, 0, 0, 0.34);
-  -webkit-box-shadow:  1px 2px 5px  rgba(0, 0, 0, 0.34);
-  -moz-box-shadow: 1px 2px 5px  rgba(0, 0, 0, 0.34);
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.34);
+  -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.34);
   @media (max-width: 920px) {
-  height:100%; 
+    height: 100%;
   }
   @media (max-width: 720px) {
- width:100%;
- padding:0.6em;
+    width: 100%;
+    padding: 0.6em;
   }
   @media (max-width: 520px) {
-  width:100%;
-  padding:0.5em 0.01em;
- 
+    width: 100%;
+    padding: 0.5em 0.01em;
   }
 `;
 
@@ -242,7 +239,7 @@ export const Input = styled.input`
   border-bottom: solid #6b4848 1px;
   color: #000000;
   background: transparent;
-  outline:none;
+  outline: none;
 `;
 export const Contenido = styled.div`
   background-color: #b0b9df;
@@ -277,12 +274,11 @@ export const Imginicio = styled.img`
   border: none;
   clip-path: polygon(100% 0, 100% 100%, 42% 100%, 33% 50%, 42% 0);
   @media (max-width: 920px) {
-  height:100%; 
+    height: 100%;
   }
- 
+
   @media (max-width: 520px) {
- display:none;
- 
+    display: none;
   }
 `;
 export const Parrafotip = styled.p`
@@ -334,7 +330,7 @@ export const H3 = styled.h2`
   text-align: left;
   border-left: 10px solid #ffffff;
   @media (max-width: 520px) {
-  width:100%;
- font-size:2em;
+    width: 100%;
+    font-size: 2em;
   }
 `;

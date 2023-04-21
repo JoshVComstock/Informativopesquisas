@@ -1,25 +1,35 @@
 import React, { useEffect, useState } from "react";
-import styled , { keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { Divload, Divloading } from "../../../style/crud";
 const Nosotroscopm = () => {
   const [Anosotros, setAnosotros] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   async function mostrarnosotros() {
-    const response = await fetch("https://informativolaravel-production.up.railway.app/api/informacion", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://informativolaravel-production.up.railway.app/api/informacion",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+      }
+    );
     const respuesta = await response?.json();
     setAnosotros(respuesta);
+    setLoading(false);
   }
 
   useEffect(() => {
     mostrarnosotros();
   }, []);
-
-
+  if (loading) {
+    return (
+      <Divloading>
+        <Divload />
+      </Divloading>
+    );
+  }
 
   return (
     <Nosotrosdiv>
@@ -27,21 +37,17 @@ const Nosotroscopm = () => {
         <Titulo>Sobre Nosotros</Titulo>
       </Supdiv>
       {Anosotros.map((v, i) => (
-      <Infediv key={i}>
-        <Divimg>
-          <Imginfe
-            src={v.foto_m}
-          />
-        </Divimg>
-        <Divbiotech>
-          <H3>{v.nombre}</H3>
-          <Parrafo>
-           {v.descripcion}
-          </Parrafo>
-          <Button>ler mas </Button>
-        </Divbiotech>
-      </Infediv>
-        ))}
+        <Infediv key={i}>
+          <Divimg>
+            <Imginfe src={v.foto_m} />
+          </Divimg>
+          <Divbiotech>
+            <H3>{v.nombre}</H3>
+            <Parrafo>{v.descripcion}</Parrafo>
+            <Button>Leer mas </Button>
+          </Divbiotech>
+        </Infediv>
+      ))}
     </Nosotrosdiv>
   );
 };
@@ -53,7 +59,7 @@ const Nosotrosdiv = styled.div`
   position: relative;
   gap: 1em;
   z-index: 1;
-padding:1em;
+  padding: 1em;
   &::after {
     content: "";
     position: absolute;
@@ -67,40 +73,38 @@ padding:1em;
   }
 
   @media (max-width: 768px) {
-& h2{
-  width:100%;
-  font-size:1.5em;
-}
-& img{
-  display:none;
-}
+    & h2 {
+      width: 100%;
+      font-size: 1.5em;
+    }
+    & img {
+      display: none;
+    }
   }
   @media (max-width: 420px) {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    & section{
-      display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    overflow:hidden;
-    width:80%;
-    height:450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    & section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+      width: 80%;
+      height: 450px;
     }
-& h2{
-  width:100%;
-  font-size:1em;
-}
-& img{
-  width:150px;
-  height:150px;
-}
+    & h2 {
+      width: 100%;
+      font-size: 1em;
+    }
+    & img {
+      width: 150px;
+      height: 150px;
+    }
   }
-
 `;
-
 
 const H3 = styled.h3`
   text-align: center;
@@ -113,7 +117,7 @@ const Divimg = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-`;  
+`;
 
 const Supdiv = styled.div`
   width: 45%;
@@ -121,14 +125,14 @@ const Supdiv = styled.div`
 `;
 
 const Titulo = styled.h2`
- border-left: 10px solid #46628d;
+  border-left: 10px solid #46628d;
   font-size: 2em;
   letter-spacing: 1px;
   color: #7793bd;
   transition: all 1s;
-  display:flex;
-  align-items:flex-start;
-  width:70%;
+  display: flex;
+  align-items: flex-start;
+  width: 70%;
   margin: 0 auto;
   &:hover {
     scale: (0.9);
@@ -148,12 +152,12 @@ const Parrafo = styled.p`
 const Divbiotech = styled.section`
   padding: 2.2rem;
   display: flex;
- width:600px;
- height:380px;
+  width: 600px;
+  height: 380px;
   flex-direction: column;
   align-items: stretch;
   background-color: #c1d7db;
-  position:relative;
+  position: relative;
 `;
 
 const animation = keyframes`
@@ -169,7 +173,7 @@ const animation = keyframes`
     transform:translateX(0);
     transform:rotate(360deg);
   }
-`
+`;
 const Imginfe = styled.img`
   display: flex;
   flex-direction: row;
@@ -179,34 +183,33 @@ const Imginfe = styled.img`
   size: cover;
   border-radius: 50%;
   animation: ${animation} 2s ease-in-out;
-  position:relative;
-  top:0;
-
+  position: relative;
+  top: 0;
 `;
 const Infediv = styled.section`
   display: flex;
   gap: 2em;
   width: 80%;
   height: 100%;
-  margin:0 auto;
-  justify-content:center;
-  align-items:center;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Button = styled.button`
-  width:30%;
-margin:0.5em 0; 
-padding:0.5em;
-border:solid 1px #fff;
-background-color:#405d89;
-position:absolute;
-right:1.5em;
-bottom: 1em;
-color:#fff;
-transition:all 1.5s ;
-cursor:pointer;
-&:hover{
-  background-color:#fff;
-color:#405d89;
-}
+  width: 30%;
+  margin: 0.5em 0;
+  padding: 0.5em;
+  border: solid 1px #fff;
+  background-color: #405d89;
+  position: absolute;
+  right: 1.5em;
+  bottom: 1em;
+  color: #fff;
+  transition: all 1.5s;
+  cursor: pointer;
+  &:hover {
+    background-color: #fff;
+    color: #405d89;
+  }
 `;

@@ -44,7 +44,7 @@ const Programcopm = () => {
             <Divprograma>
               <H2>Programa</H2>
               <Parrafo>{v.compemento}</Parrafo>
-              <Abutton>leer mas</Abutton>
+              <Abutton>Leer mas</Abutton>
             </Divprograma>
             <Conteniendocard>
               <Img src={v.foto} alt="Imagen de la tarjeta" />

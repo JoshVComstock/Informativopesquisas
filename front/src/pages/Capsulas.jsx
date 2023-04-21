@@ -17,6 +17,7 @@ import {
   Tddescripcion,
   Divloading,
   Divload,
+  Pcon,
 } from "../style/crud";
 import Editaricons from "../assets/crud/Editar.jpg";
 import Eliminar from "../assets/crud/Eliminar.jpg";
@@ -30,14 +31,14 @@ import { showImagen } from "../services/noimagen";
 const Capsulas = () => {
   const { loading, getApi, res: capsula } = UseFech(getCapsulas);
   const [actual, setActual] = useState({});
-  if(loading){
-    return(
+  if (loading) {
+    return (
       <Divloading>
-        <Divload/>
+        <Divload />
       </Divloading>
-    )
+    );
   }
-  
+
   return (
     <Container>
       <Containerdiv>
@@ -68,8 +69,13 @@ const Capsulas = () => {
                     <Td>{1 + i}</Td>
                     <Td>{v.titulo}</Td>
                     <Td>{showImagen(v.foto)}</Td>
-                    <Tddescripcion>{v.descripcion}</Tddescripcion>
-                    <Tddescripcion>{v.mas_detalles}</Tddescripcion>
+                    <Tddescripcion>
+                      {" "}
+                      <Pcon>{v.descripcion}</Pcon>
+                    </Tddescripcion>
+                    <Tddescripcion>
+                      <Pcon>{v.mas_detalles}</Pcon>
+                    </Tddescripcion>
                     <Td>
                       <Botonesacciones
                         onClick={() => {

@@ -3,45 +3,36 @@ import styled, { keyframes } from "styled-components";
 import { getInformacion } from "../../../services/informacion";
 import { UseFech } from "../../../hooks/useFech";
 const Contenido = () => {
-const {res:informaciones}=UseFech(getInformacion)
-  
+  const { res: informaciones } = UseFech(getInformacion);
+
   return (
-  <>
-  {informaciones.map((v, i) => (
-    <Div>
-    
-       <Divuno>
-          <Texto>
-          {v.mision}
-          </Texto>
-        </Divuno>
-        <Divdos>
-          <Title>Mision</Title>
-          <Img src={v.foto_m} alt="img" />
-        </Divdos>
-       
+    <>
+      {informaciones.map((v, i) => (
+        <Div>
+          <Divuno>
+            <Texto>{v.mision}</Texto>
+          </Divuno>
+          <Divdos>
+            <Title>Mision</Title>
+            <Img src={v.foto_m} alt="img" />
+          </Divdos>
+
           <Divpa>
-        <Divtres>
-   
-          <Titleb>Vision</Titleb>
-          <Imgb src={v.foto_v} alt="img" />
-        </Divtres>
-        <Divcuatro>
-       
-          <Textob>
-        {v.vision}
-          </Textob>
-        </Divcuatro>
-        </Divpa>
-      </Div>
+            <Divtres>
+              <Titleb>Vision</Titleb>
+              <Imgb src={v.foto_v} alt="img" />
+            </Divtres>
+            <Divcuatro>
+              <Textob>{v.vision}</Textob>
+            </Divcuatro>
+          </Divpa>
+        </Div>
+      ))}
+    </>
+  );
+};
 
-       ))}
-  </>
-
-  )
-}
-
-export default Contenido
+export default Contenido;
 
 const Div = styled.section`
   width: 100%;
@@ -52,34 +43,31 @@ const Div = styled.section`
   justify-content: center;
   align-items: center;
   padding: 2em;
-  overflow:hidden;
+  overflow: hidden;
   @media (max-width: 520px) {
     flex-direction: column-reverse;
-    height:100%;
-    & > div{
-   display:block;
-   & > h2{
-    height:auto;
-    border-left:0;
-   }
-& > img{
-  width:100px;
-  height:100px;
-  display:none;
-  border-radius:50%;
-
-}
-  }
-    
+    height: 100%;
+    & > div {
+      display: block;
+      & > h2 {
+        height: auto;
+        border-left: 0;
+      }
+      & > img {
+        width: 100px;
+        height: 100px;
+        display: none;
+        border-radius: 50%;
+      }
+    }
   }
 `;
 
 const Divpa = styled.div`
-display:flex;
- @media (max-width: 520px) {
+  display: flex;
+  @media (max-width: 520px) {
     height: auto;
-    }
-
+  }
 `;
 const Divuno = styled.div`
   width: 50%;
@@ -90,8 +78,8 @@ const Divuno = styled.div`
   position: relative;
   z-index: -2;
   @media (max-width: 520px) {
-   display:block;
-   width:90%;
+    display: block;
+    width: 90%;
   }
 `;
 const animation = keyframes`
@@ -107,7 +95,7 @@ const animation = keyframes`
     border-radius:1.5em;
 
   }
-`
+`;
 const animationb = keyframes`
  0% {
     transform:translateX(-30%);
@@ -121,46 +109,45 @@ const animationb = keyframes`
     border-radius:1.5em;
 
   }
-`
+`;
 const Img = styled.img`
-width:100%;
-height:100%;
-position:absolute;
-display:none;
-animation: ${animation} 2s ease-in;
-border-radius:1.5em;
-top:0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  animation: ${animation} 2s ease-in;
+  border-radius: 1.5em;
+  top: 0;
 `;
 const Imgb = styled.img`
-width:100%;
-height:100%;
-position:absolute;
-display:none;
-animation: ${animationb} 2s ease-in;
-border-radius:1.5em;
-top:0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  animation: ${animationb} 2s ease-in;
+  border-radius: 1.5em;
+  top: 0;
 `;
 const Divdos = styled.div`
   width: 50%;
   height: 55vh;
   display: flex;
-  position:relative;
+  position: relative;
   align-items: center;
   @media (max-width: 520px) {
     height: 15vh;
   }
   &:hover {
-    & h2{
+    & h2 {
       border-left: none;
-    color: transparent;
-    background-size: cover;
+      color: transparent;
+      background-size: cover;
     }
-    & img{
-      display:flex;
-      z-index:-1;
-   
+    & img {
+      display: flex;
+      z-index: -1;
     }
-    }
+  }
 `;
 
 const Title = styled.h2`
@@ -217,28 +204,28 @@ const Divtres = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  position:relative;
+  position: relative;
   @media (max-width: 520px) {
     height: 15vh;
-    & h2{
-      text-align:center;
+    & h2 {
+      text-align: center;
     }
-    }
-  
+  }
+
   &:hover {
-    & h2{
+    & h2 {
       border-left: none;
-    color: transparent;
-    background-size: cover;
+      color: transparent;
+      background-size: cover;
     }
-    & img{
+    & img {
       @media (max-width: 520px) {
-        display:none;
+        display: none;
       }
-      display:flex;
-      z-index:-1;
+      display: flex;
+      z-index: -1;
     }
-    }
+  }
 `;
 const Divcuatro = styled.div`
   width: 50%;
@@ -248,11 +235,9 @@ const Divcuatro = styled.div`
   justify-content: center;
   @media (max-width: 520px) {
     height: 110%;
-    margin:1em 0;
-    width:80%;
-   
-    }
-
+    margin: 1em 0;
+    width: 80%;
+  }
 `;
 const Textob = styled.div`
   background-color: #222f49;

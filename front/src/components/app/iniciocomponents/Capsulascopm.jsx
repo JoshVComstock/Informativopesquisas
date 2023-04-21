@@ -1,25 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import styled from "styled-components";
+import { Divload, Divloading } from "../../../style/crud";
 const Capsulascopm = () => {
   const [capsula, setCapsula] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   async function mostrarcapsula() {
-    const response = await fetch("https://informativolaravel-production.up.railway.app/api/capsula", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://informativolaravel-production.up.railway.app/api/capsula",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+      }
+    );
     const respuesta = await response?.json();
     setCapsula(respuesta);
+    setLoading(false);
   }
 
   useEffect(() => {
     mostrarcapsula();
   }, []);
-
+  if (loading) {
+    return (
+      <Divloading>
+        <Divload />
+      </Divloading>
+    );
+  }
   return (
     <Divcapsulas>
       <Titulo>Capsulas informativas</Titulo>
