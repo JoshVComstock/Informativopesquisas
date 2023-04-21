@@ -10,6 +10,8 @@ import Informacionicons from "../assets/navbar/Informacion.jpg";
 import Programaicons from "../assets/navbar/Programas.jpg";
 import Redcentrosicons from "../assets/navbar/Redcentros.jpg";
 const Navbar = () => {
+
+  
   return (
     <Navbarnav>
       <Nav>
@@ -76,7 +78,7 @@ const Nav = styled.div`
   flex-direction: row;
   box-shadow:0px 2px 8px #0005;
   position:fixed;
-
+ 
 `;
 const Navlink = styled.div`
   display: flex;
@@ -85,6 +87,12 @@ const Navlink = styled.div`
   width: 100%;
   font-size: 17px;
   gap:0.5em;
+  @media (max-width: 500px) {
+    flex-direction:column;
+    height:auto;
+    background-color:#fff;
+    position:absolute;
+  }
 `;
 const Imgicons = styled.img`
   width: 30px;
