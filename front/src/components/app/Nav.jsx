@@ -1,15 +1,29 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, Outlet } from "react-router-dom";
+import { UseFech } from "../../hooks/useFech";
+import { getCapsulas } from "../../services/capsulas";
+import { Divload, Divloading } from "../../style/crud";
 const Nav = () => {
   const [mostrarDiv, setMostrarDiv] = useState(false);
+  const { loading } = UseFech(getCapsulas);
+  if (loading) {
+    return (
+      <Divloading>
+        <Divload />
+      </Divloading>
+    );
+  }
   function handleClick() {
     setMostrarDiv(!mostrarDiv);
   }
   return (
     <>
-      <Abot onClick={handleClick}> <h2>Tamizaje neonatal</h2></Abot>
-      <Res style={{ display: mostrarDiv ? 'flex' : 'none'}} >
+      <Abot onClick={handleClick}>
+        {" "}
+        <h2>Tamizaje neonatal</h2>
+      </Abot>
+      <Res style={{ display: mostrarDiv ? "flex" : "none" }}>
         <li>
           <Linkss to="/">Inicio</Linkss>
         </li>
@@ -78,38 +92,38 @@ const Nav = () => {
 export default Nav;
 
 const Abot = styled.div`
-background-color:#4870a4;
-padding: 0 1em;
+  background-color: #4870a4;
+  padding: 0 1em;
   display: none;
-height:30px;
-position: relative;
-box-shadow:0px 2px 5px #0005;
-justify-content:center;
-align-items:center;
-cursor: pointer;
-& h2{
-  font-weight:100;
-  color:#fff;
-  font-size:1.1em;
-}
-&::before{
-position:absolute;
-width:15px;
-height:1.2px;
-background-color:#ffffff;
-content:"";
-top:25%;
-right:5%;
-};
-&::after{
-position:absolute;
-width:15px;
-height:1.2px;
-background-color:#ffffff;
-content:"";
-top:50%;
-right:5%;
-}
+  height: 30px;
+  position: relative;
+  box-shadow: 0px 2px 5px #0005;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  & h2 {
+    font-weight: 100;
+    color: #fff;
+    font-size: 1.1em;
+  }
+  &::before {
+    position: absolute;
+    width: 15px;
+    height: 1.2px;
+    background-color: #ffffff;
+    content: "";
+    top: 25%;
+    right: 5%;
+  }
+  &::after {
+    position: absolute;
+    width: 15px;
+    height: 1.2px;
+    background-color: #ffffff;
+    content: "";
+    top: 50%;
+    right: 5%;
+  }
 
   @media (max-width: 520px) {
     display: flex;
@@ -176,9 +190,9 @@ export const Linkss = styled(Link)`
   display: block;
   color: #222020eb;
   text-decoration: none;
-  text-align:center;
+  text-align: center;
   padding: 0.5em 0em 0 0.5em;
-  border-bottom:solid 1px #1413136b;
+  border-bottom: solid 1px #1413136b;
   height: 2.2em;
   &:hover {
     background-color: #4870a4dc;
@@ -221,31 +235,26 @@ const Imglogo = styled.img`
 `;
 
 export const Links = styled(Link)`
- color:#fff;
-text-decoration: none;
-padding: 20px;
-transition: all 0.5s;
-@media (max-width: 980px) {
+  color: #fff;
+  text-decoration: none;
+  padding: 20px;
+  transition: all 0.5s;
+  @media (max-width: 980px) {
     padding: 10px;
-font-size:0.6em;
-
+    font-size: 0.6em;
   }
   @media (max-width: 720px) {
     padding: 10px;
-  font-size:0.7em;
+    font-size: 0.7em;
   }
   @media (max-width: 520px) {
     padding: 10px;
-  font-size:0.5em;
+    font-size: 0.5em;
   }
   &:hover {
     background-color: #ffffffea;
-    color:#3c425c;
-  };
-
-  
-
-
+    color: #3c425c;
+  }
 `;
 const Nava = styled.nav`
   width: 100%;
