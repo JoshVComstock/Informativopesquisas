@@ -31,13 +31,15 @@ const MostrarInfo = ({ enviard }) => {
 };
 export default MostrarInfo;
 const Sectionp = styled.div`
-  width: 40%;
+  width: 35%;
   height: 110vh;
   display: flex;
   flex-direction: column;
-  background-color:#F6F6F6;
+  backdrop-filter: blur(7.5px);
+-webkit-backdrop-filter: blur(7.5px);
+border: 1px solid rgba(0, 0, 0, 0.18);
   position: relative;
-  margin:0 auto;
+  margin:1em;
   box-shadow:0px 3px 5px #0005;
   justify-content: flex-start;
   @media (max-width: 520px) {
@@ -72,6 +74,7 @@ const Titulo = styled.h2`
   font-size: 2em;
   font-weight: 100;
   margin: 0 1em;
+  text-align:center;
   &::first-letter {
     font-size: 1.5em;
     font-weight: 100;

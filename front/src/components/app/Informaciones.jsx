@@ -46,7 +46,8 @@ const Informaciones = () => {
         
         </Divpadrecap>
         </Encerar>
-        <MostrarInfo enviard={enviar}/>
+       <MostrarInfo enviard={enviar}/>
+     
       </Contenidos>
   
       <Footer></Footer>
@@ -60,13 +61,13 @@ export default Informaciones;
 const Contenidos = styled.section`
   width: 100%;
   height: 100%;
-  margin:1em 0;
   display:flex;
   flex-direction:row;
   justify-content:center;
   align-items:center;
   overflow:hidden;
 
+margin:0 auto;
   @media (max-width: 520px) {
     flex-direction:column;
   
@@ -75,49 +76,6 @@ const Contenidos = styled.section`
 // buscador
 export const Pad = styled.div`
   background-color:#fff;
-`;
-export const Divsearchpadre = styled.div`
-  max-width: 100%;
-  display: flex;
-  justify-content: flex-end;
-`;
-export const Divsearch = styled.div`
-  width: 100%;
-  max-width: 700px;
-  display: flex;
-  align-items: center;
-  border-radius: 60px;
-  padding: 10px 20px;
-  height: 40px;
-  margin: 10px;
-  
-`;
-export const Search = styled.input`
-  background: transparent;
-  flex: 1;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  font-size: 16px;
-  color:#fff;
-  &:focus {
- border-bottom: 1px solid #0066ff;
-  }
-`;
-export const Botonsearch = styled.button`
-  border: 0;
-  border-radius: 50%;
-  width: 30px;
-  height: 29px;
-  cursor: pointer;
-  background: #9d17a19c;
-  &:hover {
-    background: #fff;
-  }
-  &:hover Img {
-    filter: invert(100%) sepia(31%) saturate(2%) hue-rotate(198deg)
-      brightness(107%) contrast(101%);
-  }
 `;
 const Img = styled.img`
 width:100%;
@@ -143,17 +101,16 @@ height:100%;
 `;
 
 const Encerar = styled.section`
-width:100%;
+width:70%;
 @media (max-width: 520px) {
 width:auto;
-
   overflow-x:scroll;
 }
 `;
 
 const Divcapsula = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   display: flex;
   overflow:hidden;
   color:#fff;
@@ -199,8 +156,8 @@ const Divcapsula = styled.div`
     background-color:#003cff9b;
     color:#ffffff;
     font-size:1.2em;
-    bottom:-10%;
-right:-10%;
+    bottom:-20%;
+    right:-12%;
    }
     & h3 {
     z-index:3;
@@ -247,4 +204,5 @@ position:absolute;
 justify-content:center;
 align-items:center;
 padding:0.2em 0;
+z-index:10;
 `;

@@ -30,6 +30,10 @@ export const Divcrudf = styled.div`
   display: flex;
   justify-content:center;
   align-items:center;
+  @media (max-width: 980px) {
+    flex-direction:column;
+}
+
 `;
 export const Divformulario = styled.div`
   width: auto;
@@ -119,6 +123,16 @@ export const Divh1 = styled.div`
   justify-content: center;
   margin-bottom: 20px;
   border-bottom: 2px solid #4155ea92;
+  & h1{
+    font-size:1em;
+    font-weight:400; 
+
+    &::first-letter{
+      color:#4a0c71;
+      font-size: 1.5em;
+      font-weight:400; 
+    }
+  }
 
 `;
 export const Divtabla = styled.div`
@@ -127,6 +141,11 @@ export const Divtabla = styled.div`
   margin:0 1em;
   overflow-x: scroll;
   box-shadow:0 5px 5px #0005;
+  padding:0.5em;
+  @media (max-width: 500px) {
+    width:100%;
+    overflow-x:scroll;
+}
 `;
 export const Tabla = styled.table`
   width: 100%;
@@ -135,7 +154,7 @@ export const Tabla = styled.table`
   font-size: 0.9rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   
- 
+ text-align:left;
 `;
 export const Tr = styled.tr`
   background-color: #222f49;
@@ -167,6 +186,9 @@ export const Th = styled.th`
   text-align: center;
   padding:0.5em 0px;
   font-weight:400;
+  &:last-child{
+  padding:1em;
+  }
 `;
 export const Tddescripcion = styled.td`
 
