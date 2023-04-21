@@ -5,6 +5,7 @@ import Headercomp from "./informacioncomponents/Headercomp";
 import Footer from "../footer";
 
 import MostrarInfo from "../MostrarInfo";
+import { Divloading,Divload } from "../../style/crud";
 const Informaciones = () => {
   // traemos datos
   const [capsula, setCapsula] = useState([]);
@@ -30,7 +31,13 @@ const Informaciones = () => {
   useEffect(() => {
     mostrarcapsula();
   }, []);
-
+  if (loading) {
+    return (
+      <Divloading>
+        <Divload />
+      </Divloading>
+    );
+  }
   return (
     <>
       <Pad>

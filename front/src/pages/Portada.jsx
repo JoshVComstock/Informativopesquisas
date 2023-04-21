@@ -17,6 +17,7 @@ import {
   Tddescripcion,
   Divloading,
   Divload,
+  Pcon,
 } from "../style/crud";
 import Editaricons from "../assets/crud/Editar.jpg";
 import Eliminar from "../assets/crud/Eliminar.jpg";
@@ -66,10 +67,10 @@ const Portada = () => {
                     <Td>{1 + i}</Td>
 
                     <Tddescripcion>{v.titulo}</Tddescripcion>
-                    <Td>
-                      {showImagen(v.foto)}
-                    </Td>
-                    <Tddescripcion>{v.descripcion}</Tddescripcion>
+                    <Td>{showImagen(v.foto)}</Td>
+                    <Tddescripcion>
+                      <Pcon>{v.descripcion}</Pcon>
+                    </Tddescripcion>
                     <Td>
                       <Botonesacciones onClick={() => setActual(v)}>
                         <Imgeditar src={Editaricons} alt="" />

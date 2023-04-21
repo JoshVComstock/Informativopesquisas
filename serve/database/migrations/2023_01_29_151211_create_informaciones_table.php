@@ -18,7 +18,6 @@ class CreateInformacionesTable extends Migration
             $table->binary('foto_m')->nullable();
             $table->string('vision',1000);
             $table->binary('foto_v')->nullable();
-
             $table->timestamps();
         });
     }

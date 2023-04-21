@@ -173,17 +173,14 @@ export const Trbody = styled.tr`
 export const Tablahead = styled.thead``;
 export const Td = styled.td`
   text-align: center;
-<<<<<<< HEAD
-=======
-  
-  &p{
-    display: -webkit-box;
--webkit-line-clamp: 3;
--webkit-box-orient: vertical;
-overflow: hidden;
-  }
+  padding: 10px;
 
->>>>>>> d86de22357367aee5d564af1f3f736e2839349bd
+  &p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 `;
 export const Th = styled.th`
   text-align: center;
@@ -203,6 +200,7 @@ export const Pcon = styled.p`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  padding: 5px;
 `;
 export const Botonesacciones = styled.button`
   padding: 0px;
@@ -240,7 +238,6 @@ export const Divload = styled.div`
   background-repeat: no-repeat;
   animation: d3 1.5s infinite linear;
 
-<<<<<<< HEAD
   @keyframes d3 {
     0% {
       background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
@@ -270,21 +267,5 @@ export const Divload = styled.div`
       background-position: calc(0 * 100% / 3) 50%, calc(1 * 100% / 3) 50%,
         calc(2 * 100% / 3) 50%, calc(3 * 100% / 3) 50%;
     }
-=======
-  &:before,
-  &:after {
-    content: "";
-    grid-area: 1/1;
-    background: inherit;
-    border:inherit;
-    animation: inherit;
-  }
-
-  &:after {
-    animation-duration: 2s;
-  }
-  @keyframes h7 {
-    100% {transform: rotate(1turn)}
->>>>>>> d86de22357367aee5d564af1f3f736e2839349bd
   }
 `;

@@ -15,6 +15,7 @@ import {
   Imgeliminar,
   Divloading,
   Divload,
+  Pcon,
 } from "../style/crud";
 import Editaricons from "../assets/crud/Editar.jpg";
 import Eliminar from "../assets/crud/Eliminar.jpg";
@@ -66,10 +67,10 @@ const Detallecentro = () => {
                   <Trbody className="row" key={i}>
                     <Td>{1 + i}</Td>
                     <Td>{v.nombre}</Td>
-                    <Td><p>{v.direccion}</p></Td>
+                    <Td><Pcon>{v.direccion}</Pcon></Td>
                     <Td>{v.telefono}</Td>
                     <Td>{v.horario_atencion}</Td>
-                    <Td>{v.mapa}</Td>
+                    <Td><Pcon>{v.mapa}</Pcon></Td>
                     <Td>{v.red}</Td>
 
                     <Td>

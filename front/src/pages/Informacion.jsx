@@ -15,6 +15,7 @@ import {
   Imgeliminar,
   Divloading,
   Divload,
+  Pcon,
 } from "../style/crud";
 import Editaricons from "../assets/crud/Editar.jpg";
 import Eliminar from "../assets/crud/Eliminar.jpg";
@@ -24,7 +25,7 @@ import { deleteInformacion, getInformacion } from "../services/informacion";
 import Noimagen from "../assets/crud/Noimagen1.jpg";
 import { showImagen } from "../services/noimagen";
 const Informacion = () => {
-  const { loading,getApi, res } = UseFech(getInformacion);
+  const { loading, getApi, res } = UseFech(getInformacion);
   const [actual, setActual] = useState({});
   if (loading) {
     return (
@@ -65,7 +66,9 @@ const Informacion = () => {
                   <Trbody className="row" key={i}>
                     <Td>{v.nombre}</Td>
                     <Td>{showImagen(v.foto)}</Td>
-                    <Td>{v.descripcion}</Td>
+                    <Td>
+                      <Pcon>{v.descripcion}</Pcon>
+                    </Td>
                     <Td>{v.mision}</Td>
                     <Td>{showImagen(v.foto_m)}</Td>
                     <Td>{v.vision}</Td>

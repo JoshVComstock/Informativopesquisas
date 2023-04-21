@@ -19,6 +19,7 @@ import {
   Imgeliminar,
   Divloading,
   Divload,
+  Pcon,
 } from "../style/crud";
 import Editaricons from "../assets/crud/Editar.jpg";
 import Eliminar from "../assets/crud/Eliminar.jpg";
@@ -63,21 +64,26 @@ const Programa = () => {
                   <Th>Titulo complemento</Th>
                   <Th>Complemento</Th>
                   <Th>Acciones</Th>
+                  <Th></Th>
                 </Tr>
               </thead>
 
               <tbody>
                 {programa.map((v, i) => (
                   <Trbody className="row" key={i}>
-                    <Td>
-                      {showImagen(v.foto)}
-                    </Td>
+                    <Td>{showImagen(v.foto)}</Td>
                     <Td>{v.nombre}</Td>
-                    <Td>{v.contenido_a}</Td>
+                    <Td>
+                      <Pcon>{v.contenido_a}</Pcon>
+                    </Td>
                     <Td>{v.titulo}</Td>
-                    <Td>{v.contenido_b}</Td>
+                    <Td>
+                      <Pcon>{v.contenido_b}</Pcon>
+                    </Td>
                     <Td>{v.titulo_desc}</Td>
-                    <Td>{v.compemento}</Td>
+                    <Td>
+                      <Pcon>{v.compemento}</Pcon>
+                    </Td>
                     <Td>
                       <Botonesacciones
                         onClick={() => {
