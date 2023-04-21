@@ -66,7 +66,7 @@ const Detallecentro = () => {
                   <Trbody className="row" key={i}>
                     <Td>{1 + i}</Td>
                     <Td>{v.nombre}</Td>
-                    <Td>{v.direccion}</Td>
+                    <Td><p>{v.direccion}</p></Td>
                     <Td>{v.telefono}</Td>
                     <Td>{v.horario_atencion}</Td>
                     <Td>{v.mapa}</Td>
