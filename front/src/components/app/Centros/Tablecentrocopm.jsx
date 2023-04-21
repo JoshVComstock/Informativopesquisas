@@ -5,7 +5,7 @@ const Tablecentrocopm = () => {
   const [tablacentros, setTablacentros] = useState([]);
 
   async function mostrartablacentros() {
-    const response = await fetch("http://127.0.0.1:8000/api/detallecentros", {
+    const response = await fetch("https://informativolaravel-production.up.railway.app/api/detallecentros", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -23,7 +23,7 @@ const Tablecentrocopm = () => {
     const [redescetros, setRedescetros] = useState([]);
   
     async function mostrarredescentro() {
-      const response = await fetch("http://127.0.0.1:8000/api/red", {
+      const response = await fetch("https://informativolaravel-production.up.railway.app/api/red", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

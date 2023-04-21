@@ -6,7 +6,7 @@ const Diagnosticocomp = () => {
   const [centrosdiagnostico, setCentrosdiagnostico] = useState([]);
 
   async function mostrardiagnostico() {
-    const response = await fetch("http://127.0.0.1:8000/api/centros", {
+    const response = await fetch("https://informativolaravel-production.up.railway.app/api/centros", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

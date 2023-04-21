@@ -13,7 +13,7 @@ const Supcopm = () => {
   const [loading, setLoading] = useState(true);
 
   async function mostrarrealiza() {
-    const response = await fetch("http://127.0.0.1:8000/api/informacion", {
+    const response = await fetch("https://informativolaravel-production.up.railway.app/api/informacion", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

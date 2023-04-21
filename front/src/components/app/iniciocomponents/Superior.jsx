@@ -7,7 +7,7 @@ const Superior = () => {
   const [superior, setSuperior] = useState([]);
 
   async function mostrarsuperior() {
-    const response = await fetch("http://127.0.0.1:8000/api/principales", {
+    const response = await fetch("https://informativolaravel-production.up.railway.app/api/principales", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

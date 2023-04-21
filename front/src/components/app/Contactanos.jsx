@@ -242,6 +242,7 @@ export const Input = styled.input`
   border-bottom: solid #6b4848 1px;
   color: #000000;
   background: transparent;
+  outline:none;
 `;
 export const Contenido = styled.div`
   background-color: #b0b9df;

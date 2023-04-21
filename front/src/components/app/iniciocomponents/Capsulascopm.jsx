@@ -5,7 +5,7 @@ const Capsulascopm = () => {
   const [capsula, setCapsula] = useState([]);
 
   async function mostrarcapsula() {
-    const response = await fetch("http://127.0.0.1:8000/api/capsula", {
+    const response = await fetch("https://informativolaravel-production.up.railway.app/api/capsula", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

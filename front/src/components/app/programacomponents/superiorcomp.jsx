@@ -5,7 +5,7 @@ const Superiorcomp = () => {
   const [contenidos, setContenidos] = useState([]);
 
   async function mostrarcontenidos() {
-    const response = await fetch("http://127.0.0.1:8000/api/programa", {
+    const response = await fetch("https://informativolaravel-production.up.railway.app/api/programa", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
