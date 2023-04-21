@@ -180,6 +180,13 @@ export const Tablahead = styled.thead`
 export const Td = styled.td`
 
   text-align: center;
+  
+  &p{
+    display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+overflow: hidden;
+  }
 
 `;
 export const Th = styled.th`
@@ -246,7 +253,6 @@ export const Divload = styled.div`
   &:after {
     animation-duration: 2s;
   }
-
   @keyframes h7 {
     100% {transform: rotate(1turn)}
   }
